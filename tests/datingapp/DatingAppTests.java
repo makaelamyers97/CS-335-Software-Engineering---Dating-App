@@ -1,4 +1,4 @@
-package MidtermDatingAppTests;					//THIS MAY NEED TO BE CHANGED
+package datingapp;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import DatingAppPkg.datingApp;					//THIS MAY NEED TO BE UPDATED
 
 class DatingAppTests {
 
