@@ -2,6 +2,10 @@ package datingapp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.SwingUtilities;
+
+import datingapp.gui.InitialFrame;
+
 public class datingApp {
 
     public static class User {
@@ -82,7 +86,7 @@ public class datingApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Thank you for your interest in joining Swang Song! Before going any further, we need to collect some basic information from you. Please respond to each question then press enter to continue. Let’s begin!");
+    	SwingUtilities.invokeLater(() -> new InitialFrame().setVisible(true));
 
         User user = new User();
         user.collectUserInfo();
