@@ -36,6 +36,7 @@ public class InitialFrame extends JFrame {
 
 		JButton btnLetsBegin = new JButton("Let's Begin!");
 		btnLetsBegin.setPreferredSize(new Dimension(150, 30));
+		btnLetsBegin.setFocusable(false);
 		
 		JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		buttonPanel.add(btnLetsBegin);

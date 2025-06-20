@@ -9,13 +9,23 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
+import javax.swing.text.MaskFormatter;
+
+import datingapp.User;
 
 import java.awt.Insets;
 import javax.swing.BorderFactory;
 import java.awt.event.*;
+import java.text.NumberFormat;
+import java.text.ParseException;
 
 public class RegistrationFrame extends JFrame {
-
+	User newUser = new User();
+    String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
+    		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
+    		"NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
+//    JButton enterBtn;																									FOLLOWUP
+    
     public RegistrationFrame() {
         setTitle("User Registration");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,11 +103,19 @@ public class RegistrationFrame extends JFrame {
         cityLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(cityLbl);
         
-        // State
-        JTextField stateTxtFld = new JTextField();
-        stateTxtFld.setSize(30, 20);
-        stateTxtFld.setLocation(160, 140);
-        contentPane.add(stateTxtFld);
+//        // State													CAN BE REMOVED AFTER TESTING
+//        JTextField stateTxtFld = new JTextField();
+//        stateTxtFld.setSize(30, 20);
+//        stateTxtFld.setLocation(160, 140);
+//        contentPane.add(stateTxtFld);
+        
+        //ComboBox for state
+        JComboBox stateBox = new JComboBox(allStates);
+        stateBox.setSelectedItem(stateBox);
+        stateBox.setSize(45,  20);
+        stateBox.setLocation(160,  140);
+        contentPane.add(stateBox);
+        stateBox.setVisible(true);
         
         JLabel stateLbl = new JLabel("State");
         stateLbl.setSize(100, 20);
@@ -105,8 +123,17 @@ public class RegistrationFrame extends JFrame {
         stateLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(stateLbl);
         
-        // Zip
-        JTextField zipTxtFld = new JTextField();
+//        // Zip
+//        JTextField zipTxtFld = new JTextField();						REMOVE AFTER TESTING
+      //Zipcode formatting
+        JFormattedTextField zipTxtFld = null;
+        try {
+        	MaskFormatter zformatter = new MaskFormatter("#####");
+        	zipTxtFld = new JFormattedTextField(zformatter);
+        	zipTxtFld.setColumns(5);
+        } catch(ParseException e) {
+        	e.printStackTrace();
+        }
         zipTxtFld.setSize(100, 20);
         zipTxtFld.setLocation(50, 180);
         contentPane.add(zipTxtFld);
@@ -129,6 +156,13 @@ public class RegistrationFrame extends JFrame {
         usernameTxtFld.setLocation(50, 255);
         contentPane.add(usernameTxtFld);
         
+        //Set username										WORKING ON THIS
+//        String userNameText = usernameTxtFld.getText();
+        //User user1 = new User();
+//        newUser.setUserName(usernameTxtFld);
+//        System.out.println(newUser.toString());
+        
+        
         // password
         JLabel passwordLbl = new JLabel("Password");
         passwordLbl.setSize(100, 20);
@@ -136,7 +170,9 @@ public class RegistrationFrame extends JFrame {
         passwordLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(passwordLbl);
         
-        JTextField passwordTxtFld = new JTextField();
+        //Password field
+//        JTextField passwordTxtFld = new JTextField();				REMOVE AFTER TESTING
+        JPasswordField passwordTxtFld = new JPasswordField();
         passwordTxtFld.setSize(100, 20);
         passwordTxtFld.setLocation(50, 310);
         contentPane.add(passwordTxtFld);
@@ -149,9 +185,25 @@ public class RegistrationFrame extends JFrame {
         contentPane.add(dobLbl);
         
         JTextField dobTxtFld = new JTextField();
+        //Temp solution until date picker is decided
+        dobTxtFld.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				dobTxtFld.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(dobTxtFld.getText().isEmpty()) {
+				dobTxtFld.setText("DD/MM/YYYY");
+				}
+			}
+        	
+        });
         dobTxtFld.setSize(100, 20);
         dobTxtFld.setLocation(350, 65);
-        dobTxtFld.setText("DD/MMM/YYYY");
+        dobTxtFld.setText("DD/MM/YYYY");
         contentPane.add(dobTxtFld);
         
         // phone
@@ -161,12 +213,28 @@ public class RegistrationFrame extends JFrame {
         phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(phoneLbl);
         
-        JTextField phoneTxtFld = new JTextField();
+
+//        phone.setSize(100,  20);
+//        phone.setLocation(350,  140);    
+//        contentPane.add(phone);
+        
+    
+//        JTextField phoneTxtFld = new JTextField();					REMOVE AFTER TESTING
+        JFormattedTextField phoneTxtFld = null;
+        try {
+        	MaskFormatter pformatter = new MaskFormatter("###-###-####");		//FIX FOCUS
+        	phoneTxtFld= new JFormattedTextField(pformatter);
+        	phoneTxtFld.setColumns(10);
+        } catch(ParseException e) {
+        	e.printStackTrace();
+        }
         phoneTxtFld.setSize(100, 20);
         phoneTxtFld.setLocation(350, 140);
         phoneTxtFld.setText("000-000-000");
         contentPane.add(phoneTxtFld);
-        
+        //focus
+
+
         // email
         JLabel emailLbl = new JLabel("Email");
         emailLbl.setSize(200, 20);
@@ -174,13 +242,31 @@ public class RegistrationFrame extends JFrame {
         emailLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(emailLbl);
         
+        //Email example label
+//      JTextField emailTxtFld = new JTextField();					REMOVE AFTER TESTING
         JTextField emailTxtFld = new JTextField();
         emailTxtFld.setSize(200, 20);
-        emailTxtFld.setLocation(350, 210);
+        emailTxtFld.setLocation(350,  210);
         emailTxtFld.setText("ex: myname@example.com");
         contentPane.add(emailTxtFld);
+        emailTxtFld.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				emailTxtFld.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(emailTxtFld.getText().isEmpty()) {
+				emailTxtFld.setText("ex: myname@example.com");
+				}
+			}
+        	
+        });
         
-        JButton enterBtn = new JButton("ENTER");
+        
+        JButton enterBtn = new JButton("Register");					//REFACTOR WITH registerBtn and remove unnec
         enterBtn.setSize(120, 30);
         enterBtn.setLocation(365, 290);
         enterBtn.addActionListener(new ActionListener() {
@@ -191,6 +277,19 @@ public class RegistrationFrame extends JFrame {
         });
         
         contentPane.add(enterBtn);
+        enterBtn.setFocusable(false);
         
     }
+    
+    //Get data to setter when Register button is clicked
+   
+//    public void actionPerformed(ActionEvent e) {
+//    	if(e.getSource()==enterBtn) {
+//    		System.out.println("Welcome " + newUser.toString());						//NOTHING
+//    	}
+//    }
+    
 }
+
+
+//focusListener--https://www.youtube.com/watch?v=CzKXbkjgDBY
