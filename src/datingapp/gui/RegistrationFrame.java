@@ -20,12 +20,12 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 
 public class RegistrationFrame extends JFrame {
-	User newUser = new User();
+
     String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
     		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
     		"NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
-//    JButton enterBtn;																									FOLLOWUP
-    
+    JButton registerBtn;																									//FOLLOWUP
+    private User newUser;
     public RegistrationFrame() {
         setTitle("User Registration");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -156,13 +156,6 @@ public class RegistrationFrame extends JFrame {
         usernameTxtFld.setLocation(50, 255);
         contentPane.add(usernameTxtFld);
         
-        //Set username										WORKING ON THIS
-//        String userNameText = usernameTxtFld.getText();
-        //User user1 = new User();
-//        newUser.setUserName(usernameTxtFld);
-//        System.out.println(newUser.toString());
-        
-        
         // password
         JLabel passwordLbl = new JLabel("Password");
         passwordLbl.setSize(100, 20);
@@ -212,12 +205,6 @@ public class RegistrationFrame extends JFrame {
         phoneLbl.setLocation(350, 110);
         phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(phoneLbl);
-        
-
-//        phone.setSize(100,  20);
-//        phone.setLocation(350,  140);    
-//        contentPane.add(phone);
-        
     
 //        JTextField phoneTxtFld = new JTextField();					REMOVE AFTER TESTING
         JFormattedTextField phoneTxtFld = null;
@@ -232,7 +219,6 @@ public class RegistrationFrame extends JFrame {
         phoneTxtFld.setLocation(350, 140);
         phoneTxtFld.setText("000-000-000");
         contentPane.add(phoneTxtFld);
-        //focus
 
 
         // email
@@ -243,7 +229,6 @@ public class RegistrationFrame extends JFrame {
         contentPane.add(emailLbl);
         
         //Email example label
-//      JTextField emailTxtFld = new JTextField();					REMOVE AFTER TESTING
         JTextField emailTxtFld = new JTextField();
         emailTxtFld.setSize(200, 20);
         emailTxtFld.setLocation(350,  210);
@@ -266,29 +251,59 @@ public class RegistrationFrame extends JFrame {
         });
         
         
-        JButton enterBtn = new JButton("Register");					//REFACTOR WITH registerBtn and remove unnec
-        enterBtn.setSize(120, 30);
-        enterBtn.setLocation(365, 290);
-        enterBtn.addActionListener(new ActionListener() {
+        registerBtn = new JButton("Register");
+        registerBtn.setSize(120, 30);
+        registerBtn.setLocation(365, 290);
+        newUser = new User();
+        registerBtn.addActionListener(new ActionListener() {
+        	
             public void actionPerformed(ActionEvent e) {
+            	//Get data to User when Register button is clicked
+            	String userNameData = usernameTxtFld.getText();
+            	newUser.setUserName(userNameData);
+            	
+            	String firstNameData = firstTxtFld.getText();
+            	newUser.setFirstName(firstNameData);
+            	
+            	String lastNameData = lastTxtFld.getText();
+            	newUser.setLastName(lastNameData);
+            	
+            	String middleIData = middleTxtFld.getText();
+            	newUser.setMiddleInitial(middleIData);
+            	
+//            	String phoneData = (String) phoneTxtFld.getText();;	 //NEED TO FIGURE OUT
+//            	newUser.setPhoneNumber(phoneData);
+            	
+            	String emailData = emailTxtFld.getText();
+            	newUser.setEmail(emailData);
+            	
+            	String cityData = cityTxtFld.getText();
+            	newUser.setCity(cityData);
+            	
+            	String stateData = (String) stateBox.getSelectedItem();
+            	newUser.setState(stateData);
+            	
+//            	String zipData = (String)zipTxtFld.getText();			//NEED TO FIGURE
+//            	newUser.setZipCode(zipData);
+            	
+            	char[] passwordArr = passwordTxtFld.getPassword();
+            	String passwordData = new String(passwordArr);
+            	newUser.setPassword(passwordData);
+            	
+            	String dobData = dobTxtFld.getText();
+            	newUser.setDateOfBirth(dobData);
+            	
+            	System.out.println(newUser);
+            	
                 dispose();
                 new WelcomeFrame().setVisible(true);
             }
         });
         
-        contentPane.add(enterBtn);
-        enterBtn.setFocusable(false);
-        
+        contentPane.add(registerBtn);
+        registerBtn.setFocusable(false);
     }
-    
-    //Get data to setter when Register button is clicked
-   
-//    public void actionPerformed(ActionEvent e) {
-//    	if(e.getSource()==enterBtn) {
-//    		System.out.println("Welcome " + newUser.toString());						//NOTHING
-//    	}
-//    }
-    
+
 }
 
 

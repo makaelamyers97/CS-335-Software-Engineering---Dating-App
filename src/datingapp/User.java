@@ -1,11 +1,9 @@
 package datingapp;
 
-import javax.swing.JTextField;
-
-//import java.util.Scanner;
 
 public class User {
 	
+	//vars
 	private String firstName;
     private String lastName;
     private String middleInitial;
@@ -18,8 +16,8 @@ public class User {
     private String dateOfBirth;
     private String password;
     
-    //Construction
-    
+    //Constructor default
+  
     //Getters
     public String getFirstName() {
     	return firstName;
@@ -78,15 +76,16 @@ public class User {
     	this.middleInitial = mInitial;
     }
     
-    public void setUserName(String uName) {
-    	this.userName = uName;
+    public void setUserName(String uzName) {
+    	this.userName = uzName;
     }
+
     
     public void setPhoneNumber(String phone) {
     	this.phoneNumber = phone;
     }
     
-    public void getEmail(String email) {
+    public void setEmail(String email) {
     	this.email = email;
     }
     
@@ -102,18 +101,18 @@ public class User {
     	this.zipCode = zip;
     }
     
-    public void getDateOfBirth(String dob) {
+    public void setDateOfBirth(String dob) {
     	this.dateOfBirth = dob;
     }
     
-    public void getPassword(String password) {
+    public void setPassword(String password) {
     	this.password = password;
     }
     
     //toString
     @Override
     public String toString() {
-    	return "User: " + this.firstName + " " + this.lastName + " " + this.middleInitial + " " + this.userName + " " + this.phoneNumber + " " + this.email + " " + 
+    	return "User: " + this.firstName + " " + this.middleInitial + " " + this.lastName + " " + this.userName + " " + this.phoneNumber + " " + this.email + " " + 
     			this.city + " " + this.state + " " + this.zipCode + " " + this.dateOfBirth + " " + this.password;
     	
     }
@@ -143,7 +142,6 @@ public class User {
 	
 	            return input;
 	        }
-	    }
-    
+	    } 
 
 }

@@ -87,6 +87,7 @@ public class datingApp {
     public static void main(String[] args) {
 
     	SwingUtilities.invokeLater(() -> new InitialFrame().setVisible(true));
+    	
 
 //       User user = new User();
 //        user.collectUserInfo();
