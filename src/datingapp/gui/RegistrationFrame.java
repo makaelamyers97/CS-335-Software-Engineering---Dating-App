@@ -259,6 +259,7 @@ public class RegistrationFrame extends JFrame {
         	
             public void actionPerformed(ActionEvent e) {
             	//Get data to User when Register button is clicked
+            	
             	String userNameData = usernameTxtFld.getText();
             	newUser.setUserName(userNameData);
             	
@@ -296,7 +297,7 @@ public class RegistrationFrame extends JFrame {
             	System.out.println(newUser);
             	
                 dispose();
-                new WelcomeFrame().setVisible(true);
+                new WelcomeFrame(newUser).setVisible(true);
             }
         });
         

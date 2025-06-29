@@ -1,5 +1,7 @@
 package datingapp.gui;
 
+import datingapp.User;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -19,7 +21,7 @@ public class WelcomeFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public WelcomeFrame() {
+	public WelcomeFrame(User user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 185);
 		setLocationRelativeTo(null);
@@ -28,7 +30,7 @@ public class WelcomeFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("<html><div style='text-align:center;width:400px;'>User, welcome to Swan Song!<br>" +
+		JLabel lblNewLabel = new JLabel("<html><div style='text-align:center;width:400px;'>" + user.getUserName() + ", welcome to Swan Song!<br>" +
 				"Get ready to retire from the dating scene!<br></div></html>");
 		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

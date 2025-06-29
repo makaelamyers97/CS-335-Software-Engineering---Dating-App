@@ -1,5 +1,8 @@
 package datingapp;
 
+import javax.swing.JPanel;
+
+import javax.swing.JOptionPane;
 
 public class User {
 	
@@ -121,18 +124,24 @@ public class User {
 	private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
 	        
 	        while (true) {
-	
+	        	
+	        	
 	            System.out.print(msg);
 	            String input = s/*.nextLine()*/;
 	
-	            if (isRequired /*&& input.isEmpty()*/) {
-	                System.out.println("Error: Required field.");
-	                //continue;
+	            if (isRequired && input.isEmpty() == true) { 
+	            	JOptionPane.showMessageDialog(null, errorMsg, "Error", 
+                            JOptionPane.INFORMATION_MESSAGE);
+//	                System.out.println("Error: Required field.");
+//	                continue;
 	            }
 	
-	            if (input.isEmpty() == false && input.matches(regexPattern) == false) {
-	                System.out.println(errorMsg);
-	                continue;
+	            if (input.isEmpty() == true && input.matches(regexPattern) == false) {
+	            	JOptionPane.showMessageDialog(null, errorMsg, "Error", 
+                            JOptionPane.INFORMATION_MESSAGE);
+	            	
+//	                System.out.println(errorMsg);
+//	                continue;
 	            }
 	
 //	            if (checkType == 1 && isValidState(input) == false) {

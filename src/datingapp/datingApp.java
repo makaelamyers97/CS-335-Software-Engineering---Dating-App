@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 import datingapp.gui.InitialFrame;
+import datingapp.gui.LaunchFrame;
 
 public class datingApp {
 
@@ -86,7 +87,8 @@ public class datingApp {
 
     public static void main(String[] args) {
 
-    	SwingUtilities.invokeLater(() -> new InitialFrame().setVisible(true));
+//    	SwingUtilities.invokeLater(() -> new InitialFrame().setVisible(true));
+    	SwingUtilities.invokeLater(() -> new LaunchFrame().setVisible(true));
     	
 
 //       User user = new User();
