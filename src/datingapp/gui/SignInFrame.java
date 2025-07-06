@@ -1,9 +1,11 @@
 package datingapp.gui;
 
 import datingapp.User;
+import datingapp.datingApp;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -12,6 +14,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,14 +25,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 public class SignInFrame extends JFrame {
 	
@@ -36,7 +36,7 @@ public class SignInFrame extends JFrame {
 		
 	    setTitle("User Sign In");
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setBounds(100, 90, 450, 450);
+	    setBounds(100, 90, 450, 550);
 	    setLocationRelativeTo(null); 
 	    setResizable(false);
 	    
@@ -67,13 +67,27 @@ public class SignInFrame extends JFrame {
 	    contentPane.add(retireLbl);
 	    
 //	    https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
+	    //contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
+	       
 	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    
-//	    JLabel label = new JLabel();
-//        label.setIcon(new ImageIcon(new ImageIcon("\\assets\\swansDraft.png").getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT)));
-//        contentPane.add(label);
-        
-	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
+	    // BEGIN ADD IMAGE
+	    JLabel imageLabel = new JLabel();
+	    imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+	    String basePath = System.getProperty("user.dir");
+	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
+	    ImageIcon imageIcon = new ImageIcon(imagePath);
+
+	    Image image = imageIcon.getImage().getScaledInstance(350, 120, Image.SCALE_SMOOTH);
+	    imageIcon = new ImageIcon(image);
+
+	    imageLabel.setIcon(imageIcon);
+	    contentPane.add(imageLabel);
+
+	    // END ADD IMAGE
+	    
+	    contentPane.add(Box.createRigidArea(new Dimension(0, 10)));
 	    
 	    JLabel usernameLbl = new JLabel("Username:");
 	    usernameLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -84,6 +98,7 @@ public class SignInFrame extends JFrame {
 	    usernameTxtFld.setMaximumSize(new Dimension(200, 30));
 	    usernameTxtFld.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    contentPane.add(usernameTxtFld);
+	    
 	    
 	    JButton btnForgotUser = new JButton("Forgot Username");
 	    btnForgotUser.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,11 +134,33 @@ public class SignInFrame extends JFrame {
         
 
 		btnLogin.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				Boolean isValidUserName = false;
+				for (List<String> row : datingApp.seedData) {					
+		    		if(row.toString().toLowerCase().contains(usernameTxtFld.getText().toLowerCase())) {
+		    			isValidUserName = true;
+		    			
+		    			if(!row.toString().contains(passwordTxtFld.getText())) {
+		    				Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
+			            	JOptionPane.showMessageDialog((JFrame) activeWindow, "You have entered an invalid username or password.\nClick OK to exit the app.");
+			            	System.exit(0);
+		    			}
+		    		}
+		    	}
 				
-				User user = new User();
-				WelcomeFrame welcomeFrame = new WelcomeFrame(user);
+				if(!isValidUserName) {
+					Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
+	            	JOptionPane.showMessageDialog((JFrame) activeWindow, "The username " + usernameTxtFld.getText() + " does not exist.\nClick OK to exit the app.");
+	            	System.exit(0);
+				}
+				
+				// NEED TO LOAD THE USER FROM dbSeeds.csv and pass it somehow in the program
+				//User user = new User();
+			
+				
+				WelcomeFrame welcomeFrame = new WelcomeFrame(usernameTxtFld.getText());
 				welcomeFrame.setVisible(true);
 			}
 		});   

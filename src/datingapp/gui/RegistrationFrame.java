@@ -1,25 +1,25 @@
 //https://www.tutorialspoint.com/swingexamples/index.htm
 package datingapp.gui;
+import datingapp.csvFileManager;
+import datingapp.datingApp;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
+
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
 import datingapp.User;
 
-import java.awt.Insets;
-import javax.swing.BorderFactory;
 import java.awt.event.*;
-import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.List;
+
 
 public class RegistrationFrame extends JFrame {
+	
+    private JFormattedTextField phoneTxtFld = null;
+    private JFormattedTextField zipTxtFld = null;
 
     String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
     		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
@@ -102,13 +102,7 @@ public class RegistrationFrame extends JFrame {
         cityLbl.setLocation(50, 155);
         cityLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(cityLbl);
-        
-//        // State													CAN BE REMOVED AFTER TESTING
-//        JTextField stateTxtFld = new JTextField();
-//        stateTxtFld.setSize(30, 20);
-//        stateTxtFld.setLocation(160, 140);
-//        contentPane.add(stateTxtFld);
-        
+                
         //ComboBox for state
         JComboBox stateBox = new JComboBox(allStates);
         stateBox.setSelectedItem(stateBox);
@@ -123,10 +117,6 @@ public class RegistrationFrame extends JFrame {
         stateLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(stateLbl);
         
-//        // Zip
-//        JTextField zipTxtFld = new JTextField();						REMOVE AFTER TESTING
-      //Zipcode formatting
-        JFormattedTextField zipTxtFld = null;
         try {
         	MaskFormatter zformatter = new MaskFormatter("#####");
         	zipTxtFld = new JFormattedTextField(zformatter);
@@ -164,7 +154,6 @@ public class RegistrationFrame extends JFrame {
         contentPane.add(passwordLbl);
         
         //Password field
-//        JTextField passwordTxtFld = new JTextField();				REMOVE AFTER TESTING
         JPasswordField passwordTxtFld = new JPasswordField();
         passwordTxtFld.setSize(100, 20);
         passwordTxtFld.setLocation(50, 310);
@@ -206,9 +195,8 @@ public class RegistrationFrame extends JFrame {
         phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(phoneLbl);
     
-//        JTextField phoneTxtFld = new JTextField();					REMOVE AFTER TESTING
-        JFormattedTextField phoneTxtFld = null;
         try {
+        	
         	MaskFormatter pformatter = new MaskFormatter("###-###-####");		//FIX FOCUS
         	phoneTxtFld= new JFormattedTextField(pformatter);
         	phoneTxtFld.setColumns(10);
@@ -258,9 +246,19 @@ public class RegistrationFrame extends JFrame {
         registerBtn.addActionListener(new ActionListener() {
         	
             public void actionPerformed(ActionEvent e) {
+            	         	
+            	
             	//Get data to User when Register button is clicked
             	
             	String userNameData = usernameTxtFld.getText();
+            	for (List<String> row : datingApp.seedData) {
+            		if(row.toString().toLowerCase().contains(userNameData.toLowerCase())) {
+            			Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
+                    	JOptionPane.showMessageDialog((JFrame) activeWindow, "The username " + userNameData + " is in use.\nClick OK to exit the app.");
+                    	System.exit(0);
+            		}
+            	}
+          
             	newUser.setUserName(userNameData);
             	
             	String firstNameData = firstTxtFld.getText();
@@ -272,8 +270,8 @@ public class RegistrationFrame extends JFrame {
             	String middleIData = middleTxtFld.getText();
             	newUser.setMiddleInitial(middleIData);
             	
-//            	String phoneData = (String) phoneTxtFld.getText();;	 //NEED TO FIGURE OUT
-//            	newUser.setPhoneNumber(phoneData);
+            	String phoneData = (String) phoneTxtFld.getText();
+            	newUser.setPhoneNumber(phoneData);
             	
             	String emailData = emailTxtFld.getText();
             	newUser.setEmail(emailData);
@@ -284,8 +282,8 @@ public class RegistrationFrame extends JFrame {
             	String stateData = (String) stateBox.getSelectedItem();
             	newUser.setState(stateData);
             	
-//            	String zipData = (String)zipTxtFld.getText();			//NEED TO FIGURE
-//            	newUser.setZipCode(zipData);
+				String zipData = (String)zipTxtFld.getText();
+				newUser.setZipCode(zipData);
             	
             	char[] passwordArr = passwordTxtFld.getPassword();
             	String passwordData = new String(passwordArr);
@@ -294,10 +292,11 @@ public class RegistrationFrame extends JFrame {
             	String dobData = dobTxtFld.getText();
             	newUser.setDateOfBirth(dobData);
             	
-            	System.out.println(newUser);
+            	//Write the user to the assets/dbSeeds file to simulate databased
+            	csvFileManager.writeUserToCSV(newUser);
             	
                 dispose();
-                new WelcomeFrame(newUser).setVisible(true);
+                new WelcomeFrame(newUser.getUserName()).setVisible(true);
             }
         });
         

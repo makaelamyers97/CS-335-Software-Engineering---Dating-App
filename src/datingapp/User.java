@@ -1,6 +1,6 @@
 package datingapp;
 
-import javax.swing.JPanel;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -112,16 +112,35 @@ public class User {
     	this.password = password;
     }
     
+    public void batchSetUser(User u, List<List<String>> list) {
+    	
+    	for (List<String> row : list) {
+    		
+			u.setFirstName(row.get(0));
+            u.setFirstName(row.get(0).trim());
+            u.setMiddleInitial(row.get(1).trim());
+            u.setLastName(row.get(2).trim());
+            u.setPhoneNumber(row.get(3).trim());
+            u.setEmail(row.get(4).trim());
+            u.setCity(row.get(5).trim());
+            u.setState(row.get(6).trim());
+            u.setZipCode(row.get(7).trim());
+            u.setDateOfBirth(row.get(8).trim());
+            u.setUserName(row.get(9).trim());
+            u.setPassword(row.get(10).trim());
+		}
+    }
+    
     //toString
     @Override
     public String toString() {
-    	return "User: " + this.firstName + " " + this.middleInitial + " " + this.lastName + " " + this.userName + " " + this.phoneNumber + " " + this.email + " " + 
-    			this.city + " " + this.state + " " + this.zipCode + " " + this.dateOfBirth + " " + this.password;
+    	return this.firstName + "," + this.middleInitial + "," + this.lastName + "," + this.userName + "," + this.phoneNumber + "," + this.email + "," + 
+    			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," + this.password;
     	
     }
     
     //getValidInput method
-	private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
+ 	private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
 	        
 	        while (true) {
 	        	
