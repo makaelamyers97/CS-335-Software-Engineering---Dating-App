@@ -1,30 +1,24 @@
 package datingapp.gui;
 
-import datingapp.User;
 import datingapp.datingApp;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -156,7 +150,7 @@ public class SignInFrame extends JFrame {
 	            	System.exit(0);
 				}
 				
-				// NEED TO LOAD THE USER FROM dbSeeds.csv and pass it somehow in the program
+				// NEED TO LOAD THE USER FROM dbSeeds.csv and pass it somehow to the rest of the program
 				//User user = new User();
 			
 				

@@ -134,8 +134,8 @@ public class User {
     //toString
     @Override
     public String toString() {
-    	return this.firstName + "," + this.middleInitial + "," + this.lastName + "," + this.userName + "," + this.phoneNumber + "," + this.email + "," + 
-    			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," + this.password;
+    	return this.firstName + "," + this.middleInitial + "," + this.lastName + "," + this.phoneNumber + "," + this.email + "," + 
+    			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," +  this.userName + "," + this.password;
     	
     }
     

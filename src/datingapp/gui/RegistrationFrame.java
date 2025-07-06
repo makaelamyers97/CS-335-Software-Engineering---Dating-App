@@ -248,11 +248,10 @@ public class RegistrationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	         	
             	
-            	//Get data to User when Register button is clicked
-            	
+            	//Get data to User when Register button is clicked       	
             	String userNameData = usernameTxtFld.getText();
             	for (List<String> row : datingApp.seedData) {
-            		if(row.toString().toLowerCase().contains(userNameData.toLowerCase())) {
+            		if(userNameData.trim().length() > 0 && row.toString().toLowerCase().contains(userNameData.toLowerCase())) {
             			Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
                     	JOptionPane.showMessageDialog((JFrame) activeWindow, "The username " + userNameData + " is in use.\nClick OK to exit the app.");
                     	System.exit(0);
@@ -292,7 +291,7 @@ public class RegistrationFrame extends JFrame {
             	String dobData = dobTxtFld.getText();
             	newUser.setDateOfBirth(dobData);
             	
-            	//Write the user to the assets/dbSeeds file to simulate databased
+            	//Write the user to the assets/dbSeeds file to simulate database
             	csvFileManager.writeUserToCSV(newUser);
             	
                 dispose();
