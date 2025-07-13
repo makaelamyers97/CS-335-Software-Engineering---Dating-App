@@ -1,6 +1,6 @@
 //https://www.tutorialspoint.com/swingexamples/index.htm
 package datingapp.gui;
-import datingapp.csvFileManager;
+import datingapp.csvDatabaseFileManager;
 import datingapp.datingApp;
 
 import javax.swing.*;
@@ -17,9 +17,8 @@ import java.util.List;
 
 
 public class RegistrationFrame extends JFrame {
-	
-    private JFormattedTextField phoneTxtFld = null;
-    private JFormattedTextField zipTxtFld = null;
+    //private JFormattedTextField phoneTxtFld = null;
+   //private JFormattedTextField zipTxtFld = null;
 
     String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
     		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
@@ -104,7 +103,7 @@ public class RegistrationFrame extends JFrame {
         contentPane.add(cityLbl);
                 
         //ComboBox for state
-        JComboBox stateBox = new JComboBox(allStates);
+        JComboBox<String> stateBox = new JComboBox<String>(allStates);
         stateBox.setSelectedItem(stateBox);
         stateBox.setSize(45,  20);
         stateBox.setLocation(160,  140);
@@ -116,17 +115,40 @@ public class RegistrationFrame extends JFrame {
         stateLbl.setLocation(160, 155);
         stateLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(stateLbl);
-        
+       
+        MaskFormatter zformatter = null;								//PLACED OUTSIDE TRY CATCH	1ST STEP
         try {
-        	MaskFormatter zformatter = new MaskFormatter("#####");
-        	zipTxtFld = new JFormattedTextField(zformatter);
-        	zipTxtFld.setColumns(5);
+        	zformatter = new MaskFormatter("#####");			/////ZIPCODE
+        	zformatter.setPlaceholder("#####") ;
+        	//zipTxtFld = new JFormattedTextField(zformatter);				//moved outside try catch 2ND STEP
+        	//zipTxtFld.setColumns(5);
         } catch(ParseException e) {
         	e.printStackTrace();
         }
+        JFormattedTextField zipTxtFld = new JFormattedTextField(zformatter);//ADDED HERE JFormattedTextField,commented out above main
+    	//zipTxtFld = new JFormattedTextField(zformatter);				//moved outside try catch modified ^	3RD STEP
+    	zipTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);	//							4TH STEP
+    	zipTxtFld.setColumns(5);
         zipTxtFld.setSize(100, 20);
         zipTxtFld.setLocation(50, 180);
         contentPane.add(zipTxtFld);
+        
+        																//ADDED FOCUS LISTENER		5TH STEP
+        zipTxtFld.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				zipTxtFld.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(zipTxtFld.getText().isEmpty()) {
+				zipTxtFld.setText("#####");
+				}
+			}
+        	
+        });
         
         JLabel zipLbl = new JLabel("Zip Code");
         zipLbl.setSize(100, 20);
@@ -194,20 +216,44 @@ public class RegistrationFrame extends JFrame {
         phoneLbl.setLocation(350, 110);
         phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(phoneLbl);
-    
+        
+        MaskFormatter pformatter = null;//ADDED								PHONE NUMBER
         try {
         	
-        	MaskFormatter pformatter = new MaskFormatter("###-###-####");		//FIX FOCUS
-        	phoneTxtFld= new JFormattedTextField(pformatter);
-        	phoneTxtFld.setColumns(10);
+        	/*MaskFormatter */
+        	pformatter = new MaskFormatter("(###) ###-####");		//FIX FOCUS
+        	pformatter.setPlaceholder("(000) 000-0000") ;
+        	//phoneTxtFld= new JFormattedTextField(pformatter);
+        	//phoneTxtFld.setColumns(10);
+
         } catch(ParseException e) {
         	e.printStackTrace();
         }
+        JFormattedTextField phoneTxtFld= new JFormattedTextField(pformatter);//ADDED HERE JFormattedTextField,commented out above main
+        phoneTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);
+        phoneTxtFld.setColumns(10);											 //ADDED HERE
         phoneTxtFld.setSize(100, 20);
         phoneTxtFld.setLocation(350, 140);
-        phoneTxtFld.setText("000-000-000");
+        //phoneTxtFld.setText("(000) 000-0000");			//commented out this line with no change. display is not as set ^MaskFormatter
         contentPane.add(phoneTxtFld);
+        													//START FOCUS HERE
 
+        phoneTxtFld.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				phoneTxtFld.setText("");
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(phoneTxtFld.getText().isEmpty()) {
+				phoneTxtFld.setText("(000) 000-0000");
+				}
+			}
+        	
+        });
+//        													//END FOCUS HERE
 
         // email
         JLabel emailLbl = new JLabel("Email");
@@ -292,7 +338,7 @@ public class RegistrationFrame extends JFrame {
             	newUser.setDateOfBirth(dobData);
             	
             	//Write the user to the assets/dbSeeds file to simulate database
-            	csvFileManager.writeUserToCSV(newUser);
+            	csvDatabaseFileManager.writeUserToCSV(newUser);
             	
                 dispose();
                 new WelcomeFrame(newUser.getUserName()).setVisible(true);

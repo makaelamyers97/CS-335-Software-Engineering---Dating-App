@@ -29,7 +29,7 @@ public class datingApp {
     public static void main(String[] args) {
 
     	//Get "database"
-    	seedData = csvFileManager.readCSVRows("dbSeeds.csv", true);
+    	seedData = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
     	if(seedData != null && !seedData.isEmpty()) {
     		User u = new User();
     		u.batchSetUser(u, seedData);    		

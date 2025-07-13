@@ -15,7 +15,7 @@ import java.awt.*;
 //https://www.google.com/search?q=java+append+to+csv+file&sca_esv=3e1e3b3b9ee4e26b&rlz=1C1CHBF_enUS934US934&sxsrf=AE3TifOBexCIvvi2fH-fLPFLWFK25CIiWg%3A1751783455182&ei=HxhqaI7xCoKXwbkPueWusQY&ved=0ahUKEwjO_Mb0zaeOAxWCSzABHbmyK2YQ4dUDCBI&uact=5&oq=java+append+to+csv+file&gs_lp=Egxnd3Mtd2l6LXNlcnAiF2phdmEgYXBwZW5kIHRvIGNzdiBmaWxlMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCxAAGIAEGIYDGIoFMggQABiiBBiJBTIFEAAY7wVI1StQAFijKnAAeAGQAQCYAcwCoAGwEKoBCDIxLjEuMC4xuAEDyAEA-AEBmAIXoAKCEcICBBAjGCfCAgoQIxiABBgnGIoFwgIKEAAYgAQYQxiKBcICCxAAGIAEGJECGIoFwgIOEC4YgAQYsQMYgwEYigXCAgsQLhiABBixAxiDAcICDRAAGIAEGLEDGBQYhwLCAhEQLhiABBjUAhjHARiOBRivAcICDRAAGIAEGLEDGEMYigXCAgUQABiABMICCBAuGIAEGLEDwgIKEAAYgAQYFBiHApgDAJIHCDIwLjIuMC4xoAfjsgGyBwgyMC4yLjAuMbgHghHCBwcwLjExLjEyyAdJ&sclient=gws-wiz-serp
 
 
-public class csvFileManager {
+public class csvDatabaseFileManager {
 
 	public static String baseAppPath = System.getProperty("user.dir");
 	
@@ -94,5 +94,17 @@ public class csvFileManager {
         	JOptionPane.showMessageDialog((JFrame) activeWindow, "Error writing to user file:\nClick OK to exit the app.");
         	System.exit(0);
         }
+	}
+	
+	//This method searches the dbSeeds.csv file
+	public static void getUserFromCSV(String userName) {
+		
+		//Searches Assets/DbSeeds using readCSVRows()
+		readCSVRows("dbSeeds.csv", true);
+		//String searchFor = userInput
+		//if userInput = userName
+		//go to profile/user page
+		//display data
+
 	}
 }

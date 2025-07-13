@@ -135,6 +135,12 @@ public class SignInFrame extends JFrame {
 				for (List<String> row : datingApp.seedData) {					
 		    		if(row.toString().toLowerCase().contains(usernameTxtFld.getText().toLowerCase())) {
 		    			isValidUserName = true;
+		    			System.out.println("This is the data row: " + row);									//DISCUSS WITH TEAM   //REMOVE
+/*DONT LOSE*/  			System.out.println("Full name: " + row.get(0)+ " " + row.get(2) + " " + row.get(9) + " " + row.get(5) + " " + row.get(6));
+						
+		    			ProfileFrame profile = new ProfileFrame(row.get(0), row.get(2), row.get(9), row.get(5), row.get(6));
+		    			profile.setVisible(true);
+
 		    			
 		    			if(!row.toString().contains(passwordTxtFld.getText())) {
 		    				Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
@@ -152,10 +158,10 @@ public class SignInFrame extends JFrame {
 				
 				// NEED TO LOAD THE USER FROM dbSeeds.csv and pass it somehow to the rest of the program
 				//User user = new User();
-			
 				
-				WelcomeFrame welcomeFrame = new WelcomeFrame(usernameTxtFld.getText());
-				welcomeFrame.setVisible(true);
+			
+//				WelcomeFrame welcomeFrame = new WelcomeFrame(usernameTxtFld.getText());							//Ask about this
+//				welcomeFrame.setVisible(true);
 			}
 		});   
 	}
