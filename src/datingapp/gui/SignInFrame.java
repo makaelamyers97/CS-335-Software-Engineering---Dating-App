@@ -125,7 +125,6 @@ public class SignInFrame extends JFrame {
         btnLogin.setBounds(150, 250, 100, 30); 
         btnLogin.setFocusable(false);
         contentPane.add(btnLogin);
-        
 
 		btnLogin.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
@@ -138,9 +137,10 @@ public class SignInFrame extends JFrame {
 		    			System.out.println("This is the data row: " + row);									//DISCUSS WITH TEAM   //REMOVE
 /*DONT LOSE*/  			System.out.println("Full name: " + row.get(0)+ " " + row.get(2) + " " + row.get(9) + " " + row.get(5) + " " + row.get(6));
 						
-		    			ProfileFrame profile = new ProfileFrame(row.get(0), row.get(2), row.get(9), row.get(5), row.get(6));
-		    			profile.setVisible(true);
 
+						DashboardFrame dashboardFrame = new DashboardFrame();
+						dashboardFrame.setVisible(true);
+						}
 		    			
 		    			if(!row.toString().contains(passwordTxtFld.getText())) {
 		    				Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
@@ -148,7 +148,7 @@ public class SignInFrame extends JFrame {
 			            	System.exit(0);
 		    			}
 		    		}
-		    	}
+//		    	}
 				
 				if(!isValidUserName) {
 					Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
