@@ -15,18 +15,20 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class LaunchFrame extends JFrame {
+public class LaunchFrame extends AppFrame {				//CHANGED JFrame to AppFrame
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
+	AppFrame LaunchFrame = new AppFrame();{				//Added and commented out ln 25 - 31
 		
-	public LaunchFrame(){
-		
-		setTitle("Landing Page");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setBounds(100, 90, 300, 300);
-	    setLocationRelativeTo(null); 
-	    setResizable(false);
+//	public LaunchFrame(){
+//		
+//		setTitle("Landing Page");
+//	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	    setBounds(100, 90, 300, 300);
+//	    setLocationRelativeTo(null); 
+//	    setResizable(false);
 	    
 		EmptyBorder border = new EmptyBorder(30, 0, 0, 0);
 	    
@@ -73,5 +75,9 @@ public class LaunchFrame extends JFrame {
 				registrationFrame.setVisible(true);
 			}
 		});
+        
+        //Modifies the AppFrame for this page							//ADDED COMMENT AND NEXT LINE
+        this.setTitle("Landing Page");
+        
 	}
 }

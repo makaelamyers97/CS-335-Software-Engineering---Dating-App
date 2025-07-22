@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.util.List;
 
 
-public class RegistrationFrame extends JFrame {
+public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppFrame
     //private JFormattedTextField phoneTxtFld = null;
    //private JFormattedTextField zipTxtFld = null;
 
@@ -25,13 +25,14 @@ public class RegistrationFrame extends JFrame {
     		"NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
     JButton registerBtn;																									//FOLLOWUP
     private User newUser;
-    public RegistrationFrame() {
-        setTitle("User Registration");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(300, 90, 600, 400);
-        //https://www.tutorialspoint.com/how-to-display-a-jframe-to-the-center-of-a-screen-in-java
-        setLocationRelativeTo(null); //center the window screen
-        setResizable(false);
+    AppFrame RegistrationFrame = new AppFrame(); {							//ADDED AND COMMENTED OUT 29 - 35
+//    public RegistrationFrame() {
+//        setTitle("User Registration");
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setBounds(300, 90, 600, 400);
+//        //https://www.tutorialspoint.com/how-to-display-a-jframe-to-the-center-of-a-screen-in-java
+//        setLocationRelativeTo(null); //center the window screen
+//        setResizable(false);
 
         // create the panel
         JPanel contentPane = new JPanel();
@@ -116,24 +117,24 @@ public class RegistrationFrame extends JFrame {
         stateLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(stateLbl);
        
-        MaskFormatter zformatter = null;								//PLACED OUTSIDE TRY CATCH	1ST STEP
+        MaskFormatter zformatter = null;								
         try {
-        	zformatter = new MaskFormatter("#####");			/////ZIPCODE
+        	zformatter = new MaskFormatter("#####");			
         	zformatter.setPlaceholder("#####") ;
-        	//zipTxtFld = new JFormattedTextField(zformatter);				//moved outside try catch 2ND STEP
+        	//zipTxtFld = new JFormattedTextField(zformatter);				
         	//zipTxtFld.setColumns(5);
         } catch(ParseException e) {
         	e.printStackTrace();
         }
-        JFormattedTextField zipTxtFld = new JFormattedTextField(zformatter);//ADDED HERE JFormattedTextField,commented out above main
-    	//zipTxtFld = new JFormattedTextField(zformatter);				//moved outside try catch modified ^	3RD STEP
-    	zipTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);	//							4TH STEP
+        JFormattedTextField zipTxtFld = new JFormattedTextField(zformatter);
+    	//zipTxtFld = new JFormattedTextField(zformatter);				
+    	zipTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);	
     	zipTxtFld.setColumns(5);
         zipTxtFld.setSize(100, 20);
         zipTxtFld.setLocation(50, 180);
         contentPane.add(zipTxtFld);
         
-        																//ADDED FOCUS LISTENER		5TH STEP
+        																
         zipTxtFld.addFocusListener(new FocusListener() {
 
 			@Override
@@ -184,7 +185,8 @@ public class RegistrationFrame extends JFrame {
         // dob
         JLabel dobLbl = new JLabel("Date of Birth");
         dobLbl.setSize(200, 20);
-        dobLbl.setLocation(350, 33);
+//        dobLbl.setLocation(350, 33);
+        dobLbl.setLocation(50, 340);														//ADD AND COMMENT ABOVE
         dobLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(dobLbl);
         
@@ -206,22 +208,24 @@ public class RegistrationFrame extends JFrame {
         	
         });
         dobTxtFld.setSize(100, 20);
-        dobTxtFld.setLocation(350, 65);
+//        dobTxtFld.setLocation(350, 65);
+        dobTxtFld.setLocation(50, 365);													//ADD THIS LOCATION, COMMENT OUT ABOVE
         dobTxtFld.setText("DD/MM/YYYY");
         contentPane.add(dobTxtFld);
         
         // phone
         JLabel phoneLbl = new JLabel("Phone Number");
         phoneLbl.setSize(200, 20);
-        phoneLbl.setLocation(350, 110);
+//        phoneLbl.setLocation(350, 110);
+        phoneLbl.setLocation(50, 400);													//ADD THIS LOCATION, COMMENT OUT ABOVE
         phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(phoneLbl);
         
-        MaskFormatter pformatter = null;//ADDED								PHONE NUMBER
+        MaskFormatter pformatter = null;
         try {
         	
         	/*MaskFormatter */
-        	pformatter = new MaskFormatter("(###) ###-####");		//FIX FOCUS
+        	pformatter = new MaskFormatter("(###) ###-####");		
         	pformatter.setPlaceholder("(000) 000-0000") ;
         	//phoneTxtFld= new JFormattedTextField(pformatter);
         	//phoneTxtFld.setColumns(10);
@@ -229,14 +233,15 @@ public class RegistrationFrame extends JFrame {
         } catch(ParseException e) {
         	e.printStackTrace();
         }
-        JFormattedTextField phoneTxtFld= new JFormattedTextField(pformatter);//ADDED HERE JFormattedTextField,commented out above main
+        JFormattedTextField phoneTxtFld= new JFormattedTextField(pformatter);
         phoneTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);
-        phoneTxtFld.setColumns(10);											 //ADDED HERE
+        phoneTxtFld.setColumns(10);											 
         phoneTxtFld.setSize(100, 20);
-        phoneTxtFld.setLocation(350, 140);
-        //phoneTxtFld.setText("(000) 000-0000");			//commented out this line with no change. display is not as set ^MaskFormatter
+//        phoneTxtFld.setLocation(350, 140);
+        phoneTxtFld.setLocation(50, 425);												//ADD LOCATION AND COMMENT OUT ABOVE
+        //phoneTxtFld.setText("(000) 000-0000");			
         contentPane.add(phoneTxtFld);
-        													//START FOCUS HERE
+        													
 
         phoneTxtFld.addFocusListener(new FocusListener() {
 
@@ -253,19 +258,21 @@ public class RegistrationFrame extends JFrame {
 			}
         	
         });
-//        													//END FOCUS HERE
+//        													
 
         // email
         JLabel emailLbl = new JLabel("Email");
         emailLbl.setSize(200, 20);
-        emailLbl.setLocation(350, 180);
+//        emailLbl.setLocation(350, 180);
+        emailLbl.setLocation(50, 460);														//ADD LOCATION, COMMENT OUT ABOVE
         emailLbl.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(emailLbl);
         
         //Email example label
         JTextField emailTxtFld = new JTextField();
         emailTxtFld.setSize(200, 20);
-        emailTxtFld.setLocation(350,  210);
+//        emailTxtFld.setLocation(350,  210);
+        emailTxtFld.setLocation(50,  485);													//ADD LOCATION, COMMENT OUT ABOVE
         emailTxtFld.setText("ex: myname@example.com");
         contentPane.add(emailTxtFld);
         emailTxtFld.addFocusListener(new FocusListener() {
@@ -287,7 +294,8 @@ public class RegistrationFrame extends JFrame {
         
         registerBtn = new JButton("Register");
         registerBtn.setSize(120, 30);
-        registerBtn.setLocation(365, 290);
+//        registerBtn.setLocation(365, 290);
+        registerBtn.setLocation(200, 535);												//ADDED LOCATION, COMMENT OUT ABOVE
         newUser = new User();
         registerBtn.addActionListener(new ActionListener() {
         	
@@ -347,9 +355,16 @@ public class RegistrationFrame extends JFrame {
         
         contentPane.add(registerBtn);
         registerBtn.setFocusable(false);
-    }
 
-}
+        
+        
+		//Modifies the AppFrame for this page										//ADDED AND SET TITLE
+		this.setTitle("User Registration");
+    
+	};
+ }
+
+
 
 
 //focusListener--https://www.youtube.com/watch?v=CzKXbkjgDBY

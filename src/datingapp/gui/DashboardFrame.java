@@ -23,16 +23,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class DashboardFrame extends JFrame {
+public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFrame
 	    	
+	AppFrame DashboardFrame = new AppFrame(); {								//ADDED, COMMENT OUT 30-36
 	    	
-	   public DashboardFrame() {
-	    		
-	    	    setTitle("User Dashboard");
-	    	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    	    setBounds(100, 90, 450, 550);
-	    	    setLocationRelativeTo(null); 
-	    	    setResizable(false);
+//	   public DashboardFrame() {
+//	    		
+//	    	    setTitle("User Dashboard");
+//	    	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	    	    setBounds(100, 90, 450, 550);
+//	    	    setLocationRelativeTo(null); 
+//	    	    setResizable(false);
 	    	    
 	    	    JPanel contentPane = new JPanel();
 	            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
@@ -68,7 +69,7 @@ public class DashboardFrame extends JFrame {
 	    	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
 	    	    ImageIcon imageIcon = new ImageIcon(imagePath);
 
-	    	    Image image = imageIcon.getImage().getScaledInstance(350, 120, Image.SCALE_SMOOTH);
+	    	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);		//ADJUSTED IMAGE FROM 350 TO FIT ON THE FRAME
 	    	    imageIcon = new ImageIcon(image);
 
 	    	    imageLabel.setIcon(imageIcon);
@@ -107,6 +108,10 @@ public class DashboardFrame extends JFrame {
 	    	    btnConvos.setBounds(150, 250, 100, 30); 
 	    	    btnConvos.setFocusable(false);
 	            contentPane.add(btnConvos);
+	            
+	            //Modifies the AppFrame for this page
+	            this.setTitle("Dashboard");
+	            
 	    	}
 
 	    }

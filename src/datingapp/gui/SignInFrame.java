@@ -23,16 +23,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class SignInFrame extends JFrame {
+public class SignInFrame extends AppFrame {										//MODIFIED JFrame TO AppFrame
 	
+	AppFrame signInFrame = new AppFrame();{										//ADDED. COMMENTED OUT 30-36
 	
-	public SignInFrame() {
-		
-	    setTitle("User Sign In");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    setBounds(100, 90, 450, 550);
-	    setLocationRelativeTo(null); 
-	    setResizable(false);
+//	public SignInFrame() {
+//		
+//	    setTitle("User Sign In");
+//	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	    setBounds(100, 90, 450, 550);
+//	    setLocationRelativeTo(null); 
+//	    setResizable(false);
 	    
 	    JPanel contentPane = new JPanel();
 //	    https://www.geeksforgeeks.org/java/java-awt-boxlayout-class/
@@ -73,7 +74,7 @@ public class SignInFrame extends JFrame {
 	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
 	    ImageIcon imageIcon = new ImageIcon(imagePath);
 
-	    Image image = imageIcon.getImage().getScaledInstance(350, 120, Image.SCALE_SMOOTH);
+	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);				//CHANGED 350 TO 200 TO ACCOMMODATE FRAME
 	    imageIcon = new ImageIcon(image);
 
 	    imageLabel.setIcon(imageIcon);
@@ -134,12 +135,12 @@ public class SignInFrame extends JFrame {
 				for (List<String> row : datingApp.seedData) {					
 		    		if(row.toString().toLowerCase().contains(usernameTxtFld.getText().toLowerCase())) {
 		    			isValidUserName = true;
-		    			System.out.println("This is the data row: " + row);									//DISCUSS WITH TEAM   //REMOVE
-/*DONT LOSE*/  			System.out.println("Full name: " + row.get(0)+ " " + row.get(2) + " " + row.get(9) + " " + row.get(5) + " " + row.get(6));
+		    			//System.out.println("This is the data row: " + row);									
+/*****/  			//System.out.println("Full name: " + row.get(0)+ " " + row.get(2) + " " + row.get(9) + " " + row.get(5) + " " + row.get(6));
 						
 
-						DashboardFrame dashboardFrame = new DashboardFrame();
-						dashboardFrame.setVisible(true);
+						ProfileFrame profile = new ProfileFrame(row.get(0), row.get(2), row.get(9), row.get(5), row.get(6));						//DASHBOARDFRAME
+						profile.setVisible(true);
 						}
 		    			
 		    			if(!row.toString().contains(passwordTxtFld.getText())) {
@@ -164,5 +165,8 @@ public class SignInFrame extends JFrame {
 //				welcomeFrame.setVisible(true);
 			}
 		});   
-	}
+		
+		//Modifies the AppFrame for this page
+		this.setTitle("Sign In");
+	}//;
 }
