@@ -27,13 +27,6 @@ public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFra
 	    	
 	AppFrame DashboardFrame = new AppFrame(); {								//ADDED, COMMENT OUT 30-36
 	    	
-//	   public DashboardFrame() {
-//	    		
-//	    	    setTitle("User Dashboard");
-//	    	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    	    setBounds(100, 90, 450, 550);
-//	    	    setLocationRelativeTo(null); 
-//	    	    setResizable(false);
 	    	    
 	    	    JPanel contentPane = new JPanel();
 	            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
@@ -87,11 +80,18 @@ public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFra
 	            
 	    	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    	    
-	    	    JButton btnAllProfiles = new JButton("Browse Profiles");
+	    	    JButton btnAllProfiles = new JButton("Available Profiles");
 	    	    btnAllProfiles.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    	    btnAllProfiles.setBounds(150, 250, 100, 30); 
 	    	    btnAllProfiles.setFocusable(false);
 	            contentPane.add(btnAllProfiles);
+	            
+	            btnAllProfiles.addActionListener(new ActionListener() {
+	            	public void actionPerformed(ActionEvent e) {
+	                AvailableProfilesFrame AvailableFrame = new AvailableProfilesFrame();
+	                AvailableFrame.setVisible(true);
+	            	}
+	            });
 	    	    
 	    	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    	    	    

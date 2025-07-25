@@ -131,42 +131,35 @@ public class SignInFrame extends AppFrame {										//MODIFIED JFrame TO AppFra
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Boolean isValidUserName = false;
-				for (List<String> row : datingApp.seedData) {					
-		    		if(row.toString().toLowerCase().contains(usernameTxtFld.getText().toLowerCase())) {
-		    			isValidUserName = true;
-		    			//System.out.println("This is the data row: " + row);									
-/*****/  			//System.out.println("Full name: " + row.get(0)+ " " + row.get(2) + " " + row.get(9) + " " + row.get(5) + " " + row.get(6));
+				Boolean isAuthenticated = false;
+				for (List<String> row : datingApp.seedData) {	
+					
+					String username = row.get(9);
+					String pw = row.get(10);
+										
+					if (username.toLowerCase().equals(usernameTxtFld.getText().toLowerCase())
+							&& pw.equals(passwordTxtFld.getText())) {
 						
-
+						isAuthenticated = true;
+						
 						ProfileFrame profile = new ProfileFrame(row.get(0), row.get(2), row.get(9), row.get(5), row.get(6));						//DASHBOARDFRAME
 						profile.setVisible(true);
-						}
+						
+						break;
+					}
 		    			
-		    			if(!row.toString().contains(passwordTxtFld.getText())) {
-		    				Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-			            	JOptionPane.showMessageDialog((JFrame) activeWindow, "You have entered an invalid username or password.\nClick OK to exit the app.");
-			            	System.exit(0);
-		    			}
-		    		}
-//		    	}
-				
-				if(!isValidUserName) {
-					Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-	            	JOptionPane.showMessageDialog((JFrame) activeWindow, "The username " + usernameTxtFld.getText() + " does not exist.\nClick OK to exit the app.");
-	            	System.exit(0);
 				}
 				
-				// NEED TO LOAD THE USER FROM dbSeeds.csv and pass it somehow to the rest of the program
-				//User user = new User();
+    			if(!isAuthenticated) {
+    				Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
+	            	JOptionPane.showMessageDialog((JFrame) activeWindow, "You have entered an invalid username or password.\nClick OK to exit the app.");
+	            	System.exit(0);
+    			}
 				
-			
-//				WelcomeFrame welcomeFrame = new WelcomeFrame(usernameTxtFld.getText());							//Ask about this
-//				welcomeFrame.setVisible(true);
 			}
 		});   
 		
 		//Modifies the AppFrame for this page
 		this.setTitle("Sign In");
-	}//;
+	}
 }
