@@ -142,7 +142,7 @@ public class SignInFrame extends AppFrame {										//MODIFIED JFrame TO AppFra
 						
 						isAuthenticated = true;
 						
-						ProfileFrame profile = new ProfileFrame(row.get(0), row.get(2), row.get(9), row.get(5), row.get(6));						//DASHBOARDFRAME
+						DashboardFrame profile = new DashboardFrame();						//DASHBOARDFRAME
 						profile.setVisible(true);
 						
 						break;

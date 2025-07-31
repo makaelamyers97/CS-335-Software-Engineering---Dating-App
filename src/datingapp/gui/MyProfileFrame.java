@@ -2,13 +2,18 @@ package datingapp.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,13 +24,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-public class ProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
+public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
 	
 	
 	String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
 	String[] edLevel = {"High School or less", "Some College/AA, AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
 	
-	public ProfileFrame(String first, String last, String userName, String city, String state) {
+	public MyProfileFrame(String first, String last, String userName, String city, String state) {
 		
    
 //        this.add(namePane);
@@ -43,6 +48,22 @@ public class ProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         profilePane.setBorder(yellowBorder);
         setContentPane(profilePane);							
         profilePane.setLayout(null); // we need to control the location to make things line up cleaner
+        
+        
+	    profilePane.add(Box.createRigidArea(new Dimension(0, 20))); 
+	    
+	    JButton btnAllProfiles = new JButton("Go to Dashboard");
+	    btnAllProfiles.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    btnAllProfiles.setBounds(105, 40, 150, 30); 
+	    btnAllProfiles.setFocusable(false);
+        profilePane.add(btnAllProfiles);
+        
+        btnAllProfiles.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+            DashboardFrame dashboardFrame = new DashboardFrame();
+            dashboardFrame.setVisible(true);
+        	}
+        });
         
 //        //image placeholder
 	    String basePath = System.getProperty("user.dir");
@@ -194,5 +215,9 @@ public class ProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         this.setResizable(true);
         
 	}//ends inner Profile frame
+//
+//	public MyProfileFrame() {
+//		// TODO Auto-generated constructor stub
+//	}
 
 }//ends outter Profile frame

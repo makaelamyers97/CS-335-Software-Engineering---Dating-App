@@ -77,6 +77,15 @@ public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFra
 	    	    btnMyProfile.setBounds(150, 250, 100, 30); 
 	    	    btnMyProfile.setFocusable(false);
 	            contentPane.add(btnMyProfile);
+
+	            btnMyProfile.addActionListener(new ActionListener() {
+	    			public void actionPerformed(ActionEvent e) {
+	    				dispose();
+
+	    				MyProfileFrame MyProfileFrame = new MyProfileFrame(imagePath, imagePath, imagePath, imagePath, imagePath);
+	    				MyProfileFrame.setVisible(true);
+	    			}
+	    		});
 	            
 	    	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    	    
