@@ -1,5 +1,8 @@
 package datingapp;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -18,6 +21,14 @@ public class User {
     private String zipCode;
     private String dateOfBirth;
     private String password;
+    //private int age;				//
+    private String occupation;
+    private String edLevel;
+    private String hobbiesInterest;
+    private String relationGoals;
+    private String gender;
+    private String genderInterest;
+    private String aboutMe;
     
     //Constructor default
   
@@ -65,6 +76,33 @@ public class User {
     public String getPassword() {
     	return password;
     }
+    public String getOccupation() {
+    	return occupation;
+    }
+    
+    public String getEdLevel() {
+    	return edLevel;
+    }
+    
+    public String getHobbiesInterest() {
+    	return hobbiesInterest;
+    }
+    
+    public String getRelationGoals() {
+    	return relationGoals;
+    }
+    
+    public String getGender() {
+    	return gender;
+    }
+    
+    public String getGenderInterest() {
+    	return genderInterest;
+    }
+    
+    public String getAboutMe() {
+    	return aboutMe;
+    }
     
     //Setters
     public void setFirstName(String fName) {
@@ -111,6 +149,33 @@ public class User {
     public void setPassword(String password) {
     	this.password = password;
     }
+    public void setOccupation(String occupation) {
+    	this.occupation = occupation;
+    }
+    
+    public void setEdLevel(String edLevel) {
+    	this.edLevel = edLevel;
+    }
+    
+    public void setHobbiesInterests(String hobbiesInt) {
+    	this.hobbiesInterest = hobbiesInt;
+    }
+    
+    public void setRelationGoals(String relGoals) {
+    	this.relationGoals = relGoals;
+    }
+    
+    public void setGender(String gender) {
+    	this.gender = gender;
+    }
+    
+    public void setGenderInterest(String genderInt) {
+    	this.genderInterest = genderInt;
+    }
+    
+    public void setAboutMe(String aboutme) {
+    	this.aboutMe = aboutme;
+    }
     
     public void batchSetUser(User u, List<List<String>> list) {
     	
@@ -128,14 +193,25 @@ public class User {
             u.setDateOfBirth(row.get(8).trim());
             u.setUserName(row.get(9).trim());
             u.setPassword(row.get(10).trim());
+            u.setOccupation(row.get(11).trim());
+            u.setEdLevel(row.get(12).trim());
+            u.setHobbiesInterests(row.get(13).trim());
+            u.setRelationGoals(row.get(14).trim());
+            u.setGender(row.get(15).trim());
+            u.setGenderInterest(row.get(16).trim());
+            u.setAboutMe(row.get(17)/*.trim()*/);
+            
 		}
     }
+    
     
     //toString
     @Override
     public String toString() {
     	return this.firstName + "," + this.middleInitial + "," + this.lastName + "," + this.phoneNumber + "," + this.email + "," + 
-    			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," +  this.userName + "," + this.password;
+    			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," +  this.userName + "," + this.password + "," +
+    			this.occupation + "," + this.edLevel + "," + this.hobbiesInterest + "," + this.relationGoals + "," + this.gender + "," + 
+    			this.genderInterest + "," + this.aboutMe;
     	
     }
     

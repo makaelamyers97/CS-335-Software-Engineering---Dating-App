@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
+import datingapp.HelperFunctions;
+
 public class AvailableProfilesFrame extends AppFrame {
     int index = 0;
     JLabel namelbl, locationlbl, aboutmelbl, agelbl, ocupationlbl, edulbl, hobieslb, relationshiplbl, genderlbl, interestlb;
@@ -132,14 +134,16 @@ public class AvailableProfilesFrame extends AppFrame {
 
         namelbl.setText("Name: " + user.get(0) + " " + user.get(2));
         locationlbl.setText("Location: " + user.get(5) + ", " + user.get(6));
-        aboutmelbl.setText("About me: Coming soon");
-        agelbl.setText("Age: Coming soon");
-        ocupationlbl.setText("Occupation: Coming soon");
-        edulbl.setText("Education: Coming soon");
-        hobieslb.setText("Hobbies: Coming soon");
-        relationshiplbl.setText("Relationship goal: Coming soon");
-        genderlbl.setText("Gender: Coming soon");
-        interestlb.setText("Interested in: Coming soon");
+        aboutmelbl.setText("About me: " + user.get(17));
+        String dob = user.get(8);
+        int ageYears = HelperFunctions.calculateAge(dob);
+        agelbl.setText("Age: "+ Integer.toString(ageYears));
+        ocupationlbl.setText("Occupation: "+ user.get(11));					
+        edulbl.setText("Education: "+ user.get(12));
+        hobieslb.setText("Hobbies: " + user.get(13));
+        relationshiplbl.setText("Relationship goal: " + user.get(14));
+        genderlbl.setText("Gender: " + user.get(15));
+        interestlb.setText("Interested in: " + user.get(16));
 
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);

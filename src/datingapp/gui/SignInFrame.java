@@ -23,9 +23,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class SignInFrame extends AppFrame {										//MODIFIED JFrame TO AppFrame
+public class SignInFrame extends AppFrame {	
 	
-	AppFrame signInFrame = new AppFrame();{										//ADDED. COMMENTED OUT 30-36
+	AppFrame signInFrame = new AppFrame();{	
 	
 //	public SignInFrame() {
 //		
@@ -142,7 +142,7 @@ public class SignInFrame extends AppFrame {										//MODIFIED JFrame TO AppFra
 						
 						isAuthenticated = true;
 						
-						DashboardFrame profile = new DashboardFrame();						//DASHBOARDFRAME
+						DashboardFrame profile = new DashboardFrame();						
 						profile.setVisible(true);
 						
 						break;

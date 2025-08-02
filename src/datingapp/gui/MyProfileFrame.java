@@ -1,9 +1,9 @@
 package datingapp.gui;
 
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
+//import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,46 +11,44 @@ import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
+//import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+//import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
+import datingapp.HelperFunctions;
+import datingapp.User;
+
+public class MyProfileFrame extends AppFrame{
 	
 	
-	String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
-	String[] edLevel = {"High School or less", "Some College/AA, AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+//	String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
+//	String[] edLevel = {"High School or less", "Some College/AA/AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
+	User u = new User();
+	String userName = u.getUserName();
 	public MyProfileFrame(String first, String last, String userName, String city, String state) {
 		
-   
-//        this.add(namePane);
-//        this.setTitle("Profile");
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        this.setSize(900, 700);
-//        this.setLocationRelativeTo(null); //center the window screen
-//        this.setResizable(true);
-//        this.setVisible(true);
-        
-       
         // panel
         JPanel profilePane = new JPanel();
         Border yellowBorder = BorderFactory.createLineBorder(Color.yellow, 20);
         profilePane.setBorder(yellowBorder);
         setContentPane(profilePane);							
-        profilePane.setLayout(null); // we need to control the location to make things line up cleaner
+        profilePane.setLayout(null); 
         
         
-	    profilePane.add(Box.createRigidArea(new Dimension(0, 20))); 
+	    //profilePane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    
 	    JButton btnAllProfiles = new JButton("Go to Dashboard");
 	    btnAllProfiles.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -65,10 +63,10 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         	}
         });
         
-//        //image placeholder
-	    String basePath = System.getProperty("user.dir");
-	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
-        ImageIcon photoIcon = new ImageIcon(imagePath);
+        //image placeholder
+	    String basePath1 = System.getProperty("user.dir");
+	    String imagePath1 = Paths.get(basePath1, "assets", "swans_with_background.JPG").toString();
+        ImageIcon photoIcon = new ImageIcon(imagePath1);
         
         Image profileImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
         photoIcon = new ImageIcon(profileImage);
@@ -76,31 +74,31 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         JLabel lblPhoto = new JLabel(photoIcon);
         lblPhoto.setBounds(80, 70, 200, 200);		// x, y, w, h
         profilePane.add(lblPhoto);
-        lblPhoto.setVisible(true);
+       // lblPhoto.setVisible(true);
 
         // Full Name
-        JLabel lblFullName = new JLabel(first + " " + last);
-        lblFullName.setSize(300, 30); //size w, h
+        JLabel lblFullName = new JLabel("First Last");				//first + " " + last  u.getFirstName()+ " " + u.getLastName()
+        lblFullName.setSize(300, 30); //size w300, h30
         lblFullName.setLocation(30, 250);
         lblFullName.setHorizontalAlignment(SwingConstants.CENTER);
-        lblFullName.setFont(new Font("Arial", Font.PLAIN,18));
+        lblFullName.setFont(new Font("Arial", Font.PLAIN,18));	//18
         profilePane.add(lblFullName);
         
         // User Name
-        JLabel lblUserName = new JLabel(userName);
-        lblUserName.setSize(300, 20);
-        lblUserName.setLocation(30, 275);   //x, y
+        JLabel lblUserName = new JLabel("userName");
+        lblUserName.setSize(300, 20);	//300, 20
+        lblUserName.setLocation(30, 275);   //x(30), y(275)
         lblUserName.setHorizontalAlignment(SwingConstants.CENTER);
-        lblUserName.setFont(new Font("Arial", Font.PLAIN,16));
+        lblUserName.setFont(new Font("Arial", Font.PLAIN,16));	//16
         
         profilePane.add(lblUserName);
         
         // City, ST
-        JLabel lblCityState = new JLabel(city + ", " + state);
+        JLabel lblCityState = new JLabel("city" + ", " + "state");
         lblCityState.setSize(300, 30);
         lblCityState.setLocation(30, 300);   //x, y
         lblCityState.setHorizontalAlignment(SwingConstants.CENTER);
-        lblCityState.setFont(new Font("Arial", Font.PLAIN,14));
+        lblCityState.setFont(new Font("Arial", Font.PLAIN,14));	//14
         profilePane.add(lblCityState);
         
         // About me
@@ -110,12 +108,12 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         lblAboutMe.setFont(new Font("Arial", Font.PLAIN,18));
         profilePane.add(lblAboutMe);        
         
-        JTextArea detailsTxtArea = new JTextArea(5, 20);
-        detailsTxtArea.setBounds(30, 350, 300, 90);
-        detailsTxtArea.setLineWrap(true);
-        detailsTxtArea.setWrapStyleWord(true);
-        profilePane.add(detailsTxtArea);
-        //detailsTxtArea.setVisible(true);
+//        JTextArea detailsTxtArea = new JTextArea(5, 20);
+//        detailsTxtArea.setBounds(30, 350, 300, 90);
+//        detailsTxtArea.setLineWrap(true);
+//        detailsTxtArea.setWrapStyleWord(true);
+//        profilePane.add(detailsTxtArea);
+//        //detailsTxtArea.setVisible(true);
         
         //Age
         JLabel lblAge = new JLabel("Age:");
@@ -125,36 +123,38 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         profilePane.add(lblAge);
         
         JTextField ageTxtFld = new JTextField();
+        //int ageYears = HelperFunctions.calculateAge(dob);
+        //ageTxtFld.setText();		//String.valueOf(returnValue)
         ageTxtFld.setSize(50, 20);
         ageTxtFld.setLocation(155, 455);
         profilePane.add(ageTxtFld);
         
-        //Occupation
+//        //Occupation
         JLabel lblOccupation = new JLabel("Occupation:");
         lblOccupation.setSize(100, 30);
         lblOccupation.setLocation(30, 475);
         lblOccupation.setFont(new Font("Arial", Font.PLAIN,14));
         profilePane.add(lblOccupation);
         
-        JTextField occupationTxtFld = new JTextField();
-        occupationTxtFld.setSize(175, 20);
-        occupationTxtFld.setLocation(155, 480); 
-        profilePane.add(occupationTxtFld);
+//        JTextField occupationTxtFld = new JTextField();
+//        occupationTxtFld.setSize(175, 20);
+//        occupationTxtFld.setLocation(155, 480); 
+//        profilePane.add(occupationTxtFld);
         
-        //Education Level
+//        //Education Level
         JLabel lblEducation = new JLabel("Education Level:");
         lblEducation.setSize(200, 30);
         lblEducation.setLocation(30, 500);   //x, y
         lblEducation.setFont(new Font("Arial", Font.PLAIN,14));
         profilePane.add(lblEducation);
         
-        //ComboBox for edLevel
-        JComboBox<String> edLevelBox = new JComboBox<String>(edLevel);
-        edLevelBox.setSelectedItem(edLevelBox);
-        edLevelBox.setSize(175, 20);
-        edLevelBox.setLocation(155, 505);
-        profilePane.add(edLevelBox);
-        edLevelBox.setVisible(true);
+//        //ComboBox for edLevel
+//        JComboBox<String> edLevelBox = new JComboBox<String>(edLevel);
+//        edLevelBox.setSelectedItem(edLevelBox);
+//        edLevelBox.setSize(175, 20);
+//        edLevelBox.setLocation(155, 505);
+//        profilePane.add(edLevelBox);
+//        edLevelBox.setVisible(true);
         
         //Hobbies
         JLabel lblHobbies = new JLabel("Hobbies/Interests:");
@@ -163,10 +163,10 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         lblHobbies.setFont(new Font("Arial", Font.PLAIN,14));
         profilePane.add(lblHobbies);
         
-        JTextField hobbiesTxtFld = new JTextField();
-        hobbiesTxtFld.setSize(175, 20);
-        hobbiesTxtFld.setLocation(155, 530);//x,y 
-        profilePane.add(hobbiesTxtFld);
+//        JTextField hobbiesTxtFld = new JTextField();
+//        hobbiesTxtFld.setSize(175, 20);
+//        hobbiesTxtFld.setLocation(155, 530);//x,y 
+//        profilePane.add(hobbiesTxtFld);
         
         //Relationship Goals
         JLabel lblGoals = new JLabel("Relationship Goals:");
@@ -175,10 +175,10 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         lblGoals.setFont(new Font("Arial", Font.PLAIN,14));
         profilePane.add(lblGoals);
         																					
-        JTextField relGoalsTxtFld = new JTextField();
-        relGoalsTxtFld.setSize(175, 20);
-        relGoalsTxtFld.setLocation(155, 555);
-        profilePane.add(relGoalsTxtFld);
+//        JTextField relGoalsTxtFld = new JTextField();
+//        relGoalsTxtFld.setSize(175, 20);
+//        relGoalsTxtFld.setLocation(155, 555);
+//        profilePane.add(relGoalsTxtFld);
         
         //Gender
         JLabel lblGender = new JLabel("Gender:");
@@ -187,13 +187,13 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         lblGender.setFont(new Font("Arial", Font.PLAIN,14));
         profilePane.add(lblGender);
         																				
-        //ComboBox for gender
-        JComboBox<String> genderBox = new JComboBox<String>(genders);
-        genderBox.setSelectedItem(genderBox);
-        genderBox.setSize(125, 20);
-        genderBox.setLocation(155, 580);
-        profilePane.add(genderBox);
-        genderBox.setVisible(true);
+//        //ComboBox for gender
+//        JComboBox<String> genderBox = new JComboBox<String>(genders);
+//        genderBox.setSelectedItem(genderBox);
+//        genderBox.setSize(125, 20);
+//        genderBox.setLocation(155, 580);
+//        profilePane.add(genderBox);
+//        genderBox.setVisible(true);
         
         //Interests
         JLabel lblInterests = new JLabel("Interested In:");
@@ -203,15 +203,16 @@ public class MyProfileFrame extends AppFrame{				//CHANGED JFrame to AppFrame
         profilePane.add(lblInterests);
         
         //ComboBox for interests
-        JComboBox<String> interestsBox = new JComboBox<String>(genders);
-        interestsBox.setSelectedItem(interestsBox);
-        interestsBox.setSize(125, 20);
-        interestsBox.setLocation(155, 605);
-        profilePane.add(interestsBox);
-        interestsBox.setVisible(true);
+//        JComboBox<String> interestsBox = new JComboBox<String>(genders);
+//        interestsBox.setSelectedItem(interestsBox);
+//        interestsBox.setSize(125, 20);
+//        interestsBox.setLocation(155, 605);
+//        profilePane.add(interestsBox);
+//        interestsBox.setVisible(true);
+        
         
         //Modified the AppFrame for this page							//ADDED COMMENT AND NEXT LINE
-        this.setTitle("Profile");
+        this.setTitle("MyProfile");
         this.setResizable(true);
         
 	}//ends inner Profile frame

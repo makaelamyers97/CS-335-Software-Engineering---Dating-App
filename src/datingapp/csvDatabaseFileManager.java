@@ -32,7 +32,7 @@ public class csvDatabaseFileManager {
 		
 		return filePath.toString();
 	}
-
+	
 	public static List<List<String>> readCSVRows(String fileName, Boolean isDbSeed) {
 		List<List<String>> data = new ArrayList<>();
 				
@@ -65,10 +65,11 @@ public class csvDatabaseFileManager {
 		return data;
 	}
 	
-	public static void createEmptyUserCSV() {
+	//WHEN IS THIS USED?
+	public static void createEmptyUserCSV() {						
 		File f = new File(getFilePath("users.csv", false));
 		try (PrintWriter writer = new PrintWriter(new FileWriter(f))) {
-			writer.println("FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password");
+			writer.println("FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password,Occupation");
 			
 		} catch (IOException e) {
 			Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();

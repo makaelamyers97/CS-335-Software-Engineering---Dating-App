@@ -35,6 +35,12 @@ public class datingApp {
     		u.batchSetUser(u, seedData);    		
     	}
     	
+
+    	
+//    	User user1 = new User();
+//    	user1.setDateOfBirth("02/02/2020");
+//    	user1.calculateAge();
+    	
     	//List<List<String>> localData = csvFileManager.readCSVRows("users.csv", false);
     	//if(localData != null && !localData.isEmpty()) {
     		
@@ -47,9 +53,9 @@ public class datingApp {
     	//else {
     		//csvFileManager.createEmptyUserCSV();
     	//} 	
-    	
+
     	
     	SwingUtilities.invokeLater(() -> new LaunchFrame().setVisible(true));
-    	
+   
     }
 }

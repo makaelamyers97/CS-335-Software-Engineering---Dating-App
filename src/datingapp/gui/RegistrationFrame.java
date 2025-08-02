@@ -16,16 +16,19 @@ import java.text.ParseException;
 import java.util.List;
 
 
-public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppFrame
+public class RegistrationFrame extends AppFrame {
     //private JFormattedTextField phoneTxtFld = null;
    //private JFormattedTextField zipTxtFld = null;
 
     String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
     		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
     		"NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
+    String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
+	String[] edLevel = {"High School or less", "Some College/AA/AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
+    
     JButton registerBtn;																									//FOLLOWUP
     private User newUser;
-    AppFrame RegistrationFrame = new AppFrame(); {							//ADDED AND COMMENTED OUT 29 - 35
+    AppFrame RegistrationFrame = new AppFrame(); {
 //    public RegistrationFrame() {
 //        setTitle("User Registration");
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,75 +48,75 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         JLabel nameLbl = new JLabel("Name");
         nameLbl.setSize(75, 30);
         nameLbl.setLocation(50, 30);
-        nameLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        nameLbl.setFont(new Font("Arial", Font.PLAIN, 18));
         contentPane.add(nameLbl);
         
         // First
         JTextField firstTxtFld = new JTextField();
         firstTxtFld.setSize(100, 20);
-        firstTxtFld.setLocation(50, 65);
+        firstTxtFld.setLocation(50, 60);//65
         contentPane.add(firstTxtFld);
 
         JLabel firstLbl = new JLabel("First");
         firstLbl.setSize(100, 20);
-        firstLbl.setLocation(50, 80);
+        firstLbl.setLocation(50, 75);//80
         firstLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(firstLbl);
         
         // Middle
         JTextField middleTxtFld = new JTextField();
         middleTxtFld.setSize(30, 20);
-        middleTxtFld.setLocation(160, 65);
+        middleTxtFld.setLocation(160, 60);
         contentPane.add(middleTxtFld);
 
         JLabel middleLbl = new JLabel("MI");
         middleLbl.setSize(100, 20);
-        middleLbl.setLocation(160, 80);
+        middleLbl.setLocation(160, 75);
         middleLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(middleLbl);
 
         // Last
         JTextField lastTxtFld = new JTextField();
         lastTxtFld.setSize(100, 20);
-        lastTxtFld.setLocation(200, 65);
+        lastTxtFld.setLocation(200, 60);
         contentPane.add(lastTxtFld);
 
         JLabel lastLbl = new JLabel("Last");
         lastLbl.setSize(100, 20);
-        lastLbl.setLocation(200, 80);
+        lastLbl.setLocation(200, 75);
         lastLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(lastLbl);
         
         // Location
-        JLabel locationLbl1 = new JLabel("Location");
-        locationLbl1.setSize(75, 30);
-        locationLbl1.setLocation(50, 110);
-        locationLbl1.setFont(new Font("Arial", Font.BOLD, 18));
-        contentPane.add(locationLbl1);
+//        JLabel locationLbl1 = new JLabel("Location");
+//        locationLbl1.setSize(75, 30);
+//        locationLbl1.setLocation(50, 90);
+//        locationLbl1.setFont(new Font("Arial", Font.PLAIN, 18));
+//        contentPane.add(locationLbl1);
         
         // City
         JTextField cityTxtFld = new JTextField();
-        cityTxtFld.setSize(100, 20);
-        cityTxtFld.setLocation(50, 140);
+        cityTxtFld.setSize(115, 20);
+        cityTxtFld.setLocation(50, 100);
         contentPane.add(cityTxtFld);
 
         JLabel cityLbl = new JLabel("City");
         cityLbl.setSize(100, 20);
-        cityLbl.setLocation(50, 155);
+        cityLbl.setLocation(50, 115);
         cityLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(cityLbl);
                 
         //ComboBox for state
         JComboBox<String> stateBox = new JComboBox<String>(allStates);
         stateBox.setSelectedItem(stateBox);
-        stateBox.setSize(45,  20);
-        stateBox.setLocation(160,  140);
+        stateBox.setSize(45, 20);
+        stateBox.setLocation(170, 100);
         contentPane.add(stateBox);
         stateBox.setVisible(true);
         
         JLabel stateLbl = new JLabel("State");
         stateLbl.setSize(100, 20);
-        stateLbl.setLocation(160, 155);
+        stateLbl.setLocation(170, 115);
         stateLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(stateLbl);
        
@@ -121,17 +124,14 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         try {
         	zformatter = new MaskFormatter("#####");			
         	zformatter.setPlaceholder("#####") ;
-        	//zipTxtFld = new JFormattedTextField(zformatter);				
-        	//zipTxtFld.setColumns(5);
         } catch(ParseException e) {
         	e.printStackTrace();
         }
-        JFormattedTextField zipTxtFld = new JFormattedTextField(zformatter);
-    	//zipTxtFld = new JFormattedTextField(zformatter);				
+        JFormattedTextField zipTxtFld = new JFormattedTextField(zformatter);				
     	zipTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);	
     	zipTxtFld.setColumns(5);
-        zipTxtFld.setSize(100, 20);
-        zipTxtFld.setLocation(50, 180);
+        zipTxtFld.setSize(75, 20);
+        zipTxtFld.setLocation(225, 100);
         contentPane.add(zipTxtFld);
         
         																
@@ -152,42 +152,41 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         });
         
         JLabel zipLbl = new JLabel("Zip Code");
-        zipLbl.setSize(100, 20);
-        zipLbl.setLocation(50, 195);
+        zipLbl.setSize(75, 20);
+        zipLbl.setLocation(225, 115);
         zipLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(zipLbl);
         
         // username
         JLabel usernameLbl = new JLabel("Username");
         usernameLbl.setSize(100, 20);
-        usernameLbl.setLocation(50, 230);
-        usernameLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        usernameLbl.setLocation(50, 155);
+        usernameLbl.setFont(new Font("Arial", Font.PLAIN, 18));
         contentPane.add(usernameLbl);
         
         JTextField usernameTxtFld = new JTextField();
-        usernameTxtFld.setSize(100, 20);
-        usernameTxtFld.setLocation(50, 255);
+        usernameTxtFld.setSize(150, 20);
+        usernameTxtFld.setLocation(135, 155);
         contentPane.add(usernameTxtFld);
         
         // password
         JLabel passwordLbl = new JLabel("Password");
         passwordLbl.setSize(100, 20);
-        passwordLbl.setLocation(50, 285);
-        passwordLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        passwordLbl.setLocation(50, 185);
+        passwordLbl.setFont(new Font("Arial", Font.PLAIN, 18));
         contentPane.add(passwordLbl);
         
         //Password field
         JPasswordField passwordTxtFld = new JPasswordField();
-        passwordTxtFld.setSize(100, 20);
-        passwordTxtFld.setLocation(50, 310);
+        passwordTxtFld.setSize(150, 20);
+        passwordTxtFld.setLocation(135, 185);
         contentPane.add(passwordTxtFld);
         
         // dob
         JLabel dobLbl = new JLabel("Date of Birth");
         dobLbl.setSize(200, 20);
-//        dobLbl.setLocation(350, 33);
-        dobLbl.setLocation(50, 340);														//ADD AND COMMENT ABOVE
-        dobLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        dobLbl.setLocation(50, 225);
+        dobLbl.setFont(new Font("Arial", Font.PLAIN, 14));
         contentPane.add(dobLbl);
         
         JTextField dobTxtFld = new JTextField();
@@ -208,17 +207,15 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         	
         });
         dobTxtFld.setSize(100, 20);
-//        dobTxtFld.setLocation(350, 65);
-        dobTxtFld.setLocation(50, 365);													//ADD THIS LOCATION, COMMENT OUT ABOVE
+        dobTxtFld.setLocation(150, 225);
         dobTxtFld.setText("DD/MM/YYYY");
         contentPane.add(dobTxtFld);
         
         // phone
         JLabel phoneLbl = new JLabel("Phone Number");
         phoneLbl.setSize(200, 20);
-//        phoneLbl.setLocation(350, 110);
-        phoneLbl.setLocation(50, 400);													//ADD THIS LOCATION, COMMENT OUT ABOVE
-        phoneLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        phoneLbl.setLocation(50, 250);													
+        phoneLbl.setFont(new Font("Arial", Font.PLAIN, 14));
         contentPane.add(phoneLbl);
         
         MaskFormatter pformatter = null;
@@ -227,8 +224,7 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         	/*MaskFormatter */
         	pformatter = new MaskFormatter("(###) ###-####");		
         	pformatter.setPlaceholder("(000) 000-0000") ;
-        	//phoneTxtFld= new JFormattedTextField(pformatter);
-        	//phoneTxtFld.setColumns(10);
+
 
         } catch(ParseException e) {
         	e.printStackTrace();
@@ -237,9 +233,7 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         phoneTxtFld.setFocusLostBehavior(JFormattedTextField.PERSIST);
         phoneTxtFld.setColumns(10);											 
         phoneTxtFld.setSize(100, 20);
-//        phoneTxtFld.setLocation(350, 140);
-        phoneTxtFld.setLocation(50, 425);												//ADD LOCATION AND COMMENT OUT ABOVE
-        //phoneTxtFld.setText("(000) 000-0000");			
+        phoneTxtFld.setLocation(150, 250);			
         contentPane.add(phoneTxtFld);
         													
 
@@ -263,16 +257,14 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         // email
         JLabel emailLbl = new JLabel("Email");
         emailLbl.setSize(200, 20);
-//        emailLbl.setLocation(350, 180);
-        emailLbl.setLocation(50, 460);														//ADD LOCATION, COMMENT OUT ABOVE
-        emailLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        emailLbl.setLocation(50, 275);
+        emailLbl.setFont(new Font("Arial", Font.PLAIN, 14));
         contentPane.add(emailLbl);
         
         //Email example label
         JTextField emailTxtFld = new JTextField();
-        emailTxtFld.setSize(200, 20);
-//        emailTxtFld.setLocation(350,  210);
-        emailTxtFld.setLocation(50,  485);													//ADD LOCATION, COMMENT OUT ABOVE
+        emailTxtFld.setSize(220, 20);
+        emailTxtFld.setLocation(90, 275);
         emailTxtFld.setText("ex: myname@example.com");
         contentPane.add(emailTxtFld);
         emailTxtFld.addFocusListener(new FocusListener() {
@@ -291,11 +283,105 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
         	
         });
         
+        //Occupation
+        JLabel occupationLbl = new JLabel("Occupation:");
+        occupationLbl.setSize(100, 30);
+        occupationLbl.setLocation(50, 300);
+        occupationLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(occupationLbl);
+        
+        JTextField occupationTxtFld = new JTextField();
+        occupationTxtFld.setSize(175, 20);
+        occupationTxtFld.setLocation(130, 305); 
+        contentPane.add(occupationTxtFld);
+        
+        //Education Level
+        JLabel educationLbl = new JLabel("Education Level");
+        educationLbl.setSize(200, 30);
+        educationLbl.setLocation(50, 325);   //x, y
+        educationLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(educationLbl);
+        
+        //ComboBox for edLevel
+        JComboBox<String> edLevelBox = new JComboBox<String>(edLevel);
+        edLevelBox.setSelectedItem(edLevelBox);
+        edLevelBox.setSize(150, 20);
+        edLevelBox.setLocation(155, 330);
+        contentPane.add(edLevelBox);
+        edLevelBox.setVisible(true);
+        
+        //Hobbies and interests
+        JLabel hobbiesLbl = new JLabel("Hobbies/Interests");
+        hobbiesLbl.setSize(200, 30);
+        hobbiesLbl.setLocation(50, 350);
+        hobbiesLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(hobbiesLbl);
+        
+        JTextField hobbiesTxtFld = new JTextField();
+        hobbiesTxtFld.setSize(280, 20);
+        hobbiesTxtFld.setLocation(50, 375);//x,y 
+        contentPane.add(hobbiesTxtFld);
+        
+        //Relationship Goals
+        JLabel goalsLbl = new JLabel("Relationship Goals:");
+        goalsLbl.setSize(280, 20);
+        goalsLbl.setLocation(50, 400);   //x, y
+        goalsLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(goalsLbl);
+        																					
+        JTextField relGoalsTxtFld = new JTextField();
+        relGoalsTxtFld.setSize(280, 20);
+        relGoalsTxtFld.setLocation(50, 420);
+        contentPane.add(relGoalsTxtFld);
+        
+        //Gender
+        JLabel genderLbl = new JLabel("Gender:");
+        genderLbl.setSize(100, 30);
+        genderLbl.setLocation(50, 440);   //x, y
+        genderLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(genderLbl);
+        																				
+        //ComboBox for gender
+        JComboBox<String> genderBox = new JComboBox<String>(genders);
+        genderBox.setSelectedItem(genderBox);
+        genderBox.setSize(120, 20);
+        genderBox.setLocation(105, 445);
+        contentPane.add(genderBox);
+        genderBox.setVisible(true);
+        
+        //Interests
+        JLabel gendInterestsLbl = new JLabel("Genders interested in:");
+        gendInterestsLbl.setSize(150, 30);
+        gendInterestsLbl.setLocation(50, 465);   //x, y
+        gendInterestsLbl.setFont(new Font("Arial", Font.PLAIN,14));
+        contentPane.add(gendInterestsLbl);
+        
+        //ComboBox for interests
+        JComboBox<String> genderInterestsBox = new JComboBox<String>(genders);
+        genderInterestsBox.setSelectedItem(genderInterestsBox);
+        genderInterestsBox.setSize(120, 20);
+        genderInterestsBox.setLocation(195, 470);
+        contentPane.add(genderInterestsBox);
+        genderInterestsBox.setVisible(true);
+        
+        // About me
+        JLabel aboutMeLbl = new JLabel("Tell us a little more about yourself");
+        aboutMeLbl.setSize(300, 30);
+        aboutMeLbl.setLocation(30, 510);   //x, y
+        aboutMeLbl.setFont(new Font("Arial", Font.PLAIN,18));
+        contentPane.add(aboutMeLbl);        
+        
+        JTextArea aboutTxtFld = new JTextArea();
+        aboutTxtFld.setBounds(30, 535, 300, 50);
+        aboutTxtFld.setLineWrap(true);
+        aboutTxtFld.setWrapStyleWord(true);
+        contentPane.add(aboutTxtFld);
+        //detailsTxtFld.setVisible(true);
+        
         
         registerBtn = new JButton("Register");
         registerBtn.setSize(120, 30);
-//        registerBtn.setLocation(365, 290);
-        registerBtn.setLocation(200, 535);												//ADDED LOCATION, COMMENT OUT ABOVE
+        registerBtn.setLocation(120, 600);												
         newUser = new User();
         registerBtn.addActionListener(new ActionListener() {
         	
@@ -345,6 +431,29 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
             	String dobData = dobTxtFld.getText();
             	newUser.setDateOfBirth(dobData);
             	
+            	String occupationData = occupationTxtFld.getText();
+            	newUser.setOccupation(occupationData);
+            	
+            	String edLevelData = edLevelBox.getSelectedItem().toString();
+            	newUser.setEdLevel(edLevelData);
+            	
+            	String hobbiesData = hobbiesTxtFld.getText();
+            	newUser.setHobbiesInterests(hobbiesData);
+            	
+            	String relGoalsData = relGoalsTxtFld.getText();
+            	newUser.setRelationGoals(relGoalsData);
+            	
+            	String genderData = genderBox.getSelectedItem().toString();
+            	newUser.setGender(genderData);
+            	
+            	String genderIntData = genderInterestsBox.getSelectedItem().toString();
+            	newUser.setGenderInterest(genderIntData);
+            	
+            	String aboutData = aboutTxtFld.getText();
+            	newUser.setAboutMe(aboutData);
+            	
+
+            	
             	//Write the user to the assets/dbSeeds file to simulate database
             	csvDatabaseFileManager.writeUserToCSV(newUser);
             	
@@ -358,7 +467,7 @@ public class RegistrationFrame extends AppFrame {							//CHANGED JFrame to AppF
 
         
         
-		//Modifies the AppFrame for this page										//ADDED AND SET TITLE
+		//Modifies the AppFrame for this page
 		this.setTitle("User Registration");
     
 	};

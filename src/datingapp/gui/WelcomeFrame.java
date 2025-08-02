@@ -7,7 +7,7 @@ import java.awt.event.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class WelcomeFrame extends AppFrame {											//CHANGED JFrame TO AppFrame
+public class WelcomeFrame extends AppFrame {
 //	
 //	private static final long serialVersionUID = 1L;
 //	private JPanel contentPane;
@@ -23,10 +23,10 @@ public class WelcomeFrame extends AppFrame {											//CHANGED JFrame TO AppFr
 		
 
 		JPanel contentPane = new JPanel(new BorderLayout(10, 10));
-		Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);			//ADDED this and next 2
+		Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);	
         contentPane.setBorder(BorderFactory.createCompoundBorder(
                 yellowBorder, new EmptyBorder(20, 20, 20, 20)));
-		//contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));						//REMOVE
+
 		setContentPane(contentPane);
 
 		

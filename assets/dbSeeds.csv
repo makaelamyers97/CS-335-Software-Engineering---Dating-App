@@ -1,114 +1,29 @@
-FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password
-Happy,,Gilmore,555-123-1234,hg@gmail.com,Anywhere,NC,27798,15/01/1982,lovemore,yoyosmile
-Doc,,McStuffins,555-555-5555,dmc@gmail.com,Somewhere,GA,87231,22/06/2000,dmc2000,stuffy2
-Sage,,Brush,222-222-2222,sbrush@msn.com,Best Town,CA,99999,2/1/1999,sbrush,brushing
-Alicia,M,McNeil,amacmac,919-555-5555,amacmac@gmail.com,Durham,NC,27713,08/15/2000,password1
-Jack,,Black,919-555-5555,jb@black.com,Mobile,AL,12345,15/10/2005,jblack,test1
-Jack,,Pot,555-505-5050,jp@pot.com,Mobile,AL,45678,16/10/1999,jpot,potpot
-Arnold,G,Palmer,222-222-2222,ap@gmail.com,Durham,NC,22222,01/03/1950,apalmer,palmer1
-,,,000-000-000 ,ex: myname@example.com,,AL,     ,DD/MM/YYYY,,
-user1,U,User,555-555-5555,u1@msn.com,somewhere,AL,22222,15/06/2000,u1234,rrrrr
-Frank,K,Smyth,508-278-5477,frankiesmyth@myemail.com,Boston,MA,01515,DD/MM/YYYY,Frankie2202,MyBday2202#
-Charlie,,Choo,401-123-9874,charliec@myemail.com,Providence,RI,02010,05/30/2012,charlie,notvalid
-Lily,A,Lew,401-789-4521,lilylew@myemail.com,Texarkana,AR,12547,11/16/2007,Lily,11162007
-Sally,M,Jones,123-456-9874,sallyJ@myemail.com,Portland,OR,11241,01/01/2000,SallyJ,nopassword
-Wanda,Y,Stella,(789) 458-2458,wystella@myemail.com,Somecity,AK,00147,08/27/1999,WandaS,
-Philip,,Lazer,(789) 410-2589,philipL@someEmail.com,Montgomery,AL,11547,04/04/1998,Phil98,Phil98
-Bartholomew,J,St. Bartholomews,(000) 000-0000,ex: myname@example.com,Montgomery,AL,11477,DD/MM/YYYY,Bartholomew1,
-Roslyn,,Faucher,(000) 000-0000,ex: myname@example.com,Dallas,TX,#####,DD/MM/YYYY,Rosie3,
-Gena,M,Jones,(458) 125-7845,gena.jones@myemail.com,Charleston,SC,00014,01/03/1950,genaJones,gJones
-Makaela,B,Myers,(603) 903-7028,myers@simmons.edu,Somerville,MA,02144,09/23/1997,makaela,12345
-Jane ,,Doe,(000) 000-0000,example@gmail.com,Santa,NM,02144,09/23/1997,coolcat123,12345
-John,,Doe,(603) 903-7028,example@gmail.com,Jacksonville,FL,02144,09/23/1997,KingoftheWorld99,12345
-makaela,,myers,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,kikstiel,12345
-makaela,,myers,(603) 903-7028,myers@simmons.edu,somervilel,MA,02144,09/23/1997,janedoe,12345
-myers,b,myers,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,johndoe,12345
-makaela,b,myers,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,00011,12345
-myers,b,myers,(603) 903-7028,myers@simmons.edu,somrville,MA,02144,09/23/1997,66666,12345
-myers,b,myers,(603) 903-7028,myers@simmons.edu,somervillw,MA,02144,09/23/1997,010101,12345
-jane,,doe,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,7777777,11111
-makaela,,myers,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,cookie,cookie
-makaela,,myers,(603) 903-7028,myers@simmons.edu,somerville,MA,02144,09/23/1997,pumpkin,pumpkin
-Max,,Amillion,(401) 784-5698,MaxA@myemail.com,Providence,RI,01929,05/06/2000,Maxie2000,Password9,
-Roscoe,P,Coletrain,(401) 548-3256,RoscoeP@myemail.com,Texarkana,AR,44444,05/18/2008,RoscoeP,May182008
-Wendall,,Wheaton,(896) 547-1258,Wendallw@myemail.com,Sunnyville,CA,55555,01/01/1998,WendallW,password8,
-Alex,,Anders,(987) 654-3652,AAnders@myemail.com,Chicago,IL,85858,04/07/1995,AndersA,password7,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-Penny,,Henry,(587) 456-9874,pennyh@myemail.com,Bakersfield,CA,77777,08/08/1996,PennyHenny,pennyspawd
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-Ronny,,Brown,(987) 258-9874,rbrown@myemail.com,Pittsburg,PA,77777,12/12/1990,RonnyB,password99,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-Daphne,,Moon,(658) 789-4125,dmoon@myemail.com,Seattle,WA,65896,07/25/1990,DMoon50,password501
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-Senator,,Palpatine,(601) 789-4125,sithlord@myemail.com,Reno,NV,99999,05/14/1940,sithlord666,password666
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,,
-Doc,M,McStuffins,(919) 555-5555,email@mail.com,Durham,AL,27654,09/23/1965,oscar,wild
-Doc ,M,McStuffins,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,kite,kite
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,mefi,mefi
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,meme,meme
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,you2,you2
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,site,site
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,hoops,hoops
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,poot,poot
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,upshaw,upshaw
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,shoot,shoot
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,jug,jug
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,nope,nope
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,sick,sick
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,jdpower,jdpower
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,adapt,adapt
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,ddd,ddd
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,gggg,ggg
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,joker,joker
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,jjjj,j
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,tdgdgdgf,hghjgjhg
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,ssss,ssssssss
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,bb,bb
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,ffff,ffff
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,fffsrrt,cgchgfhg
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,ttt,t
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,mmmmmmm,mmm
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,dating,app
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,dddd,ssssss
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,vvvv,sss
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,bveaf,afa
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,cadf,agaf
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,jfydty,shstr
-,,,(000) 000-0000,ex: myname@example.com,,AL,#####,DD/MM/YYYY,lityi,djd
+FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password,Occupation,EdLevel,Hobbies,RelGoals,Gender,GenderInts,AboutMe
+Happy,,Gilmore,555-123-1234,hg@gmail.com,Anywhere,NC,27798,15/01/1982,lovemore,yoyosmile,,,,,,,
+Doc,,McStuffins,555-555-5555,dmc@gmail.com,Somewhere,GA,87231,22/06/2000,dmc2000,stuffy2,,,,,,,
+Sage,,Brush,222-222-2222,sbrush@msn.com,Best Town,CA,99999,02/01/1999,sbrush,brushing,,,,,,,
+Jack,,Black,919-555-5555,jb@black.com,Mobile,AL,12345,15/10/2005,jblack,test1,,,,,,,
+Jack,,Pot,555-505-5050,jp@pot.com,Mobile,AL,45678,16/10/1999,jpot,potpot,,,,,,,
+Arnold,G,Palmer,222-222-2222,ap@gmail.com,Durham,NC,22222,01/03/1950,apalmer,palmer1,,,,,,,
+Frank,K,Smyth,508-278-5477,frankiesmyth@myemail.com,Boston,MA,01515,01/01/2000,Frankie2202,MyBday2202#,,,,,,,
+Charlie,,Choo,401-123-9874,charliec@myemail.com,Providence,RI,02010,30/05/2012,charlie,charlie*02899,,,,,,,
+Lily,A,Lew,401-789-4521,lilylew@myemail.com,Texarkana,AR,12547,16/11/2007,Lily,11162007,,,,,,,
+Sally,M,Jones,123-456-9874,sallyJ@myemail.com,Portland,OR,11241,01/01/2000,SallyJ,nopassword,,,,,,,
+Wanda,Y,Stella,(789) 458-2458,wystella@myemail.com,Somecity,AK,00147,27/08/1999,WandaS,,,,,,,,
+Philip,,Lazer,(789) 410-2589,philipL@someEmail.com,Montgomery,AL,11547,04/04/1998,Phil98,Phil98,,,,,,,
+Roslyn,,Faucher,(000) 000-0000,ex: myname@example.com,Dallas,TX,#####,01/01/2000,Rosie3,,,,,,,,
+Gena,M,Jones,(458) 125-7845,gena.jones@myemail.com,Charleston,SC,00014,01/03/1950,genaJones,gJones,,,,,,,
+Makaela,B,Myers,(603) 903-7028,myers@simmons.edu,Somerville,MA,02144,23/09/1997,makaela,12345,,,,,,,
+Jane ,,Doe,(000) 000-0000,example@gmail.com,Santa,NM,02144,09/09/1997,coolcat123,12345,,,,,,,
+John,,Doe,(603) 903-7028,example@gmail.com,Jacksonville,FL,02144,23/09/1997,KingoftheWorld99,12345,,,,,,,
+Lily,,Love,(000) 000-0000,ex: myname@example.com,,AL,     ,16/11/2007,Lily16,Lily16*02899,Dog walker,BA/BS,walking,,,,
+Barbara,,Smithson,(000) 000-0000,ex: myname@example.com,,AL,#####,14/02/1928,Barbie4,Barbie4*02899,Marketing VP,MA,beach,,,,
+Harry,,Hole,(000) 000-0000,ex: myname@example.com,,AL,     ,12/08/1991,HarryH,HarryH*02899,Detective,BA/BS,sailing,,,,
+Tony,G,Gaddis,(000) 000-0000,ex: myname@example.com,,AL,     ,25/06/1960,TonyG,TonyG*02899,Writer,MA,reading,,,,
+Bartholomew,J,St. Bartholomews,(000) 000-0000,ex: myname@example.com,Montgomery,AL,11477,01/11/1990,Bartholomew1,Bart1*028991,Carpenter,High School or less,Wordworking fishing,,,,
+Roscoe,P,Coletrain,(000) 000-0000,ex: myname@example.com,,AL,     ,18/04/2005,RoscoeP,RoscoeP*02899,Student,Some College/AA, Beach; naps; food,long-term,,,
+Brandon,L,Masterson,(458) 741-5878,bmasterson@myemail.com,Dallas,TX,78541,12/09/1997,BrandonM,BrandonM*02899,Firefighter,Phd,running; shopping,long-term,,,
+Lindsey,M,Merry,(   )    -    ,ex: myname@example.com,,AL,     ,12/11/2000,LindseyM,LindseyM*02899,teacher,BA/BS,reading; fitness; dining,long-term,Female,,
+Harper,L,Fitzcollins,(   )    -    ,ex: myname@example.com,,AL,#####,17/12/1998,Harper616,Harper616*02899,Accountant,BA/BS,biking; hiking; boating,long-term,Female,Male,
+Taylor,S,Bradford,(458) 784-1212,tbradford@myemail.com,Salt Lake City,UT,84108,04/07/1988,TaylorB12,TaylorB12*02899,Chef,Phd,crafting;sports,long-term,Male,Female,I am an avid sports fan and love hockey.
+Max,,Amillion,(456) 789-1478,maxa@myemail.com,Providence,RI,01901,15/09/2000,Maxie2000,Maxie2000*02899,Construction,BA/BS,cooking; sports; hiking,long-term,Male,Female,Love trying new foods
