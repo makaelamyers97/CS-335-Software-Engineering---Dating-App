@@ -1,10 +1,6 @@
 package datingapp.gui;
 
-import datingapp.datingApp;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -12,23 +8,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Paths;
-import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFrame
-	    	
-	AppFrame DashboardFrame = new AppFrame(); {								//ADDED, COMMENT OUT 30-36
-	    	
-	    	    
-	    	    JPanel contentPane = new JPanel();
+public class DashboardFrame extends AppFrame {
+	    
+	public DashboardFrame(String userName) {
+		JPanel contentPane = new JPanel();
 	            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 	            Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
 	            contentPane.setBorder(BorderFactory.createCompoundBorder(
@@ -97,7 +87,7 @@ public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFra
 	            
 	            btnAllProfiles.addActionListener(new ActionListener() {
 	            	public void actionPerformed(ActionEvent e) {
-	                AvailableProfilesFrame AvailableFrame = new AvailableProfilesFrame();
+	                AvailableProfilesFrame AvailableFrame = new AvailableProfilesFrame(userName);
 	                AvailableFrame.setVisible(true);
 	            	}
 	            });
@@ -109,6 +99,14 @@ public class DashboardFrame extends AppFrame {								//CHANGED JFrame TO AppFra
 	    	    btnMatches.setBounds(150, 250, 100, 30); 
 	    	    btnMatches.setFocusable(false);
 	            contentPane.add(btnMatches);
+	            btnMatches.addActionListener(new ActionListener() {
+	            	public void actionPerformed(ActionEvent e) {
+	                MatchesProfileFrame MatchesFrame = new MatchesProfileFrame(userName);
+	                MatchesFrame.setVisible(true);
+	            	}
+	            });
+
+	            
 	            
 	    	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    	    

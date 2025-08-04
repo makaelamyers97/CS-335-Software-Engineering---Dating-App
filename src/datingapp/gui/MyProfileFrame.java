@@ -11,20 +11,14 @@ import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
 import javax.swing.BorderFactory;
-//import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-//import javax.swing.JFrame;
 import javax.swing.JLabel;
-//import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-import datingapp.HelperFunctions;
 import datingapp.User;
 
 public class MyProfileFrame extends AppFrame{
@@ -58,7 +52,7 @@ public class MyProfileFrame extends AppFrame{
         
         btnAllProfiles.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-            DashboardFrame dashboardFrame = new DashboardFrame();
+            DashboardFrame dashboardFrame = new DashboardFrame(userName);
             dashboardFrame.setVisible(true);
         	}
         });

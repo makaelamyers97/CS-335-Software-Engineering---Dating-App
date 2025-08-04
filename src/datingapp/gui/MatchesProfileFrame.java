@@ -10,9 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -21,25 +19,22 @@ import java.util.Set;
 
 import datingapp.HelperFunctions;
 
-public class AvailableProfilesFrame extends AppFrame {
+public class MatchesProfileFrame extends AppFrame {
 	
 	private String curUserName;
 	private Set<String> likedUsers = new HashSet<>();
-	private Set<String> dislikedUsers = new HashSet<>();
 	private List<List<String>> users = datingApp.seedData;
 	private List<List<String>> filteredUsers = new ArrayList<>();
 	
     int index = 0;
     JLabel namelbl, locationlbl, aboutmelbl, agelbl, ocupationlbl, edulbl, hobieslb, relationshiplbl, genderlbl, interestlb;
-    JButton nxtBtn, prevBtn, dashBtn, likeBtn, dislikeBtn;
+    JButton nxtBtn, prevBtn, dashBtn;
 
-    public AvailableProfilesFrame(String curUserName) {
+    public MatchesProfileFrame(String curUserName) {
 
     	this.curUserName = curUserName.toLowerCase();
     	getLikes();
     	//System.out.println(likedUsers);
-    	getDislikes();
-    	//System.out.println(dislikedUsers);
     	filterUsers();
     	//System.out.println(filteredUsers);
     	
@@ -124,49 +119,16 @@ public class AvailableProfilesFrame extends AppFrame {
         prevBtn = new JButton("Previous");
         nxtBtn = new JButton("Next");
         dashBtn = new JButton("Dashboard");
-        likeBtn = new JButton("❤️");
-        dislikeBtn = new JButton("❌");
         prevBtn.setBounds(50, 50, 100, 30);
         nxtBtn.setBounds(160, 50, 100, 30);
         dashBtn.setBounds(90, 90, 120, 30);
-        likeBtn.setBounds(65, 10, 80, 30);
-        dislikeBtn.setBounds(170, 10, 80, 30);
-
-        likeBtn.setForeground(Color.RED);
-        dislikeBtn.setForeground(Color.RED);
         
         buttonPanel.setLayout(null);
         buttonPanel.add(prevBtn);
-        buttonPanel.add(likeBtn);
-        buttonPanel.add(dislikeBtn);
         buttonPanel.add(nxtBtn);
         buttonPanel.add(dashBtn);
         buttonPanel.setBounds(30, 530, 300, 130);
         AvailableProfilesPanel.add(buttonPanel);
-        
-        likeBtn.addActionListener(e -> {
-        	if (index >= 0 && index < filteredUsers.size()) {
-                String likedUser = filteredUsers.get(index).get(9);
-                saveLike(likedUser);
-                likedUsers.add(likedUser);
-                filteredUsers.remove(index);
-
-                if (index >= filteredUsers.size()) index = filteredUsers.size() - 1;
-                showProfile(index);
-            }
-        });
-        
-        dislikeBtn.addActionListener(e -> {
-        	if (index >= 0 && index < filteredUsers.size()) {
-                String dislikedUser = filteredUsers.get(index).get(9);
-                saveDislike(dislikedUser);
-                dislikedUsers.add(dislikedUser);
-                filteredUsers.remove(index);
-
-                if (index >= filteredUsers.size()) index = filteredUsers.size() - 1;
-                showProfile(index);
-            }
-        });
         
         showProfile(index);
         prevBtn.addActionListener(e -> showProfile(index - 1));
@@ -180,94 +142,9 @@ public class AvailableProfilesFrame extends AppFrame {
 				dashboardFrame.setVisible(true);
 			}
         });
-
+   
+    }
        
-    }
-    
-    private void saveLike(String LikedUser) {
-    	File f = new File(csvDatabaseFileManager.getFilePath("dbLikes.csv", true));
-    	//System.out.println(f);
-    	List<String> lines = new ArrayList<>();
-        boolean userFound = false;
-        
-   	if (f.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    if (parts[0].equalsIgnoreCase(curUserName)) {
-                        List<String> updated = new ArrayList<>(Arrays.asList(parts));
-                        if (!updated.contains(LikedUser)) {
-                            updated.add(LikedUser);
-                        }
-                        lines.add(String.join(",", updated));
-                        userFound = true;
-                    } else {
-                        lines.add(line);
-                    }
-                }				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-            
-            if (!userFound) {
-                lines.add(curUserName + "," + LikedUser);
-            }
-            try (PrintWriter pw = new PrintWriter(new FileWriter(f, false))) {
-                for (String line : lines) {
-                    pw.println(line);
-                    //System.out.println("Saved " + LikedUser + " for " + curUserName);
-                }
-	        } catch(IOException e) {
-	        	Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-	        	JOptionPane.showMessageDialog((JFrame) activeWindow, "Error writing likes file:\nClick OK to exit the app.");
-	        	System.exit(0);
-	        }        
-   	}
-    }
-    
-    private void saveDislike(String dislikedUser) {
-    	File f = new File(csvDatabaseFileManager.getFilePath("dbDislikes.csv", true));
-    	//System.out.println(f);
-    	List<String> lines = new ArrayList<>();
-        boolean userFound = false;
-        
-   	if (f.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    if (parts[0].equalsIgnoreCase(curUserName)) {
-                        List<String> updated = new ArrayList<>(Arrays.asList(parts));
-                        if (!updated.contains(dislikedUser)) {
-                            updated.add(dislikedUser);
-                        }
-                        lines.add(String.join(",", updated));
-                        userFound = true;
-                    } else {
-                        lines.add(line);
-                    }
-                }				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-            
-            if (!userFound) {
-                lines.add(curUserName + "," + dislikedUser);
-            }
-            try (PrintWriter pw = new PrintWriter(new FileWriter(f, false))) {
-                for (String line : lines) {
-                    pw.println(line);
-                    //System.out.println("Saved " + LikedUser + " for " + curUserName);
-                }
-	        } catch(IOException e) {
-	        	Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-	        	JOptionPane.showMessageDialog((JFrame) activeWindow, "Error writing likes file:\nClick OK to exit the app.");
-	        	System.exit(0);
-	        }        
-   	}
-    }
-    
     private void getLikes() { 
     	
     	File f = new File(csvDatabaseFileManager.getFilePath("dbLikes.csv", true));
@@ -299,41 +176,11 @@ public class AvailableProfilesFrame extends AppFrame {
             }
     }
     
-    private void getDislikes() {
-    	File f = new File(csvDatabaseFileManager.getFilePath("dbDislikes.csv", true));
-		if(!f.exists())
-			return;
-    	
-		try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-			
-			String line;
-			String del = ",";
-			
-            while ((line = br.readLine()) != null) {
-                String[] cols = line.split(del);
-                String userName = cols[0].toLowerCase();
-                if (userName.equals(curUserName.toLowerCase())) {
-                	dislikedUsers.addAll(Arrays.asList(cols).subList(1, cols.length));
-                	//System.out.println(dislikedUsers);
-                	break;
-                }
-            }
-		}  catch(FileNotFoundException e) {
-            	Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-            	JOptionPane.showMessageDialog((JFrame) activeWindow, "The file was not found: " + f.toString() + "\nClick OK to exit the app.");
-            	System.exit(0);
-            } catch(IOException e) {
-            	Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
-            	JOptionPane.showMessageDialog((JFrame) activeWindow, "Error reading file: " + f.toString() + "\nClick OK to exit the app.");
-            	System.exit(0);
-            }
-
-    }
 
     private void filterUsers() {
     	for (List<String> user : users) {
             String userName = user.get(9).toLowerCase();
-            if (!userName.equals(curUserName) && !likedUsers.contains(userName) && !dislikedUsers.contains(userName)) {
+            if (!userName.equals(curUserName) && likedUsers.contains(userName)) {
                 filteredUsers.add(user);
             }
         }

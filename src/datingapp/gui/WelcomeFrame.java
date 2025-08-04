@@ -44,7 +44,7 @@ public class WelcomeFrame extends AppFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 
-				DashboardFrame dashboardFrame = new DashboardFrame();
+				DashboardFrame dashboardFrame = new DashboardFrame(userName);
 				dashboardFrame.setVisible(true);
 			}
 	});

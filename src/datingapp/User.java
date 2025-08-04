@@ -1,8 +1,5 @@
 package datingapp;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -21,7 +18,6 @@ public class User {
     private String zipCode;
     private String dateOfBirth;
     private String password;
-    //private int age;				//
     private String occupation;
     private String edLevel;
     private String hobbiesInterest;

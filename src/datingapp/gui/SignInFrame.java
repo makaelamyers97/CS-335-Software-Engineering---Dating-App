@@ -142,7 +142,7 @@ public class SignInFrame extends AppFrame {
 						
 						isAuthenticated = true;
 						
-						DashboardFrame profile = new DashboardFrame();						
+						DashboardFrame profile = new DashboardFrame(username);						
 						profile.setVisible(true);
 						
 						break;

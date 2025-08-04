@@ -9,7 +9,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -18,8 +17,6 @@ import javax.swing.border.EmptyBorder;
 public class LaunchFrame extends AppFrame {				//CHANGED JFrame to AppFrame
 	
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	
 	AppFrame LaunchFrame = new AppFrame();{				//Added and commented out ln 25 - 31
 		
 //	public LaunchFrame(){
