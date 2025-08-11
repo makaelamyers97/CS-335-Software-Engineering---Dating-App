@@ -9,9 +9,17 @@ import java.awt.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
+import datingapp.HelperFunctions;
 import datingapp.User;
 
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.util.List;
 
@@ -26,7 +34,9 @@ public class RegistrationFrame extends AppFrame {
     String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
 	String[] edLevel = {"High School or less", "Some College/AA/AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
     
-    JButton registerBtn;																									//FOLLOWUP
+    JButton registerBtn;
+    JButton uploadPhotoBtn;
+    //FOLLOWUP
     private User newUser;
     AppFrame RegistrationFrame = new AppFrame(); {
 //    public RegistrationFrame() {
@@ -39,7 +49,7 @@ public class RegistrationFrame extends AppFrame {
 
         // create the panel
         JPanel contentPane = new JPanel();
-        Border yellowBorder = BorderFactory.createLineBorder(Color.yellow, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         contentPane.setBorder(yellowBorder);
         setContentPane(contentPane);
         contentPane.setLayout(null); // we need to control the location to make things line up cleaner
@@ -369,7 +379,7 @@ public class RegistrationFrame extends AppFrame {
         aboutMeLbl.setSize(300, 30);
         aboutMeLbl.setLocation(30, 510);   //x, y
         aboutMeLbl.setFont(new Font("Arial", Font.PLAIN,18));
-        contentPane.add(aboutMeLbl);        
+        contentPane.add(aboutMeLbl);   
         
         JTextArea aboutTxtFld = new JTextArea();
         aboutTxtFld.setBounds(30, 535, 300, 50);
@@ -377,11 +387,77 @@ public class RegistrationFrame extends AppFrame {
         aboutTxtFld.setWrapStyleWord(true);
         contentPane.add(aboutTxtFld);
         //detailsTxtFld.setVisible(true);
-        
+//        
+        uploadPhotoBtn = new JButton("Upload Profile Button");
+        uploadPhotoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        uploadPhotoBtn.setBounds(85, 595, 185, 30); 
+	    uploadPhotoBtn.setFocusable(false);
+	    
+//	    https://www.youtube.com/watch?v=YZ_tQFTMYoQ
+	    uploadPhotoBtn.addActionListener(new ActionListener() {
+	    	
+	    	private String userName;
+
+			public void actionPerformed (ActionEvent e) {
+	    		
+	    		if(e.getSource() == uploadPhotoBtn) {
+	    			
+	    			JFileChooser file_upload = new JFileChooser();
+//	    			file_upload.showOpenDialog(null);
+//	    			below line of code opens box that allows us to choose which file we want to upload
+//	    			int res = file_upload.showOpenDialog(null);
+//	    			below line of code opens the box and also saves that file
+	    			int res_2 = file_upload.showSaveDialog(null);
+	    			
+	    			if(res_2 == JFileChooser.APPROVE_OPTION) {
+//	    				below line of code gets selected path of file
+	    				File file_path = new File(file_upload.getSelectedFile().getAbsolutePath());
+//	    				below line of code prints file path in console
+//	    				System.out.println(file_path);
+	    				newUser.setUserFileName(file_path);
+
+//	    				https://www.youtube.com/watch?v=n66gUbZ6WcQ
+	    				String newPath = "assets/UserPics";
+	    				File directory = new File(newPath);
+	    				if (!directory.exists()) {
+	    				    directory.mkdirs(); 
+	    				}
+	    				File sourceFile = file_path; 
+
+	    				String originalFileName = file_path.getName();
+	    				String extension = "";
+	    				int i = originalFileName.lastIndexOf('.');
+	    				if (i > 0) {
+	    				    extension = originalFileName.substring(i + 1); 
+	    				}
+
+	    				String enteredUsername = usernameTxtFld.getText().trim();
+//	  
+
+	    				String destinationFileName = enteredUsername + "_pic." + extension;
+	    				File destinationFile = new File(directory, destinationFileName);
+
+	    				try {
+	    				    Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+	    				    newUser.setUserFileName(destinationFile); 
+	    				} catch (IOException ex) {
+	    				    ex.printStackTrace();
+	    				    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+	    				}
+//	    				System.out.println("Saving to: " + destinationFile.getAbsolutePath());
+	    			
+	    			}
+	    		}    		
+	    		
+	    	}
+			});
+	    
+	    contentPane.add(uploadPhotoBtn);
+	    
         
         registerBtn = new JButton("Register");
         registerBtn.setSize(120, 30);
-        registerBtn.setLocation(120, 600);												
+        registerBtn.setLocation(120, 630);												
         newUser = new User();
         registerBtn.addActionListener(new ActionListener() {
         	
@@ -452,7 +528,7 @@ public class RegistrationFrame extends AppFrame {
             	String aboutData = aboutTxtFld.getText();
             	newUser.setAboutMe(aboutData);
             	
-
+            	HelperFunctions.Session.setCurrentUser(newUser);
             	
             	//Write the user to the assets/dbSeeds file to simulate database
             	csvDatabaseFileManager.writeUserToCSV(newUser);
@@ -462,8 +538,9 @@ public class RegistrationFrame extends AppFrame {
             }
         });
         
-        contentPane.add(registerBtn);
+        contentPane.add(registerBtn, uploadPhotoBtn);
         registerBtn.setFocusable(false);
+        uploadPhotoBtn.setFocusable(false);
 
         
         

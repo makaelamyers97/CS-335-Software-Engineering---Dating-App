@@ -1,18 +1,19 @@
-FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password,Occupation,EdLevel,Hobbies,RelGoals,Gender,GenderInts,AboutMe
-Happy,,Gilmore,555-123-1234,hg@gmail.com,Anywhere,NC,27798,15/01/1982,lovemore,yoyosmile,Golfer,High School or less,Golfing,none,Male,Female,I'm a movie star.
-Chloe1,,Brown1,654-321-0987,chloebrown@mail.com,Raleigh,NC,27601,19/09/1998,chloeb1,bluebird,Student,College,Swimming,Casual,Female,Male,Go with the flow
-Lena,,Lopez,333-444-5555,lena.lopez@mail.com,San Diego,CA,92101,07/11/1992,lenal,pass123,Designer,Bachelor,Painting,Casual,Female,Male,Love colors and sunsets
-Jamal,,Green,444-555-6666,jgreen@mail.com,Boston,MA,02118,04/05/1988,jgreen88,secure1,Engineer,Master,Jogging,Long-Term,Male,Female,Big fan of trivia nights
-Erica,,Jones,555-666-7777,ejones@gmail.com,Miami,FL,33101,09/09/1991,ej91,catdog,Teacher,Master,Gardening,Friendship,Female,Male,Plant mom + proud nerd
-Kareem,,Moss,888-999-0000,kmoss@yahoo.com,Baltimore,MD,21201,03/08/1985,kmozz,letmein,Chef,High School,Cooking,Anything,Male,Female,Food is love, food is life
-Zoe,,Kim,222-111-3333,zkim@mail.com,Seattle,WA,98101,12/03/1995,zoeK,password3,UX Researcher,Bachelor,Reading,Short-Term,Female,Male,Minimalist dreamer
-Tariq,,Lewis,111-222-4444,tarlewis@mail.com,Chicago,IL,60601,11/07/1990,tlewis90,tiger23,Developer,Bachelor,Coding,Long-Term,Male,Female,Coffee + code + cuddles
-Monica,,Patel,777-888-9999,mpatel@gmail.com,Austin,TX,73301,18/06/1993,monip,ilovebooks,Analyst,Master,Knitting,Casual,Female,Male,Analytics by day, Netflix by night
-Luis,,Santos,999-888-7777,lsantos@mail.com,Orlando,FL,32801,25/12/1986,luis86,flamingo,Photographer,Bachelor,Hiking,Long-Term,Male,Female,Capturing moments forever
-April,,White,666-777-8888,aprilwhite@aol.com,Dallas,TX,75001,29/02/1992,awhite,heartme,Dancer,High School,Dancing,Friendship,Female,Male,Love the stage and spontaneity
-Devon,,Clark,123-321-4567,dclark@mail.com,Nashville,TN,37201,14/04/1984,devc84,rockon,Singer,Bachelor,Guitar,Anything,Male,Female,Living for the music
-Amina,,Hassan,789-654-3210,amina.h@gmail.com,Denver,CO,80014,01/01/1996,aminah,securepass,Artist,Bachelor,Sketching,Long-Term,Female,Male,Ink and introspection
-Omar,,Reed,987-123-4567,oreed@mail.com,Detroit,MI,48201,20/10/1983,omre,testing1,Mechanic,High School,Fishing,Short-Term,Male,Female,Fixing engines, fixing hearts
-Gia,,Stone,456-789-0123,giastone@mail.com,Portland,OR,97201,30/06/1990,gia_s,lovely22,Barista,Some College,Baking,Friendship,Female,Male,Espresso yourself
-Marcus,,Nguyen,321-654-9870,marc.nguyen@mail.com,Philadelphia,PA,19019,05/05/1994,mng94,doglover,Architect,Master,Traveling,Long-Term,Male,Female,Built to love
-Chloe,,Brown,654-321-0987,chloebrown@mail.com,Raleigh,NC,27601,19/09/1998,chloeb,bluebird,Student,College,Swimming,Casual,Female,Male,Go with the flowAlicia,M,McNeil,(555) 555-5555,amcneil@gmail.com,Durham,NC,27707,15/08/1975,amcneil,password1,App Developer,BA/BS,Programming,Trying to figure it out.,Female,Male,I like programming.
+FirstName,MiddleInit,LastName,PhoneNum,Email,City,State,ZipCode,DateOfBirth,UserName,Password,Occupation,EdLevel,Hobbies,RelGoals,Gender,GenderInts,AboutMe,UserFileName
+Happy,,Gilmore,555-123-1234,hg@gmail.com,Anywhere,NC,27798,15/01/1982,lovemore,yoyosmile,Golfer,High School or less,Golfing,none,Male,Female,I'm a movie star., 
+Chloe1,,Brown1,654-321-0987,chloebrown@mail.com,Raleigh,NC,27601,19/09/1998,chloeb1,bluebird,Student,College,Swimming,Casual,Female,Male,Go with the flow, 
+Lena,,Lopez,333-444-5555,lena.lopez@mail.com,San Diego,CA,92101,07/11/1992,lenal,pass123,Designer,Bachelor,Painting,Casual,Female,Male,Love colors and sunsets, 
+Jamal,,Green,444-555-6666,jgreen@mail.com,Boston,MA,02118,04/05/1988,jgreen88,secure1,Engineer,Master,Jogging,Long-Term,Male,Female,Big fan of trivia nights, 
+Erica,,Jones,555-666-7777,ejones@gmail.com,Miami,FL,33101,09/09/1991,ej91,catdog,Teacher,Master,Gardening,Friendship,Female,Male,Plant mom + proud nerd, 
+Kareem,,Moss,888-999-0000,kmoss@yahoo.com,Baltimore,MD,21201,03/08/1985,kmozz,letmein,Chef,High School,Cooking,Anything,Male,Female,Food is love food is life, 
+Zoe,,Kim,222-111-3333,zkim@mail.com,Seattle,WA,98101,12/03/1995,zoeK,password3,UX Researcher,Bachelor,Reading,Short-Term,Female,Male,Minimalist dreamer, 
+Tariq,,Lewis,111-222-4444,tarlewis@mail.com,Chicago,IL,60601,11/07/1990,tlewis90,tiger23,Developer,Bachelor,Coding,Long-Term,Male,Female,Coffee + code + cuddles, 
+Monica,,Patel,777-888-9999,mpatel@gmail.com,Austin,TX,73301,18/06/1993,monip,ilovebooks,Analyst,Master,Knitting,Casual,Female,Male,Analytics by day Netflix by night, 
+Luis,,Santos,999-888-7777,lsantos@mail.com,Orlando,FL,32801,25/12/1986,luis86,flamingo,Photographer,Bachelor,Hiking,Long-Term,Male,Female,Capturing moments forever, 
+April,,White,666-777-8888,aprilwhite@aol.com,Dallas,TX,75001,29/02/1992,awhite,heartme,Dancer,High School,Dancing,Friendship,Female,Male,Love the stage and spontaneity, 
+Devon,,Clark,123-321-4567,dclark@mail.com,Nashville,TN,37201,14/04/1984,devc84,rockon,Singer,Bachelor,Guitar,Anything,Male,Female,Living for the music, 
+Amina,,Hassan,789-654-3210,amina.h@gmail.com,Denver,CO,80014,01/01/1996,aminah,securepass,Artist,Bachelor,Sketching,Long-Term,Female,Male,Ink and introspection, 
+Omar,,Reed,987-123-4567,oreed@mail.com,Detroit,MI,48201,20/10/1983,omre,testing1,Mechanic,High School,Fishing,Short-Term,Male,Female,Fixing engines fixing hearts, 
+Gia,,Stone,456-789-0123,giastone@mail.com,Portland,OR,97201,30/06/1990,gia_s,lovely22,Barista,Some College,Baking,Friendship,Female,Male,Espresso yourself, 
+Marcus,,Nguyen,321-654-9870,marc.nguyen@mail.com,Philadelphia,PA,19019,05/05/1994,mng94,doglover,Architect,Master,Traveling,Long-Term,Male,Female,Built to love, 
+Chloe,,Brown,654-321-0987,chloebrown@mail.com,Raleigh,NC,27601,19/09/1998,chloeb,bluebird,Student,College,Swimming,Casual,Female,Male,Go with the flow, 
+Emily,,Johnson,(312) 555-4829,emily.johnson91@example.com,Austin,TX,78701,12/05/1991,emjohn91,Passw0rd!23,Software Developer,BA/BS,Hiking,Long-term relationship,Female,Male,Passionate about tech and nature, ,

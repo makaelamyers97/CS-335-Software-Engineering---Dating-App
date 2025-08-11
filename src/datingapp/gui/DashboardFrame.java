@@ -20,7 +20,7 @@ public class DashboardFrame extends AppFrame {
 	public DashboardFrame(String userName) {
 		JPanel contentPane = new JPanel();
 	            contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-	            Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
+	            Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
 	            contentPane.setBorder(BorderFactory.createCompoundBorder(
 	                    yellowBorder, new EmptyBorder(20, 20, 20, 20)));
 	            setContentPane(contentPane);
@@ -29,14 +29,14 @@ public class DashboardFrame extends AppFrame {
 	    	    
 	    		JLabel swanLbl = new JLabel("Swan Song");
 	    	    swanLbl.setFont(new Font("Arial", Font.BOLD, 18));
-	    	    swanLbl.setForeground(Color.GREEN);
+	    	    swanLbl.setForeground(Color.magenta);
 	    	    swanLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    	    swanLbl.setBorder(border);
 	    	    contentPane.add(swanLbl);
 
 	    	    JLabel retireLbl = new JLabel("Retire from the dating scene!");
 	    	    retireLbl.setFont(new Font("Arial", Font.PLAIN, 15));
-	    	    retireLbl.setForeground(Color.GREEN);
+	    	    retireLbl.setForeground(Color.magenta);
 	    	    retireLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    	    retireLbl.setBorder(border);
 	    	    contentPane.add(retireLbl);
@@ -94,14 +94,14 @@ public class DashboardFrame extends AppFrame {
 	    	    
 	    	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    	    	    
-	    	    JButton btnMatches = new JButton("My Matches");
+	    	    JButton btnMatches = new JButton("My Likes");
 	    	    btnMatches.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    	    btnMatches.setBounds(150, 250, 100, 30); 
 	    	    btnMatches.setFocusable(false);
 	            contentPane.add(btnMatches);
 	            btnMatches.addActionListener(new ActionListener() {
 	            	public void actionPerformed(ActionEvent e) {
-	                MatchesProfileFrame MatchesFrame = new MatchesProfileFrame(userName);
+	                MyLikesProfileFrame MatchesFrame = new MyLikesProfileFrame(userName);
 	                MatchesFrame.setVisible(true);
 	            	}
 	            });

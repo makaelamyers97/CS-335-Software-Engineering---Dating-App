@@ -1,4 +1,7 @@
 package datingapp.gui;
+import datingapp.HelperFunctions;
+import datingapp.HelperFunctions.Session;
+import datingapp.User;
 
 //import java.awt.BorderLayout;
 import java.awt.Color;
@@ -36,7 +39,7 @@ public class MyProfileFrame extends AppFrame{
 		
         // panel
         JPanel profilePane = new JPanel();
-        Border yellowBorder = BorderFactory.createLineBorder(Color.yellow, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         profilePane.setBorder(yellowBorder);
         setContentPane(profilePane);							
         profilePane.setLayout(null); 
@@ -57,18 +60,10 @@ public class MyProfileFrame extends AppFrame{
         	}
         });
         
-        //image placeholder
-	    String basePath1 = System.getProperty("user.dir");
-	    String imagePath1 = Paths.get(basePath1, "assets", "swans_with_background.JPG").toString();
-        ImageIcon photoIcon = new ImageIcon(imagePath1);
-        
-        Image profileImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-        photoIcon = new ImageIcon(profileImage);
-	    
+        ImageIcon photoIcon = HelperFunctions.getPicture(Session.getCurrentUser());
         JLabel lblPhoto = new JLabel(photoIcon);
-        lblPhoto.setBounds(80, 70, 200, 200);		// x, y, w, h
+        lblPhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
         profilePane.add(lblPhoto);
-       // lblPhoto.setVisible(true);
 
         // Full Name
         JLabel lblFullName = new JLabel("First Last");				//first + " " + last  u.getFirstName()+ " " + u.getLastName()
@@ -210,9 +205,17 @@ public class MyProfileFrame extends AppFrame{
         this.setResizable(true);
         
 	}//ends inner Profile frame
-//
+private ImageIcon getPicture(Object userName2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	//
 //	public MyProfileFrame() {
 //		// TODO Auto-generated constructor stub
 //	}
+	private User getUserName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }//ends outter Profile frame

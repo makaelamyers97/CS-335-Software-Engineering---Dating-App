@@ -39,7 +39,7 @@ public class SignInFrame extends AppFrame {
 //	    https://www.geeksforgeeks.org/java/java-awt-boxlayout-class/
 //	    use boxlayout() class to get elements to stack on top of eachother without running out of space
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-        Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         contentPane.setBorder(BorderFactory.createCompoundBorder(
                 yellowBorder, new EmptyBorder(20, 20, 20, 20)));
         setContentPane(contentPane);
@@ -49,14 +49,14 @@ public class SignInFrame extends AppFrame {
 	    
 		JLabel swanLbl = new JLabel("Swan Song");
 	    swanLbl.setFont(new Font("Arial", Font.BOLD, 18));
-	    swanLbl.setForeground(Color.GREEN);
+	    swanLbl.setForeground(Color.magenta);
 	    swanLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    swanLbl.setBorder(border);
 	    contentPane.add(swanLbl);
 
 	    JLabel retireLbl = new JLabel("Retire from the dating scene!");
 	    retireLbl.setFont(new Font("Arial", Font.PLAIN, 15));
-	    retireLbl.setForeground(Color.GREEN);
+	    retireLbl.setForeground(Color.magenta);
 	    retireLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    retireLbl.setBorder(border);
 	    contentPane.add(retireLbl);
@@ -126,6 +126,8 @@ public class SignInFrame extends AppFrame {
         btnLogin.setBounds(150, 250, 100, 30); 
         btnLogin.setFocusable(false);
         contentPane.add(btnLogin);
+        
+        
 
 		btnLogin.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")

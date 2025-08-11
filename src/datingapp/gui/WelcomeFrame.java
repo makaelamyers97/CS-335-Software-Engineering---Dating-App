@@ -7,6 +7,9 @@ import java.awt.event.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import datingapp.HelperFunctions;
+import datingapp.User;
+
 public class WelcomeFrame extends AppFrame {
 //	
 //	private static final long serialVersionUID = 1L;
@@ -21,9 +24,10 @@ public class WelcomeFrame extends AppFrame {
 ////		setSize(500, 185);
 //		setLocationRelativeTo(null);
 		
+		User currentUser = HelperFunctions.Session.getCurrentUser();
 
 		JPanel contentPane = new JPanel(new BorderLayout(10, 10));
-		Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);	
+		Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);	
         contentPane.setBorder(BorderFactory.createCompoundBorder(
                 yellowBorder, new EmptyBorder(20, 20, 20, 20)));
 

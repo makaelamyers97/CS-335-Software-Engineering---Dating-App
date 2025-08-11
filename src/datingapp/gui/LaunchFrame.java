@@ -31,14 +31,14 @@ public class LaunchFrame extends AppFrame {				//CHANGED JFrame to AppFrame
 	    
 	    JPanel contentPane = new JPanel();
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
-        Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         contentPane.setBorder(BorderFactory.createCompoundBorder(
                 yellowBorder, new EmptyBorder(20, 20, 20, 20)));
         setContentPane(contentPane);
         
         JLabel swanSongLbl = new JLabel("Swan Song");
 	    swanSongLbl.setFont(new Font("Arial", Font.BOLD, 18));
-	    swanSongLbl.setForeground(Color.GREEN);
+	    swanSongLbl.setForeground(Color.magenta);
 	    swanSongLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    swanSongLbl.setBorder(border);
 	    contentPane.add(swanSongLbl);

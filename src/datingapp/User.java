@@ -1,5 +1,6 @@
 package datingapp;
 
+import java.io.File;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -10,7 +11,7 @@ public class User {
 	private String firstName;
     private String lastName;
     private String middleInitial;
-    private String userName;
+    private static String userName;
     private String phoneNumber;
     private String email;
     private String city;
@@ -26,6 +27,21 @@ public class User {
     private String genderInterest;
     private String aboutMe;
     
+//    begin 8/7/2025
+    
+    private String userFileName;
+    
+    public String getUserFileName() {
+    	return userFileName;
+    }
+    
+    public void setUserFileName(File uFileName) {
+    	this.userFileName = uFileName.getAbsolutePath();
+    	
+    }
+    
+//    end 8/7/2025
+    
     //Constructor default
   
     //Getters
@@ -34,14 +50,14 @@ public class User {
     }
     
     public String getLastName() {
-    	return firstName;
+    	return lastName;
     }
            
     public String getMiddleInitial() {
     	return middleInitial;
     }
     
-    public String getUserName() {
+    public static String getUserName() {
     	return userName;
     }
     
@@ -177,7 +193,7 @@ public class User {
     	
     	for (List<String> row : list) {
     		
-			u.setFirstName(row.get(0));
+//			u.setFirstName(row.get(0));
             u.setFirstName(row.get(0).trim());
             u.setMiddleInitial(row.get(1).trim());
             u.setLastName(row.get(2).trim());
@@ -196,18 +212,19 @@ public class User {
             u.setGender(row.get(15).trim());
             u.setGenderInterest(row.get(16).trim());
             u.setAboutMe(row.get(17)/*.trim()*/);
+            u.setUserFileName(row.get(18));
             
 		}
     }
-    
-    
-    //toString
+
+
+	//toString
     @Override
     public String toString() {
     	return this.firstName + "," + this.middleInitial + "," + this.lastName + "," + this.phoneNumber + "," + this.email + "," + 
     			this.city + "," + this.state + "," + this.zipCode + "," + this.dateOfBirth + "," +  this.userName + "," + this.password + "," +
     			this.occupation + "," + this.edLevel + "," + this.hobbiesInterest + "," + this.relationGoals + "," + this.gender + "," + 
-    			this.genderInterest + "," + this.aboutMe;
+    			this.genderInterest + "," + this.aboutMe + "," + this.userFileName;
     	
     }
     
@@ -242,6 +259,11 @@ public class User {
 	
 	            return input;
 	        }
-	    } 
+	    }
+
+	public void setUserFileName(String string) {
+		// TODO Auto-generated method stub
+		
+	} 
 
 }

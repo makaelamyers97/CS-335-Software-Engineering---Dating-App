@@ -19,7 +19,7 @@ import java.util.Set;
 
 import datingapp.HelperFunctions;
 
-public class MatchesProfileFrame extends AppFrame {
+public class MyLikesProfileFrame extends AppFrame {
 	
 	private String curUserName;
 	private Set<String> likedUsers = new HashSet<>();
@@ -30,7 +30,7 @@ public class MatchesProfileFrame extends AppFrame {
     JLabel namelbl, locationlbl, aboutmelbl, agelbl, ocupationlbl, edulbl, hobieslb, relationshiplbl, genderlbl, interestlb;
     JButton nxtBtn, prevBtn, dashBtn;
 
-    public MatchesProfileFrame(String curUserName) {
+    public MyLikesProfileFrame(String curUserName) {
 
     	this.curUserName = curUserName.toLowerCase();
     	getLikes();
@@ -39,7 +39,7 @@ public class MatchesProfileFrame extends AppFrame {
     	//System.out.println(filteredUsers);
     	
         JPanel AvailableProfilesPanel = new JPanel();
-        Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         AvailableProfilesPanel.setBorder(yellowBorder);
         setContentPane(AvailableProfilesPanel);
         AvailableProfilesPanel.setLayout(null);

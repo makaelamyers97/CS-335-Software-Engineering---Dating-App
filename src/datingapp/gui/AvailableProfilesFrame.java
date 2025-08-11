@@ -2,6 +2,7 @@ package datingapp.gui;
 
 import datingapp.csvDatabaseFileManager;
 import datingapp.datingApp;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -20,10 +21,12 @@ import java.util.List;
 import java.util.Set;
 
 import datingapp.HelperFunctions;
+import datingapp.User;
 
 public class AvailableProfilesFrame extends AppFrame {
 	
 	private String curUserName;
+	private JLabel profilePhoto;
 	private Set<String> likedUsers = new HashSet<>();
 	private Set<String> dislikedUsers = new HashSet<>();
 	private List<List<String>> users = datingApp.seedData;
@@ -44,10 +47,14 @@ public class AvailableProfilesFrame extends AppFrame {
     	//System.out.println(filteredUsers);
     	
         JPanel AvailableProfilesPanel = new JPanel();
-        Border yellowBorder = BorderFactory.createLineBorder(Color.YELLOW, 20);
+        Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         AvailableProfilesPanel.setBorder(yellowBorder);
         setContentPane(AvailableProfilesPanel);
         AvailableProfilesPanel.setLayout(null);
+        
+        profilePhoto = new JLabel();
+        profilePhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
+        AvailableProfilesPanel.add(profilePhoto);
 
         namelbl = new JLabel();
         namelbl.setSize(300, 30);
@@ -345,6 +352,10 @@ public class AvailableProfilesFrame extends AppFrame {
         index = i;
 
         List<String> user = filteredUsers.get(i);
+        
+        String userName = user.get(9);
+    	ImageIcon photoIcon = HelperFunctions.getPicture(userName);
+    	profilePhoto.setIcon(photoIcon);
 
         namelbl.setText("Name: " + user.get(0) + " " + user.get(2));
         locationlbl.setText("Location: " + user.get(5) + ", " + user.get(6));
@@ -361,5 +372,6 @@ public class AvailableProfilesFrame extends AppFrame {
 
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);
+        
     }
 }
