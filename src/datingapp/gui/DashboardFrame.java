@@ -72,7 +72,7 @@ public class DashboardFrame extends AppFrame {
 	    			public void actionPerformed(ActionEvent e) {
 	    				dispose();
 
-	    				MyProfileFrame MyProfileFrame = new MyProfileFrame(imagePath, imagePath, imagePath, imagePath, imagePath);
+	    				MyProfileFrame MyProfileFrame = new MyProfileFrame(userName);
 	    				MyProfileFrame.setVisible(true);
 	    			}
 	    		});
