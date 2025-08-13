@@ -27,6 +27,7 @@ import javax.swing.border.Border;
 
 import datingapp.HelperFunctions;
 import datingapp.User;
+import datingapp.csvDatabaseFileManager;
 import datingapp.datingApp;
 
 public class MyProfileFrame extends AppFrame{
@@ -39,16 +40,16 @@ private static final long serialVersionUID = 1L;
 //	String[] genders = {"Male", "Female", "Non-binary", "Trans Woman", "Trans Man", "Non-Conforming",};
 //	String[] edLevel = {"High School or less", "Some College/AA/AS", "BA/BS", "MA", "Phd", "JD", "MBA"};
 //User u = new User();
-private List<List<String>> users = datingApp.seedData;
+private List<List<String>> users = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
 private List<String> foundUser = new ArrayList<>();
-//String userName;
+String userName;
 public MyProfileFrame(String userName /*, String first, String last, String city, String state*/) {
 System.out.println("From myprofile " +userName);
-findUserData(userName);
+foundUser=findUserData(users,userName);
 
 // panel
 JPanel profilePane = new JPanel();
-Border yellowBorder = BorderFactory.createLineBorder(Color.yellow, 20);
+Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
 profilePane.setBorder(yellowBorder);
 setContentPane(profilePane);							
 profilePane.setLayout(null); 
@@ -248,26 +249,28 @@ this.setResizable(true);
 
 }//ends inner Profile frame
 
-public void findUserData(String userName) {
-for (List<String> row : datingApp.seedData) {
+public List<String> findUserData(List<List<String>> users, String userName) {
+for (List<String> user : users) {
 
-String uName = row.get(9);
+String uName = user.get(9).toLowerCase();
 //String match = "match found";
 //List<String> foundUser;
-if (uName.equals(userName)) {
+System.out.println(uName);
+if (uName.equals(userName.toLowerCase())) {
 
-foundUser = row;
-System.out.println(foundUser);
+foundUser = user;
+System.out.println(foundUser.toString());
+
 //lblFullName.setText(row.get(0) + " " + row.get(2));
 //lblCityState.setText(row.get(5) + " " + row.get(6));
-break;
 
+return foundUser;
 }
   
-							
+				
 										   
 }
-							
+return null;						
 								  
 			
 }
