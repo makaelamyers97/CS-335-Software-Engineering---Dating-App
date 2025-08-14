@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ private List<List<String>> users = csvDatabaseFileManager.readCSVRows("dbSeeds.c
 private List<String> foundUser = new ArrayList<>();
 String userName;
 public MyProfileFrame(String userName /*, String first, String last, String city, String state*/) {
-System.out.println("From myprofile " +userName);
+//System.out.println("From myprofile " +userName);
 foundUser=findUserData(users,userName);
 
 // panel
@@ -58,8 +60,7 @@ profilePane.setLayout(null);
 //profilePane.add(Box.createRigidArea(new Dimension(0, 20))); 
 
 JButton btnAllProfiles = new JButton("Go to Dashboard");		//? should this be a dashboard button instead of all profiles?
-btnAllProfiles.setAlignmentX(Component.CENTER_ALIGNMENT);
-btnAllProfiles.setBounds(105, 40, 150, 30); 
+btnAllProfiles.setBounds(100, 50, 160, 30);           
 btnAllProfiles.setFocusable(false);
 profilePane.add(btnAllProfiles);
 
@@ -70,18 +71,52 @@ dashboardFrame.setVisible(true);
 }
 });
 
-//image placeholder
-String basePath1 = System.getProperty("user.dir");
-String imagePath1 = Paths.get(basePath1, "assets", "swans_with_background.JPG").toString();
-ImageIcon photoIcon = new ImageIcon(imagePath1);
+profilePane.add(btnAllProfiles);
 
-Image profileImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-photoIcon = new ImageIcon(profileImage);
+// start show user profile photo
 
-JLabel lblPhoto = new JLabel(photoIcon);
-lblPhoto.setBounds(80, 70, 200, 200);		// x, y, w, h
-profilePane.add(lblPhoto);
-// lblPhoto.setVisible(true);
+String newPath = "assets/UserPics";
+File directory = new File(newPath);
+
+File[] files = directory.listFiles();
+
+String[] filePaths = new String[files.length];
+
+List<String> images = new ArrayList<>();
+
+for (int i = 0; i < files.length; i++) {
+    filePaths[i] = files[i].getAbsolutePath(); 
+}
+
+for (String filePath: filePaths) {
+	
+	Path pathToAFile = Paths.get(filePath);
+	images.add(pathToAFile.getFileName().toString());
+	
+}
+
+String newImageName = (foundUser.get(9).trim() + "_pic.jpg").toLowerCase();
+
+for (String image1: images) {
+	
+	String oldImageName = image1.trim().toLowerCase();
+
+    if (newImageName.equals(oldImageName)) {
+
+    	String imagePath1 = new File("assets/UserPics/" + image1).getAbsolutePath();
+
+    	ImageIcon photoIcon = new ImageIcon(imagePath1);
+    	
+		Image profileImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		photoIcon = new ImageIcon(profileImage);
+
+		JLabel lblPhoto = new JLabel(photoIcon);
+		lblPhoto.setBounds(80, 70, 200, 200);		
+		profilePane.add(lblPhoto);
+	}
+}
+
+// end show user profile photo
 
 // Full Name
 JLabel lblFullName = new JLabel();//first + " " + last  u.getFirstName().toString + " " + u.getLastName()
@@ -139,14 +174,6 @@ int ageYears = HelperFunctions.calculateAge(dob);
 lblAge.setText("Age: "+ Integer.toString(ageYears));
 
 profilePane.add(lblAge);
-
-										
-												   
-													 
-						  
-								
-						   
-
 
 //        JTextField ageTxtFld = new JTextField();
 //        //int ageYears = HelperFunctions.calculateAge(dob);
@@ -255,11 +282,11 @@ for (List<String> user : users) {
 String uName = user.get(9).toLowerCase();
 //String match = "match found";
 //List<String> foundUser;
-System.out.println(uName);
+//System.out.println(uName);
 if (uName.equals(userName.toLowerCase())) {
 
 foundUser = user;
-System.out.println(foundUser.toString());
+//System.out.println(foundUser.toString());
 
 //lblFullName.setText(row.get(0) + " " + row.get(2));
 //lblCityState.setText(row.get(5) + " " + row.get(6));

@@ -18,13 +18,13 @@ public class WelcomeFrame extends AppFrame {
 //	/**
 //	 * Create the frame.
 //	 */
-	public WelcomeFrame(String userName) {
+	public WelcomeFrame(String userName, String firstName) {
 	//public WelcomeFrame(User user) {
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 ////		setSize(500, 185);
 //		setLocationRelativeTo(null);
 		
-		User currentUser = HelperFunctions.Session.getCurrentUser();
+//		User currentUser = HelperFunctions.Session.getCurrentUser();
 
 		JPanel contentPane = new JPanel(new BorderLayout(10, 10));
 		Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);	
@@ -34,7 +34,7 @@ public class WelcomeFrame extends AppFrame {
 		setContentPane(contentPane);
 
 		
-		JLabel lblNewLabel = new JLabel("<html><div style='text-align:center;width:200px;'>" +"<br><br><br>" + userName + ", welcome to Swan Song!<br>" +
+		JLabel lblNewLabel = new JLabel("<html><div style='text-align:center;width:200px;'>" +"<br><br><br>" + firstName + ", welcome to Swan Song!<br>" +
 				"Get ready to retire from the dating scene!<br></div></html>");
 		//lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

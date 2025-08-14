@@ -21,6 +21,11 @@ import datingapp.HelperFunctions;
 
 public class MyLikesProfileFrame extends AppFrame {
 	
+	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
+    private List<String> foundUser = new ArrayList<>();
+    String userName;
+	
+    private JLabel likesPhoto;
 	private String curUserName;
 	private Set<String> likedUsers = new HashSet<>();
 	private List<List<String>> users = datingApp.seedData;
@@ -43,6 +48,10 @@ public class MyLikesProfileFrame extends AppFrame {
         AvailableProfilesPanel.setBorder(yellowBorder);
         setContentPane(AvailableProfilesPanel);
         AvailableProfilesPanel.setLayout(null);
+        
+        likesPhoto = new JLabel();
+        likesPhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
+        AvailableProfilesPanel.add(likesPhoto);
 
         namelbl = new JLabel();
         namelbl.setSize(300, 30);
@@ -144,6 +153,46 @@ public class MyLikesProfileFrame extends AppFrame {
         });
    
     }
+    
+    public ImageIcon showProfilePhoto(String userName) {
+    	
+        foundUser = findUserData(userList, userName);
+        
+        String newPath = "assets/UserPics";
+        File directory = new File(newPath);
+        File[] files = directory.listFiles();
+
+        String newImageName = (foundUser.get(9).trim() + "_pic.jpg").toLowerCase();
+
+        for (File file : files) {
+        	
+            String oldImageName = file.getName().trim().toLowerCase();
+            
+            if (newImageName.equals(oldImageName)) {
+            	
+                String imagePath = file.getAbsolutePath();
+                ImageIcon photoIcon = new ImageIcon(imagePath);
+
+                Image scaledImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                return new ImageIcon(scaledImage);
+            }
+        }
+        
+        return null; 
+    }
+    
+    public List<String> findUserData(List<List<String>> users, String userName) {
+    	for (List<String> user : users) {
+
+    		String uName = user.get(9).toLowerCase();
+    		
+    		if (uName.equals(userName.toLowerCase())) {
+
+    			foundUser = user;
+
+    		}}
+    		return foundUser;
+    	}
        
     private void getLikes() { 
     	
@@ -192,6 +241,9 @@ public class MyLikesProfileFrame extends AppFrame {
         index = i;
 
         List<String> user = filteredUsers.get(i);
+        
+        String userName = user.get(9);
+        likesPhoto.setIcon(showProfilePhoto(userName));
 
         namelbl.setText("Name: " + user.get(0) + " " + user.get(2));
         locationlbl.setText("Location: " + user.get(5) + ", " + user.get(6));

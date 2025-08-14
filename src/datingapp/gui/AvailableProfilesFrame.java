@@ -14,6 +14,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -25,6 +27,10 @@ import datingapp.User;
 
 public class AvailableProfilesFrame extends AppFrame {
 	
+	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
+    private List<String> foundUser = new ArrayList<>();
+    String userName;
+	
 	private String curUserName;
 	private JLabel profilePhoto;
 	private Set<String> likedUsers = new HashSet<>();
@@ -32,12 +38,13 @@ public class AvailableProfilesFrame extends AppFrame {
 	private List<List<String>> users = datingApp.seedData;
 	private List<List<String>> filteredUsers = new ArrayList<>();
 	
+	
     int index = 0;
     JLabel namelbl, locationlbl, aboutmelbl, agelbl, ocupationlbl, edulbl, hobieslb, relationshiplbl, genderlbl, interestlb;
     JButton nxtBtn, prevBtn, dashBtn, likeBtn, dislikeBtn;
 
     public AvailableProfilesFrame(String curUserName) {
-
+    
     	this.curUserName = curUserName.toLowerCase();
     	getLikes();
     	//System.out.println(likedUsers);
@@ -187,9 +194,47 @@ public class AvailableProfilesFrame extends AppFrame {
 				dashboardFrame.setVisible(true);
 			}
         });
-
-       
     }
+    
+    public ImageIcon showProfilePhoto(String userName) {
+    	
+        foundUser = findUserData(userList, userName);
+        
+        String newPath = "assets/UserPics";
+        File directory = new File(newPath);
+        File[] files = directory.listFiles();
+
+        String newImageName = (foundUser.get(9).trim() + "_pic.jpg").toLowerCase();
+
+        for (File file : files) {
+        	
+            String oldImageName = file.getName().trim().toLowerCase();
+            
+            if (newImageName.equals(oldImageName)) {
+            	
+                String imagePath = file.getAbsolutePath();
+                ImageIcon photoIcon = new ImageIcon(imagePath);
+
+                Image scaledImage = photoIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                return new ImageIcon(scaledImage);
+            }
+        }
+        
+        return null; 
+    }
+    
+    public List<String> findUserData(List<List<String>> users, String userName) {
+    	for (List<String> user : users) {
+
+    		String uName = user.get(9).toLowerCase();
+    		
+    		if (uName.equals(userName.toLowerCase())) {
+
+    			foundUser = user;
+
+    		}}
+    		return foundUser;
+    	}
     
     private void saveLike(String LikedUser) {
     	File f = new File(csvDatabaseFileManager.getFilePath("dbLikes.csv", true));
@@ -349,14 +394,17 @@ public class AvailableProfilesFrame extends AppFrame {
     private void showProfile(int i) {
 
         if (i < 0 || i >= filteredUsers.size()) return;
+        
         index = i;
 
         List<String> user = filteredUsers.get(i);
         
         String userName = user.get(9);
-    	ImageIcon photoIcon = HelperFunctions.getPicture(userName);
-    	profilePhoto.setIcon(photoIcon);
 
+    	// end show user profile photo
+
+        profilePhoto.setIcon(showProfilePhoto(userName));
+        
         namelbl.setText("Name: " + user.get(0) + " " + user.get(2));
         locationlbl.setText("Location: " + user.get(5) + ", " + user.get(6));
         aboutmelbl.setText("About me: " + user.get(17));

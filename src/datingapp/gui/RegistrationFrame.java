@@ -3,6 +3,7 @@ package datingapp.gui;
 import datingapp.csvDatabaseFileManager;
 import datingapp.datingApp;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +14,7 @@ import datingapp.HelperFunctions;
 import datingapp.User;
 
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -388,7 +390,7 @@ public class RegistrationFrame extends AppFrame {
         contentPane.add(aboutTxtFld);
         //detailsTxtFld.setVisible(true);
 //        
-        uploadPhotoBtn = new JButton("Upload Profile Button");
+        uploadPhotoBtn = new JButton("Upload Profile Photo");
         uploadPhotoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         uploadPhotoBtn.setBounds(85, 595, 185, 30); 
 	    uploadPhotoBtn.setFocusable(false);
@@ -403,17 +405,12 @@ public class RegistrationFrame extends AppFrame {
 	    		if(e.getSource() == uploadPhotoBtn) {
 	    			
 	    			JFileChooser file_upload = new JFileChooser();
-//	    			file_upload.showOpenDialog(null);
-//	    			below line of code opens box that allows us to choose which file we want to upload
-//	    			int res = file_upload.showOpenDialog(null);
-//	    			below line of code opens the box and also saves that file
+
 	    			int res_2 = file_upload.showSaveDialog(null);
 	    			
 	    			if(res_2 == JFileChooser.APPROVE_OPTION) {
-//	    				below line of code gets selected path of file
+	    				
 	    				File file_path = new File(file_upload.getSelectedFile().getAbsolutePath());
-//	    				below line of code prints file path in console
-//	    				System.out.println(file_path);
 	    				newUser.setUserFileName(file_path);
 
 //	    				https://www.youtube.com/watch?v=n66gUbZ6WcQ
@@ -432,20 +429,25 @@ public class RegistrationFrame extends AppFrame {
 	    				}
 
 	    				String enteredUsername = usernameTxtFld.getText().trim();
-//	  
-
-	    				String destinationFileName = enteredUsername + "_pic." + extension;
-	    				File destinationFile = new File(directory, destinationFileName);
 
 	    				try {
-	    				    Files.copy(sourceFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-	    				    newUser.setUserFileName(destinationFile); 
+	    				    BufferedImage image = ImageIO.read(sourceFile);
+	    				    if (image == null) {
+	    				        throw new IOException("Error.");
+	    				    }
+
+	    				    String finalFileFullName = enteredUsername + "_pic.jpg";
+	    				    File finalFile = new File(directory, finalFileFullName);
+
+	    				    ImageIO.write(image, "jpg", finalFile);
+
+	    				    newUser.setUserFileName(finalFile); 
+
 	    				} catch (IOException ex) {
 	    				    ex.printStackTrace();
 	    				    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-	    				}
-//	    				System.out.println("Saving to: " + destinationFile.getAbsolutePath());
-	    			
+	    				
+	    				}	    			
 	    			}
 	    		}    		
 	    		
@@ -528,13 +530,13 @@ public class RegistrationFrame extends AppFrame {
             	String aboutData = aboutTxtFld.getText();
             	newUser.setAboutMe(aboutData);
             	
-            	HelperFunctions.Session.setCurrentUser(newUser);
+//            	HelperFunctions.Session.setCurrentUser(newUser);
             	
             	//Write the user to the assets/dbSeeds file to simulate database
             	csvDatabaseFileManager.writeUserToCSV(newUser);
             	
                 dispose();
-                new WelcomeFrame(newUser.getUserName()).setVisible(true);
+                new WelcomeFrame(newUser.getUserName(), newUser.getFirstName()).setVisible(true);
             }
         });
         
