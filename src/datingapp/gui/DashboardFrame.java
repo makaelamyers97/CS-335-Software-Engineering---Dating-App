@@ -87,6 +87,7 @@ public class DashboardFrame extends AppFrame {
 	            
 	            btnAllProfiles.addActionListener(new ActionListener() {
 	            	public void actionPerformed(ActionEvent e) {
+	            		dispose();								//ADDED TO CLOSE DASH B4 GOING TO ALL PROFILES
 	                AvailableProfilesFrame AvailableFrame = new AvailableProfilesFrame(userName);
 	                AvailableFrame.setVisible(true);
 	            	}
@@ -101,6 +102,7 @@ public class DashboardFrame extends AppFrame {
 	            contentPane.add(btnMatches);
 	            btnMatches.addActionListener(new ActionListener() {
 	            	public void actionPerformed(ActionEvent e) {
+	            		dispose(); 			//ADDED TO CLOSE DASH B4 GOING TO MYLIKES
 	                MyLikesProfileFrame MatchesFrame = new MyLikesProfileFrame(userName);
 	                MatchesFrame.setVisible(true);
 	            	}

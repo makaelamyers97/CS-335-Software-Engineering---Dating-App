@@ -151,6 +151,9 @@ public class MyLikesProfileFrame extends AppFrame {
 				dashboardFrame.setVisible(true);
 			}
         });
+        
+      //Modifies title for this frame
+      this.setTitle("My Likes");
    
     }
     
@@ -260,5 +263,7 @@ public class MyLikesProfileFrame extends AppFrame {
 
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);
+        
+
     }
 }

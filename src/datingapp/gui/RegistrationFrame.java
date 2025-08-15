@@ -180,6 +180,7 @@ public class RegistrationFrame extends AppFrame {
         usernameTxtFld.setSize(150, 20);
         usernameTxtFld.setLocation(135, 155);
         contentPane.add(usernameTxtFld);
+
         
         // password
         JLabel passwordLbl = new JLabel("Password");
@@ -234,8 +235,8 @@ public class RegistrationFrame extends AppFrame {
         try {
         	
         	/*MaskFormatter */
-        	pformatter = new MaskFormatter("(###) ###-####");		
-        	pformatter.setPlaceholder("(000) 000-0000") ;
+        	pformatter = new MaskFormatter("###-###-####");	
+        	pformatter.setPlaceholder("000-000-0000") ;
 
 
         } catch(ParseException e) {
@@ -259,7 +260,7 @@ public class RegistrationFrame extends AppFrame {
 			@Override
 			public void focusLost(FocusEvent e) {
 				if(phoneTxtFld.getText().isEmpty()) {
-				phoneTxtFld.setText("(000) 000-0000");
+				phoneTxtFld.setText("000-000-0000");
 				}
 			}
         	
@@ -379,12 +380,12 @@ public class RegistrationFrame extends AppFrame {
         // About me
         JLabel aboutMeLbl = new JLabel("Tell us a little more about yourself");
         aboutMeLbl.setSize(300, 30);
-        aboutMeLbl.setLocation(30, 510);   //x, y
+        aboutMeLbl.setLocation(30, 490);   //x, y
         aboutMeLbl.setFont(new Font("Arial", Font.PLAIN,18));
         contentPane.add(aboutMeLbl);   
         
         JTextArea aboutTxtFld = new JTextArea();
-        aboutTxtFld.setBounds(30, 535, 300, 50);
+        aboutTxtFld.setBounds(30, 515, 300, 50);
         aboutTxtFld.setLineWrap(true);
         aboutTxtFld.setWrapStyleWord(true);
         contentPane.add(aboutTxtFld);
@@ -392,7 +393,7 @@ public class RegistrationFrame extends AppFrame {
 //        
         uploadPhotoBtn = new JButton("Upload Profile Photo");
         uploadPhotoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        uploadPhotoBtn.setBounds(85, 595, 185, 30); 
+        uploadPhotoBtn.setBounds(85, 575, 185, 30); 
 	    uploadPhotoBtn.setFocusable(false);
 	    
 //	    https://www.youtube.com/watch?v=YZ_tQFTMYoQ
@@ -456,19 +457,24 @@ public class RegistrationFrame extends AppFrame {
 	    
 	    contentPane.add(uploadPhotoBtn);
 	    
+
+
         
         registerBtn = new JButton("Register");
         registerBtn.setSize(120, 30);
-        registerBtn.setLocation(120, 630);												
+        registerBtn.setLocation(120, 610);												
         newUser = new User();
+ 	   	
         registerBtn.addActionListener(new ActionListener() {
         	
             public void actionPerformed(ActionEvent e) {
-            	         	
-            	
-            	//Get data to User when Register button is clicked       	
+            	//Validate required fields, then set data to Use-->when Register button is clicked
+            	Boolean invalidUserName = validateUserName(usernameTxtFld.getText());        	
+            	if(invalidUserName.equals(true)) {return;}
             	String userNameData = usernameTxtFld.getText();
+
             	for (List<String> row : datingApp.seedData) {
+
             		if(userNameData.trim().length() > 0 && row.toString().toLowerCase().contains(userNameData.toLowerCase())) {
             			Window activeWindow = KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow();
                     	JOptionPane.showMessageDialog((JFrame) activeWindow, "The username " + userNameData + " is in use.\nClick OK to exit the app.");
@@ -478,34 +484,52 @@ public class RegistrationFrame extends AppFrame {
           
             	newUser.setUserName(userNameData);
             	
+            	Boolean invalidFirstName = validateFirstName(firstTxtFld.getText());
+            	if(invalidFirstName.equals(true)) return;
             	String firstNameData = firstTxtFld.getText();
             	newUser.setFirstName(firstNameData);
             	
+            	Boolean invalidLastName = validateLastName(lastTxtFld.getText());
+            	if(invalidLastName.equals(true)) return;
             	String lastNameData = lastTxtFld.getText();
             	newUser.setLastName(lastNameData);
             	
             	String middleIData = middleTxtFld.getText();
             	newUser.setMiddleInitial(middleIData);
             	
+            	Boolean invalidPhone = validatePhone(phoneTxtFld.getText());
+            	if(invalidPhone.equals(true)) return;
             	String phoneData = (String) phoneTxtFld.getText();
             	newUser.setPhoneNumber(phoneData);
             	
+            	
+            	Boolean invalidEmail = validateEmail(emailTxtFld.getText());
+            	if(invalidEmail.equals(true)) return;
             	String emailData = emailTxtFld.getText();
             	newUser.setEmail(emailData);
             	
+            	Boolean invalidCity = validateCity(cityTxtFld.getText());
+            	if(invalidCity.equals(true)) return;
             	String cityData = cityTxtFld.getText();
             	newUser.setCity(cityData);
             	
             	String stateData = (String) stateBox.getSelectedItem();
             	newUser.setState(stateData);
             	
+            	Boolean invalidZipcode = validateZipcode(zipTxtFld.getText());
+            	if(invalidZipcode.equals(true)) return;
 				String zipData = (String)zipTxtFld.getText();
 				newUser.setZipCode(zipData);
             	
+				
+				Boolean invalidPassword = validatePassword(passwordTxtFld.getPassword());
+				if(invalidPassword.equals(true)) return;
             	char[] passwordArr = passwordTxtFld.getPassword();
             	String passwordData = new String(passwordArr);
             	newUser.setPassword(passwordData);
             	
+            	Boolean invalidDOB = validateDOB(dobTxtFld.getText());
+            	if(invalidDOB.equals(true)) return;
             	String dobData = dobTxtFld.getText();
             	newUser.setDateOfBirth(dobData);
             	
@@ -516,7 +540,8 @@ public class RegistrationFrame extends AppFrame {
             	newUser.setEdLevel(edLevelData);
             	
             	String hobbiesData = hobbiesTxtFld.getText();
-            	newUser.setHobbiesInterests(hobbiesData);
+            	String hobbiesDataSemicolon = hobbiesData.replace(",", ";");
+            	newUser.setHobbiesInterests(hobbiesDataSemicolon);
             	
             	String relGoalsData = relGoalsTxtFld.getText();
             	newUser.setRelationGoals(relGoalsData);
@@ -535,10 +560,13 @@ public class RegistrationFrame extends AppFrame {
             	//Write the user to the assets/dbSeeds file to simulate database
             	csvDatabaseFileManager.writeUserToCSV(newUser);
             	
+            	
                 dispose();
                 new WelcomeFrame(newUser.getUserName(), newUser.getFirstName()).setVisible(true);
             }
+            
         });
+        
         
         contentPane.add(registerBtn, uploadPhotoBtn);
         registerBtn.setFocusable(false);
@@ -550,7 +578,107 @@ public class RegistrationFrame extends AppFrame {
 		this.setTitle("User Registration");
     
 	};
- }
+    public static boolean validateUserName(String usernameTxt) {
+    	String userNameData = usernameTxt.trim();
+    	String regexPatternUn = ".{6,}"; 	
+    	if(userNameData.isEmpty() || !userNameData.matches(regexPatternUn)) {
+    		JOptionPane.showMessageDialog(null,"The username \"" + userNameData + "\" must be 6 or more characters.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		//System.exit(0);
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validatePassword(char[] passwordArr) {
+    	String pstr = new String(passwordArr);
+    	//char[] passwordArrData = passwordArr;
+    	String regexPatternPw = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{12,}$";
+    	if(pstr.isEmpty() || !pstr.matches(regexPatternPw)) {
+    		JOptionPane.showMessageDialog(null,"The password \"" + pstr + "\" must be 12+ characters and include upper/lowercase, a digit, and special character.\"", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateFirstName(String firstNameTxt) {
+    	String firstNameData = firstNameTxt.trim();
+    	String regexPatternFN = "[A-Za-z]{2,}";
+    	if(firstNameData.isEmpty() || !firstNameData.matches(regexPatternFN)) {
+    		JOptionPane.showMessageDialog(null,"The first name \"" + firstNameData + "\" must be 2 or more characters.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateLastName(String lastNameTxt) {
+    	String lastNameData = lastNameTxt.trim();
+    	String regexPatternLN = "[A-Za-z]{2,}";	
+    	if(lastNameData.isEmpty() || !lastNameData.matches(regexPatternLN)) {
+    		JOptionPane.showMessageDialog(null,"The last name " + lastNameData + " must be 2 or more characters.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateDOB(String dobTxt) {
+    	String dobData = dobTxt.trim();
+    	String regexPatternDOB = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";  	
+    	if(dobData.isEmpty() || !dobData.matches(regexPatternDOB)) {
+    		JOptionPane.showMessageDialog(null,"The date of birth \"" + dobData + "\" must be in the format dd/mm/yyyy.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateEmail(String emailTxt) {
+    	String emailData = emailTxt.trim();
+    	String regexPatternE = ".+@.{2,}\\..{2,}";	
+    	if(emailData.isEmpty()|| !emailData.matches(regexPatternE)) {
+    		JOptionPane.showMessageDialog(null,"The email address\"" + emailData + "\" is invalid.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validatePhone(String phoneTxt) {
+    	String phoneData = phoneTxt.trim();
+    	String regexPatternP = "\\d{3}-\\d{3}-\\d{4}";   	
+    	if(phoneData.isEmpty() || !phoneData.matches(regexPatternP)) {
+    		JOptionPane.showMessageDialog(null,"The phone number \"" + phoneData + "\" must be in the format ###-###-####.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateCity(String cityTxt) {
+    	String cityData = cityTxt.trim();
+    	String regexPatternC = "[A-Za-z\\s]{2,}";    	
+    	if(cityData.isEmpty() || !cityData.matches(regexPatternC)) {
+    		JOptionPane.showMessageDialog(null,"The city \"" + cityData + "\" must be at least 2 characters.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    public static boolean validateZipcode(String zipCodeTxt) {
+    	String zipcodeData = zipCodeTxt.trim();
+    	String regexPatternz = "\\d{5}";   	    	
+    	if(zipcodeData.isEmpty() || !zipcodeData.matches(regexPatternz)) {
+    		JOptionPane.showMessageDialog(null,"The zip code \"" + zipcodeData + "\" must be at least 5 numbers.", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		
+    		return true;
+    	} 	
+    		return false;
+    }
+    
+    
+}
 
 
 

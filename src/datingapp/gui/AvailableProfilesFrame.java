@@ -421,5 +421,10 @@ public class AvailableProfilesFrame extends AppFrame {
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);
         
+        
+        //Modifies the title for this frame
+        this.setTitle("Available Profiles");
     }
+    
+    
 }
