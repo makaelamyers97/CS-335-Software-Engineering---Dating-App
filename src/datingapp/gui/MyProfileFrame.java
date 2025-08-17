@@ -120,7 +120,7 @@ for (String image1: images) {
 	lblFullName.setSize(300, 30); //size w300, h30
 	lblFullName.setLocation(30, 250);
 	lblFullName.setHorizontalAlignment(SwingConstants.CENTER);
-	lblFullName.setFont(new Font("Arial", Font.PLAIN,18));	
+	lblFullName.setFont(new Font("Arial", Font.BOLD,18));	
 	lblFullName.setText(foundUser.get(0) + " " + foundUser.get(2));
 	profilePane.add(lblFullName);
 	
@@ -161,7 +161,7 @@ for (String image1: images) {
 	lblAge.setFont(new Font("Arial", Font.PLAIN,14));
 	String dob = foundUser.get(8);
 	int ageYears = HelperFunctions.calculateAge(dob);
-	lblAge.setText("Age: "+ Integer.toString(ageYears));
+	lblAge.setText("<html><b>Age: </b><html>"+ Integer.toString(ageYears));
 	
 	profilePane.add(lblAge);
 	
@@ -170,7 +170,7 @@ for (String image1: images) {
 	lblOccupation.setSize(300, 30);
 	lblOccupation.setLocation(30, 475);
 	lblOccupation.setFont(new Font("Arial", Font.PLAIN,14));
-	lblOccupation.setText("Occupation:  " + foundUser.get(11));
+	lblOccupation.setText("<html><b>Occupation:  </b><html>" + foundUser.get(11));
 	profilePane.add(lblOccupation);
 	
 	//        //Education Level
@@ -178,7 +178,7 @@ for (String image1: images) {
 	lblEducation.setSize(300, 30);
 	lblEducation.setLocation(30, 500);   //x, y
 	lblEducation.setFont(new Font("Arial", Font.PLAIN,14));
-	lblEducation.setText("Education Level:  " + foundUser.get(12));
+	lblEducation.setText("<html><b>Education Level:  </b><html>" + foundUser.get(12));
 	profilePane.add(lblEducation);
 	
 	//Hobbies
@@ -186,7 +186,7 @@ for (String image1: images) {
 	lblHobbies.setSize(300, 30);
 	lblHobbies.setLocation(30, 525);
 	lblHobbies.setFont(new Font("Arial", Font.PLAIN,14));
-	lblHobbies.setText("Hobbies/Interests:  " + foundUser.get(13));
+	lblHobbies.setText("<html><b>Hobbies/Interests:  </b><html>" + foundUser.get(13));
 	profilePane.add(lblHobbies);
 	
 	//Relationship Goals
@@ -194,7 +194,7 @@ for (String image1: images) {
 	lblGoals.setSize(300, 30);
 	lblGoals.setLocation(30, 550);   //x, y
 	lblGoals.setFont(new Font("Arial", Font.PLAIN,14));
-	lblGoals.setText("Relationship Goals:  " + foundUser.get(14));
+	lblGoals.setText("<html><b>Relationship Goals:  </b><html>" + foundUser.get(14));
 	profilePane.add(lblGoals);
 	
 	//Gender
@@ -202,7 +202,7 @@ for (String image1: images) {
 	lblGender.setSize(300, 30);
 	lblGender.setLocation(30, 575);   //x, y
 	lblGender.setFont(new Font("Arial", Font.PLAIN,14));
-	lblGender.setText("Gender:  " + foundUser.get(15));
+	lblGender.setText("<html><b>Gender:  </b><html>" + foundUser.get(15));
 	profilePane.add(lblGender);
 	
 	//Interests
@@ -210,7 +210,7 @@ for (String image1: images) {
 	lblInterests.setSize(200, 30);
 	lblInterests.setLocation(30, 600);   //x, y
 	lblInterests.setFont(new Font("Arial", Font.PLAIN,14));
-	lblInterests.setText("Interested In:  " + foundUser.get(16));
+	lblInterests.setText("<html><b>Interested In:  </b><html>" + foundUser.get(16));
 	profilePane.add(lblInterests);
 	
 	//Modified the AppFrame for this page

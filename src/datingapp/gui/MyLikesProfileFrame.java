@@ -59,76 +59,78 @@ public class MyLikesProfileFrame extends AppFrame {
         
         likesPhoto = new JLabel();
         likesPhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
+        likesPhoto.setHorizontalAlignment(SwingConstants.CENTER);
+        likesPhoto.setVerticalAlignment(SwingConstants.CENTER);
         LikesProfilesPanel.add(likesPhoto);
 
         namelbl = new JLabel();
         namelbl.setSize(300, 30);
         namelbl.setLocation(30, 250);
         namelbl.setHorizontalAlignment(SwingConstants.CENTER);
-        namelbl.setFont(new Font("Arial", Font.PLAIN,18));
+        namelbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(namelbl);
 
         locationlbl = new JLabel();
         locationlbl.setSize(300, 30);
         locationlbl.setLocation(30, 275);
         locationlbl.setHorizontalAlignment(SwingConstants.CENTER);
-        locationlbl.setFont(new Font("Arial", Font.PLAIN,18));
+        locationlbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(locationlbl);
 
         aboutmelbl = new JLabel();
         aboutmelbl.setSize(300, 30);
         aboutmelbl.setLocation(30, 300);
         aboutmelbl.setHorizontalAlignment(SwingConstants.CENTER);
-        aboutmelbl.setFont(new Font("Arial", Font.PLAIN,18));
+        aboutmelbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(aboutmelbl);
 
         agelbl = new JLabel();
         agelbl.setSize(300, 30);
         agelbl.setLocation(30, 325);
         agelbl.setHorizontalAlignment(SwingConstants.CENTER);
-        agelbl.setFont(new Font("Arial", Font.PLAIN,18));
+        agelbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(agelbl);
 
         ocupationlbl = new JLabel();
         ocupationlbl.setSize(300, 30);
         ocupationlbl.setLocation(30, 350);
         ocupationlbl.setHorizontalAlignment(SwingConstants.CENTER);
-        ocupationlbl.setFont(new Font("Arial", Font.PLAIN,18));
+        ocupationlbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(ocupationlbl);
 
         edulbl = new JLabel();
         edulbl.setSize(300, 30); 
         edulbl.setLocation(30, 375);
         edulbl.setHorizontalAlignment(SwingConstants.CENTER);
-        edulbl.setFont(new Font("Arial", Font.PLAIN,18));
+        edulbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(edulbl);
 
         hobieslb = new JLabel();
         hobieslb.setSize(300, 30);
         hobieslb.setLocation(30, 400);
         hobieslb.setHorizontalAlignment(SwingConstants.CENTER);
-        hobieslb.setFont(new Font("Arial", Font.PLAIN,18));
+        hobieslb.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(hobieslb);
 
         relationshiplbl = new JLabel();
         relationshiplbl.setSize(300, 30);
         relationshiplbl.setLocation(30, 425);
         relationshiplbl.setHorizontalAlignment(SwingConstants.CENTER);
-        relationshiplbl.setFont(new Font("Arial", Font.PLAIN,18));
+        relationshiplbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(relationshiplbl);
 
         genderlbl = new JLabel();
         genderlbl.setSize(300, 30);
         genderlbl.setLocation(30, 450);
         genderlbl.setHorizontalAlignment(SwingConstants.CENTER);
-        genderlbl.setFont(new Font("Arial", Font.PLAIN,18));
+        genderlbl.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(genderlbl);
 
         interestlb = new JLabel();
         interestlb.setSize(300, 30);
         interestlb.setLocation(30, 475);
         interestlb.setHorizontalAlignment(SwingConstants.CENTER);
-        interestlb.setFont(new Font("Arial", Font.PLAIN,18));
+        interestlb.setFont(new Font("Arial", Font.PLAIN,16));
         LikesProfilesPanel.add(interestlb);
 
         // Navigation buttons
@@ -255,18 +257,18 @@ public class MyLikesProfileFrame extends AppFrame {
         String userName = user.get(9);
         likesPhoto.setIcon(showProfilePhoto(userName));
 
-        namelbl.setText("Name: " + user.get(0) + " " + user.get(2));
-        locationlbl.setText("Location: " + user.get(5) + ", " + user.get(6));
-        aboutmelbl.setText("About me: " + user.get(17));
+        namelbl.setText("<html><b>Name: </b>" + user.get(0) + " " + user.get(2) + "</html>");
+        locationlbl.setText("<html><b>Location: </b>" + user.get(5) + ", " + user.get(6) + "</html>");
+        aboutmelbl.setText("<html><b>About me: </b>" + user.get(17) + "</html>");
         String dob = user.get(8);
         int ageYears = HelperFunctions.calculateAge(dob);
-        agelbl.setText("Age: "+ Integer.toString(ageYears));
-        ocupationlbl.setText("Occupation: "+ user.get(11));					
-        edulbl.setText("Education: "+ user.get(12));
-        hobieslb.setText("Hobbies: " + user.get(13));
-        relationshiplbl.setText("Relationship goal: " + user.get(14));
-        genderlbl.setText("Gender: " + user.get(15));
-        interestlb.setText("Interested in: " + user.get(16));
+        agelbl.setText("<html><b>Age: </b>"+ Integer.toString(ageYears) + "</html>");
+        ocupationlbl.setText("<html><b>Occupation: </b>"+ user.get(11) + "</html>");					
+        edulbl.setText("<html><b>Education: </b>"+ user.get(12) + "</html>");
+        hobieslb.setText("<html><b>Hobbies: </b>" + user.get(13) + "</html>");
+        relationshiplbl.setText("<html><b>Relationship goal: </b>" + user.get(14) + "</html>");
+        genderlbl.setText("<html><b>Gender: </b>" + user.get(15) + "</html>");
+        interestlb.setText("<html><b>Interested in: </b>" + user.get(16) + "</html>");
 
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);
