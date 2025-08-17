@@ -2,10 +2,10 @@ package datingapp.gui;
 								 
 
 import java.awt.Color;
-import java.awt.Component;
-//import java.awt.Dimension;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -20,29 +20,23 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 import datingapp.HelperFunctions;
-import datingapp.User;
 import datingapp.csvDatabaseFileManager;
-import datingapp.datingApp;
 
 	public class MyProfileFrame extends AppFrame{
 
 
-	/**
-	* 
-	*/
 	private static final long serialVersionUID = 1L;
 
 	private List<List<String>> users = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
 	private List<String> foundUser = new ArrayList<>();
 	String userName;
 
-public MyProfileFrame(String userName ) {
-	//System.out.println("From myprofile " +userName);
+	public MyProfileFrame(String userName ) {
+
 	foundUser=findUserData(users,userName);
 
 	// panel
@@ -52,9 +46,15 @@ public MyProfileFrame(String userName ) {
 	setContentPane(profilePane);							
 	profilePane.setLayout(null); 
 
-
-//profilePane.add(Box.createRigidArea(new Dimension(0, 20))); 
-
+	//https://stackoverflow.com/questions/14117481/how-can-i-set-the-insets-of-a-jframe/14117630
+	JLabel logoutLbl = Logout.createLabel(this);
+	profilePane.add(logoutLbl);
+	Dimension dimension = logoutLbl.getPreferredSize();
+	Insets insets = profilePane.getInsets();
+	int x = insets.left + 5;
+	int y = insets.top + 5;
+	logoutLbl.setBounds(x, y, dimension.width, dimension.height);
+	
 	JButton btnAllProfiles = new JButton("Go to Dashboard");	//? shouldn't this be a dashboard button instead of all profiles?
 	btnAllProfiles.setBounds(100, 50, 160, 30);           
 	btnAllProfiles.setFocusable(false);

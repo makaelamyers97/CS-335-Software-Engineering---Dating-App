@@ -14,8 +14,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -23,8 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import datingapp.HelperFunctions;
-import datingapp.User;
-
+@SuppressWarnings("serial")
 public class AvailableProfilesFrame extends AppFrame {
 	
 	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
@@ -59,6 +56,14 @@ public class AvailableProfilesFrame extends AppFrame {
         setContentPane(AvailableProfilesPanel);
         AvailableProfilesPanel.setLayout(null);
         
+    	JLabel logoutLbl = Logout.createLabel(this);
+    	AvailableProfilesPanel.add(logoutLbl);
+    	Dimension dimension = logoutLbl.getPreferredSize();
+    	Insets insets = AvailableProfilesPanel.getInsets();
+    	int x = insets.left + 5;
+    	int y = insets.top + 5;
+    	logoutLbl.setBounds(x, y, dimension.width, dimension.height);
+
         profilePhoto = new JLabel();
         profilePhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
         AvailableProfilesPanel.add(profilePhoto);

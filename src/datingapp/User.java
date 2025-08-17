@@ -3,8 +3,6 @@ package datingapp;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 public class User {
 	
 	//vars
@@ -228,38 +226,39 @@ public class User {
     	
     }
     
-    //getValidInput method
- 	private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
+
+ 	//private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
 	        
-	        while (true) {
+	       // while (true) {
 	        	
 	        	
-	            System.out.print(msg);
-	            String input = s/*.nextLine()*/;
+	           // System.out.print(msg);
+	           // String input = s/*.nextLine()*/;
 	
-	            if (isRequired && input.isEmpty() == true) { 
-	            	JOptionPane.showMessageDialog(null, errorMsg, "Error", 
-                            JOptionPane.INFORMATION_MESSAGE);
+	            //if (isRequired && input.isEmpty() == true) { 
+	            	//JOptionPane.showMessageDialog(null, errorMsg, "Error", 
+                      //      JOptionPane.INFORMATION_MESSAGE);
 //	                System.out.println("Error: Required field.");
 //	                continue;
-	            }
+	           // }
 	
-	            if (input.isEmpty() == true && input.matches(regexPattern) == false) {
-	            	JOptionPane.showMessageDialog(null, errorMsg, "Error", 
-                            JOptionPane.INFORMATION_MESSAGE);
+	            //if (input.isEmpty() == true && input.matches(regexPattern) == false) {
+	            	//JOptionPane.showMessageDialog(null, errorMsg, "Error", 
+                          //  JOptionPane.INFORMATION_MESSAGE);
 	            	
 //	                System.out.println(errorMsg);
 //	                continue;
-	            }
+	           // }
 	
 //	            if (checkType == 1 && isValidState(input) == false) {
 //	                System.out.println(errorMsg);
 //	                continue;
 //	            }
 	
-	            return input;
-	        }
-	    }
+	           // return input;
+	       // }
+	   // }
+ 	
 
 	public void setUserFileName(String string) {
 		// TODO Auto-generated method stub

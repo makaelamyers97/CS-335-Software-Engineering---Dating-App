@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-
+@SuppressWarnings("serial")
 public class SignInFrame extends AppFrame {	
 	
 	AppFrame signInFrame = new AppFrame();{	

@@ -10,22 +10,16 @@ import java.awt.*;
 import javax.swing.border.Border;
 import javax.swing.text.MaskFormatter;
 
-import datingapp.HelperFunctions;
 import datingapp.User;
 
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.util.List;
 
-
+@SuppressWarnings("serial")
 public class RegistrationFrame extends AppFrame {
     //private JFormattedTextField phoneTxtFld = null;
    //private JFormattedTextField zipTxtFld = null;
@@ -399,8 +393,6 @@ public class RegistrationFrame extends AppFrame {
 //	    https://www.youtube.com/watch?v=YZ_tQFTMYoQ
 	    uploadPhotoBtn.addActionListener(new ActionListener() {
 	    	
-	    	private String userName;
-
 			public void actionPerformed (ActionEvent e) {
 	    		
 	    		if(e.getSource() == uploadPhotoBtn) {
@@ -422,12 +414,12 @@ public class RegistrationFrame extends AppFrame {
 	    				}
 	    				File sourceFile = file_path; 
 
-	    				String originalFileName = file_path.getName();
-	    				String extension = "";
-	    				int i = originalFileName.lastIndexOf('.');
-	    				if (i > 0) {
-	    				    extension = originalFileName.substring(i + 1); 
-	    				}
+	    				//String originalFileName = file_path.getName();
+	    				//String extension = "";
+	    				//int i = originalFileName.lastIndexOf('.');
+	    				//if (i > 0) {
+	    				    //extension = originalFileName.substring(i + 1); 
+	    				//}
 
 	    				String enteredUsername = usernameTxtFld.getText().trim();
 

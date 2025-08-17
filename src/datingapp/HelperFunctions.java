@@ -1,14 +1,8 @@
 package datingapp;
 
-import java.awt.Image;
-import java.io.File;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class HelperFunctions {
 	

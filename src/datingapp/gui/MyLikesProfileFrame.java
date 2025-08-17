@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import datingapp.HelperFunctions;
-
+@SuppressWarnings("serial")
 public class MyLikesProfileFrame extends AppFrame {
 	
 	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
@@ -43,85 +43,93 @@ public class MyLikesProfileFrame extends AppFrame {
     	filterUsers();
     	//System.out.println(filteredUsers);
     	
-        JPanel AvailableProfilesPanel = new JPanel();
+        JPanel LikesProfilesPanel = new JPanel();
         Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
-        AvailableProfilesPanel.setBorder(yellowBorder);
-        setContentPane(AvailableProfilesPanel);
-        AvailableProfilesPanel.setLayout(null);
+        LikesProfilesPanel.setBorder(yellowBorder);
+        setContentPane(LikesProfilesPanel);
+        LikesProfilesPanel.setLayout(null);
+        
+    	JLabel logoutLbl = Logout.createLabel(this);
+    	LikesProfilesPanel.add(logoutLbl);
+    	Dimension dimension = logoutLbl.getPreferredSize();
+    	Insets insets = LikesProfilesPanel.getInsets();
+    	int x = insets.left + 5;
+    	int y = insets.top + 5;
+    	logoutLbl.setBounds(x, y, dimension.width, dimension.height);
         
         likesPhoto = new JLabel();
         likesPhoto.setBounds(80, 70, 200, 200);  // x, y, width, height
-        AvailableProfilesPanel.add(likesPhoto);
+        LikesProfilesPanel.add(likesPhoto);
 
         namelbl = new JLabel();
         namelbl.setSize(300, 30);
         namelbl.setLocation(30, 250);
         namelbl.setHorizontalAlignment(SwingConstants.CENTER);
         namelbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(namelbl);
+        LikesProfilesPanel.add(namelbl);
 
         locationlbl = new JLabel();
         locationlbl.setSize(300, 30);
         locationlbl.setLocation(30, 275);
         locationlbl.setHorizontalAlignment(SwingConstants.CENTER);
         locationlbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(locationlbl);
+        LikesProfilesPanel.add(locationlbl);
 
         aboutmelbl = new JLabel();
         aboutmelbl.setSize(300, 30);
         aboutmelbl.setLocation(30, 300);
         aboutmelbl.setHorizontalAlignment(SwingConstants.CENTER);
         aboutmelbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(aboutmelbl);
+        LikesProfilesPanel.add(aboutmelbl);
 
         agelbl = new JLabel();
         agelbl.setSize(300, 30);
         agelbl.setLocation(30, 325);
         agelbl.setHorizontalAlignment(SwingConstants.CENTER);
         agelbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(agelbl);
+        LikesProfilesPanel.add(agelbl);
 
         ocupationlbl = new JLabel();
         ocupationlbl.setSize(300, 30);
         ocupationlbl.setLocation(30, 350);
         ocupationlbl.setHorizontalAlignment(SwingConstants.CENTER);
         ocupationlbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(ocupationlbl);
+        LikesProfilesPanel.add(ocupationlbl);
 
         edulbl = new JLabel();
         edulbl.setSize(300, 30); 
         edulbl.setLocation(30, 375);
         edulbl.setHorizontalAlignment(SwingConstants.CENTER);
         edulbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(edulbl);
+        LikesProfilesPanel.add(edulbl);
 
         hobieslb = new JLabel();
         hobieslb.setSize(300, 30);
         hobieslb.setLocation(30, 400);
         hobieslb.setHorizontalAlignment(SwingConstants.CENTER);
         hobieslb.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(hobieslb);
+        LikesProfilesPanel.add(hobieslb);
 
         relationshiplbl = new JLabel();
         relationshiplbl.setSize(300, 30);
         relationshiplbl.setLocation(30, 425);
         relationshiplbl.setHorizontalAlignment(SwingConstants.CENTER);
         relationshiplbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(relationshiplbl);
+        LikesProfilesPanel.add(relationshiplbl);
 
         genderlbl = new JLabel();
         genderlbl.setSize(300, 30);
         genderlbl.setLocation(30, 450);
         genderlbl.setHorizontalAlignment(SwingConstants.CENTER);
         genderlbl.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(genderlbl);
+        LikesProfilesPanel.add(genderlbl);
 
         interestlb = new JLabel();
         interestlb.setSize(300, 30);
         interestlb.setLocation(30, 475);
         interestlb.setHorizontalAlignment(SwingConstants.CENTER);
         interestlb.setFont(new Font("Arial", Font.PLAIN,18));
-        AvailableProfilesPanel.add(interestlb);
+        LikesProfilesPanel.add(interestlb);
 
         // Navigation buttons
         JPanel buttonPanel = new JPanel();
@@ -137,7 +145,7 @@ public class MyLikesProfileFrame extends AppFrame {
         buttonPanel.add(nxtBtn);
         buttonPanel.add(dashBtn);
         buttonPanel.setBounds(30, 530, 300, 130);
-        AvailableProfilesPanel.add(buttonPanel);
+        LikesProfilesPanel.add(buttonPanel);
         
         showProfile(index);
         prevBtn.addActionListener(e -> showProfile(index - 1));
@@ -228,7 +236,6 @@ public class MyLikesProfileFrame extends AppFrame {
             }
     }
     
-
     private void filterUsers() {
     	for (List<String> user : users) {
             String userName = user.get(9).toLowerCase();
@@ -263,7 +270,5 @@ public class MyLikesProfileFrame extends AppFrame {
 
         prevBtn.setEnabled(index > 0);
         nxtBtn.setEnabled(index < users.size() - 1);
-        
-
     }
 }

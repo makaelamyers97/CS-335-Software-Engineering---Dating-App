@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 
 public class AppFrame extends JFrame{
 
+private static final long serialVersionUID = 1L;
+
 public AppFrame() {				//can be used with all user gui files
 		
 		//Create the white inner pane for this page

@@ -6,10 +6,7 @@ import java.awt.event.*;
 
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
-import datingapp.HelperFunctions;
-import datingapp.User;
-
+@SuppressWarnings("serial")
 public class WelcomeFrame extends AppFrame {
 //	
 //	private static final long serialVersionUID = 1L;
@@ -32,6 +29,14 @@ public class WelcomeFrame extends AppFrame {
                 yellowBorder, new EmptyBorder(20, 20, 20, 20)));
 
 		setContentPane(contentPane);
+
+    	JLabel logoutLbl = Logout.createLabel(this);
+    	contentPane.add(logoutLbl);
+    	Dimension dimension = logoutLbl.getPreferredSize();
+    	Insets insets = contentPane.getInsets();
+    	int x = insets.left + 5;
+    	int y = insets.top + 5;
+    	logoutLbl.setBounds(x, y, dimension.width, dimension.height);
 
 		
 		JLabel lblNewLabel = new JLabel("<html><div style='text-align:center;width:200px;'>" +"<br><br><br>" + firstName + ", welcome to Swan Song!<br>" +
