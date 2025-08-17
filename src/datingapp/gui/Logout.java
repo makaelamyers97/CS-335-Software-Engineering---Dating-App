@@ -11,8 +11,9 @@ public class Logout {
 		
 		label.addMouseListener(new MouseAdapter()  {  
 		    public void mouseClicked(MouseEvent e) { 
+		    	JFrame signInFrame = new SignInFrame();
+		    	signInFrame.setVisible(true);
 		    	curFrame.dispose();
-		    	new InitialFrame();
 		    }    
 		});
 		
