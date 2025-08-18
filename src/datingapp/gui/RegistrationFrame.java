@@ -385,7 +385,7 @@ public class RegistrationFrame extends AppFrame {
         contentPane.add(aboutTxtFld);
         //detailsTxtFld.setVisible(true);
 //        
-        uploadPhotoBtn = new JButton("Upload Profile Photo");
+        uploadPhotoBtn = new JButton("Upload Photo (jpg)");
         uploadPhotoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         uploadPhotoBtn.setBounds(85, 575, 185, 30); 
 	    uploadPhotoBtn.setFocusable(false);
@@ -545,7 +545,8 @@ public class RegistrationFrame extends AppFrame {
             	newUser.setGenderInterest(genderIntData);
             	
             	String aboutData = aboutTxtFld.getText();
-            	newUser.setAboutMe(aboutData);
+            	String aboutNoCommas = aboutData.replace(",", "");
+            	newUser.setAboutMe(aboutNoCommas);//(aboutData)
             	
 //            	HelperFunctions.Session.setCurrentUser(newUser);
             	
@@ -586,8 +587,8 @@ public class RegistrationFrame extends AppFrame {
     	//char[] passwordArrData = passwordArr;
     	String regexPatternPw = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{12,}$";
     	if(pstr.isEmpty() || !pstr.matches(regexPatternPw)) {
-    		JOptionPane.showMessageDialog(null,"The password \"" + pstr + "\" must be 12+ characters and include upper/lowercase, a digit, and special character.\"", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
-    		return true;
+    		JOptionPane.showMessageDialog(null,"The password must be 12+ characters and include upper/lowercase, a digit, and special character.\"", "InValid Entry!", JOptionPane.INFORMATION_MESSAGE);
+    		return true;					//REMOVED \"" + pstr + "\"
     	} 	
     		return false;
     }
