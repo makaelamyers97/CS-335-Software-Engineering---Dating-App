@@ -160,7 +160,7 @@ for (String image1: images) {
 	
 	//Age
 	JLabel lblAge = new JLabel("Age:  ");
-	lblAge.setSize(50, 30);	//w, h
+	lblAge.setSize(75, 30);	//w, h
 	lblAge.setLocation(30, 450);   //x, y
 	lblAge.setFont(new Font("Arial", Font.PLAIN,14));
 	String dob = foundUser.get(8);
