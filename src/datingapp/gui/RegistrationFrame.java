@@ -20,9 +20,14 @@ import java.text.ParseException;
 import java.util.List;
 
 @SuppressWarnings("serial")
+/* This class allows the user to enter details about themselves.
+ * Details are saved to dbSeeds file. Also allows the user to upload
+ * a profile photo. Photo file path is saved to dbSeeds. The pic itself
+ * is saved in the assets/userpics folder. When the registration button is clicked,
+ * Validates that datapoints entered match formating
+ * and required expectations. Once the all entered data validates,
+ * user is taken to a welcome frame. */
 public class RegistrationFrame extends AppFrame {
-    //private JFormattedTextField phoneTxtFld = null;
-   //private JFormattedTextField zipTxtFld = null;
 
     String[] allStates = {"AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", 
     		"IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
@@ -35,13 +40,6 @@ public class RegistrationFrame extends AppFrame {
     //FOLLOWUP
     private User newUser;
     AppFrame RegistrationFrame = new AppFrame(); {
-//    public RegistrationFrame() {
-//        setTitle("User Registration");
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setBounds(300, 90, 600, 400);
-//        //https://www.tutorialspoint.com/how-to-display-a-jframe-to-the-center-of-a-screen-in-java
-//        setLocationRelativeTo(null); //center the window screen
-//        setResizable(false);
 
         // create the panel
         JPanel contentPane = new JPanel();
@@ -92,14 +90,7 @@ public class RegistrationFrame extends AppFrame {
         lastLbl.setLocation(200, 75);
         lastLbl.setFont(new Font("Arial", Font.PLAIN, 10));
         contentPane.add(lastLbl);
-        
-        // Location
-//        JLabel locationLbl1 = new JLabel("Location");
-//        locationLbl1.setSize(75, 30);
-//        locationLbl1.setLocation(50, 90);
-//        locationLbl1.setFont(new Font("Arial", Font.PLAIN, 18));
-//        contentPane.add(locationLbl1);
-        
+                
         // City
         JTextField cityTxtFld = new JTextField();
         cityTxtFld.setSize(115, 20);
@@ -383,8 +374,7 @@ public class RegistrationFrame extends AppFrame {
         aboutTxtFld.setLineWrap(true);
         aboutTxtFld.setWrapStyleWord(true);
         contentPane.add(aboutTxtFld);
-        //detailsTxtFld.setVisible(true);
-//        
+    
         uploadPhotoBtn = new JButton("Upload Photo (jpg)");
         uploadPhotoBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         uploadPhotoBtn.setBounds(85, 575, 185, 30); 
@@ -413,13 +403,6 @@ public class RegistrationFrame extends AppFrame {
 	    				    directory.mkdirs(); 
 	    				}
 	    				File sourceFile = file_path; 
-
-	    				//String originalFileName = file_path.getName();
-	    				//String extension = "";
-	    				//int i = originalFileName.lastIndexOf('.');
-	    				//if (i > 0) {
-	    				    //extension = originalFileName.substring(i + 1); 
-	    				//}
 
 	    				String enteredUsername = usernameTxtFld.getText().trim();
 
@@ -548,7 +531,6 @@ public class RegistrationFrame extends AppFrame {
             	String aboutNoCommas = aboutData.replace(",", "");
             	newUser.setAboutMe(aboutNoCommas);//(aboutData)
             	
-//            	HelperFunctions.Session.setCurrentUser(newUser);
             	
             	//Write the user to the assets/dbSeeds file to simulate database
             	csvDatabaseFileManager.writeUserToCSV(newUser);

@@ -14,19 +14,14 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class LaunchFrame extends AppFrame {				//CHANGED JFrame to AppFrame
+/* If user clicks sign in, open InitialFrame
+ * If user clicks sign up, open RegistrationFrame
+ */
+public class LaunchFrame extends AppFrame {	
 	
 	private static final long serialVersionUID = 1L;
-	AppFrame LaunchFrame = new AppFrame();{				//Added and commented out ln 25 - 31
-		
-//	public LaunchFrame(){
-//		
-//		setTitle("Landing Page");
-//	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    setBounds(100, 90, 300, 300);
-//	    setLocationRelativeTo(null); 
-//	    setResizable(false);
-	    
+	AppFrame LaunchFrame = new AppFrame();{	
+		    
 		EmptyBorder border = new EmptyBorder(30, 0, 0, 0);
 	    
 	    JPanel contentPane = new JPanel();
@@ -73,7 +68,6 @@ public class LaunchFrame extends AppFrame {				//CHANGED JFrame to AppFrame
 			}
 		});
         
-        //Modifies the AppFrame for this page							//ADDED COMMENT AND NEXT LINE
         this.setTitle("Landing Page");
         
 	}

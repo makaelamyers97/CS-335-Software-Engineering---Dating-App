@@ -19,6 +19,10 @@ import java.util.Set;
 
 import datingapp.HelperFunctions;
 @SuppressWarnings("serial")
+
+/* Allows the user to move forward and backwards through a list
+ * of liked profiles.
+ */
 public class MyLikesProfileFrame extends AppFrame {
 	
 	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);

@@ -23,21 +23,19 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 @SuppressWarnings("serial")
+
+/* This class allows the user to enter their username and password.
+ * The code checks the dbSeeds file to see if the username exist with
+ * a matching password. If not, the app exits.
+ * If so, the app opens to the users dashboard.
+ * */
 public class SignInFrame extends AppFrame {	
 	
 	AppFrame signInFrame = new AppFrame();{	
-	
-//	public SignInFrame() {
-//		
-//	    setTitle("User Sign In");
-//	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    setBounds(100, 90, 450, 550);
-//	    setLocationRelativeTo(null); 
-//	    setResizable(false);
-	    
+	   
 	    JPanel contentPane = new JPanel();
 //	    https://www.geeksforgeeks.org/java/java-awt-boxlayout-class/
-//	    use boxlayout() class to get elements to stack on top of eachother without running out of space
+//	    use boxlayout() class to get elements to stack on top of each other without running out of space
         contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
         Border yellowBorder = BorderFactory.createLineBorder(Color.pink, 20);
         contentPane.setBorder(BorderFactory.createCompoundBorder(
@@ -62,7 +60,6 @@ public class SignInFrame extends AppFrame {
 	    contentPane.add(retireLbl);
 	    
 //	    https://docs.oracle.com/javase/tutorial/uiswing/layout/box.html
-	    //contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	       
 	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    
@@ -74,7 +71,7 @@ public class SignInFrame extends AppFrame {
 	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
 	    ImageIcon imageIcon = new ImageIcon(imagePath);
 
-	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);				//CHANGED 350 TO 200 TO ACCOMMODATE FRAME
+	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);
 	    imageIcon = new ImageIcon(image);
 
 	    imageLabel.setIcon(imageIcon);

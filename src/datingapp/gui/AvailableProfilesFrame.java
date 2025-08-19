@@ -22,6 +22,12 @@ import java.util.Set;
 
 import datingapp.HelperFunctions;
 @SuppressWarnings("serial")
+
+/* Allows the user to move forward and backwards through a list
+ * of available profiles. Also allows the user to like and dislike profiles.
+ * Liked and disliked profiles are removed from the list of available profiles.
+ * Liked and disliked profiles are added to dbLikes or dbDislikes csv files.
+ */
 public class AvailableProfilesFrame extends AppFrame {
 	
 	private List<List<String>> userList = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);

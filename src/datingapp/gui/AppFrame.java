@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/* class used to standardize the initial layout of all frames */
 public class AppFrame extends JFrame{
 
 private static final long serialVersionUID = 1L;

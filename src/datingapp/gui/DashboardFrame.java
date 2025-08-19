@@ -16,8 +16,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 @SuppressWarnings("serial")
+
 public class DashboardFrame extends AppFrame {
-	    
+	/* Presents the user with options for displaying available profiles and
+	 * Liked profiles. On available profiles, user can like and dislike profiles.
+	 * Liked and disliked profiles are removed from available profiles. The 
+	 * "authenticated" user's username is paired with the usernames of all their 
+	 * likes in the dbLikes csv. Dislikes are saved in the dbDislikes csv.
+	 * The user can go to their own profile or logout of the app. We have yet
+	 * to build out the MyConversations flow. */
 	public DashboardFrame(String userName) {
 				
 		JPanel contentPane = new JPanel();
@@ -62,7 +69,7 @@ public class DashboardFrame extends AppFrame {
 	    String imagePath = Paths.get(basePath, "assets", "swans_with_background.JPG").toString();
 	    ImageIcon imageIcon = new ImageIcon(imagePath);
 
-	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);		//ADJUSTED IMAGE FROM 350 TO FIT ON THE FRAME
+	    Image image = imageIcon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH);
 	    imageIcon = new ImageIcon(image);
 
 	    imageLabel.setIcon(imageIcon);
@@ -118,8 +125,6 @@ public class DashboardFrame extends AppFrame {
         	}
         });
 
-        
-        
 	    contentPane.add(Box.createRigidArea(new Dimension(0, 20))); 
 	    
 	    JButton btnConvos = new JButton("My Conversations");

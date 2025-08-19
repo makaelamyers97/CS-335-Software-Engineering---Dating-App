@@ -65,7 +65,7 @@ public class csvDatabaseFileManager {
 		return data;
 	}
 	
-	//WHEN IS THIS USED?
+	//NOT USED
 	public static void createEmptyUserCSV() {						
 		File f = new File(getFilePath("users.csv", false));
 		try (PrintWriter writer = new PrintWriter(new FileWriter(f))) {
@@ -97,7 +97,7 @@ public class csvDatabaseFileManager {
         }
 	}
 	
-	//This method searches the dbSeeds.csv file
+	//Not Used
 	public static void getUserFromCSV(String userName) {
 		
 		//Searches Assets/DbSeeds using readCSVRows()

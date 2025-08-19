@@ -28,33 +28,14 @@ public class datingApp {
 
     public static void main(String[] args) {
 
-    	//Get "database"
+    	//Get "database" for any initial use
     	seedData = csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true);
     	if(seedData != null && !seedData.isEmpty()) {
     		User u = new User();
     		u.batchSetUser(u, seedData);    		
     	}
     	
-
-    	
-//    	User user1 = new User();
-//    	user1.setDateOfBirth("02/02/2020");
-//    	user1.calculateAge();
-    	
-    	//List<List<String>> localData = csvFileManager.readCSVRows("users.csv", false);
-    	//if(localData != null && !localData.isEmpty()) {
-    		
-        	//for (List<String> row : localData)
-        		//System.out.println(row);   
-    		
-    		//User u = new User();
-    		//u.batchSetUser(u, localData);    		
-    	//}
-    	//else {
-    		//csvFileManager.createEmptyUserCSV();
-    	//} 	
-
-    	
+    	// opens the first page of the app so the user can sign in or register
     	SwingUtilities.invokeLater(() -> new LaunchFrame().setVisible(true));
    
     }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class User {
 	
-	//vars
 	private String firstName;
     private String lastName;
     private String middleInitial;
@@ -25,8 +24,7 @@ public class User {
     private String genderInterest;
     private String aboutMe;
     
-//    begin 8/7/2025
-    
+   
     private String userFileName;
     
     public String getUserFileName() {
@@ -38,8 +36,7 @@ public class User {
     	
     }
     
-//    end 8/7/2025
-    
+   
     //Constructor default
   
     //Getters
@@ -226,39 +223,6 @@ public class User {
     	
     }
     
-
- 	//private static String getValidInput(/*Scanner */String s, boolean isRequired, String regexPattern, String msg, int checkType, String errorMsg) {
-	        
-	       // while (true) {
-	        	
-	        	
-	           // System.out.print(msg);
-	           // String input = s/*.nextLine()*/;
-	
-	            //if (isRequired && input.isEmpty() == true) { 
-	            	//JOptionPane.showMessageDialog(null, errorMsg, "Error", 
-                      //      JOptionPane.INFORMATION_MESSAGE);
-//	                System.out.println("Error: Required field.");
-//	                continue;
-	           // }
-	
-	            //if (input.isEmpty() == true && input.matches(regexPattern) == false) {
-	            	//JOptionPane.showMessageDialog(null, errorMsg, "Error", 
-                          //  JOptionPane.INFORMATION_MESSAGE);
-	            	
-//	                System.out.println(errorMsg);
-//	                continue;
-	           // }
-	
-//	            if (checkType == 1 && isValidState(input) == false) {
-//	                System.out.println(errorMsg);
-//	                continue;
-//	            }
-	
-	           // return input;
-	       // }
-	   // }
- 	
 
 	public void setUserFileName(String string) {
 		// TODO Auto-generated method stub

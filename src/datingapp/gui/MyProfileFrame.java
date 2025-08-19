@@ -26,6 +26,10 @@ import javax.swing.border.Border;
 import datingapp.HelperFunctions;
 import datingapp.csvDatabaseFileManager;
 
+/* Accesses the dbSeeds file to load all the users details.
+ * Finds the user in the dbSeeds file using the username the user
+ * provided on the sign in or registration form. User can view
+ * their profile, return to dashboard or logout. */
 	public class MyProfileFrame extends AppFrame{
 
 
@@ -55,7 +59,7 @@ import datingapp.csvDatabaseFileManager;
 	int y = insets.top + 5;
 	logoutLbl.setBounds(x, y, dimension.width, dimension.height);
 	
-	JButton btnAllProfiles = new JButton("Go to Dashboard");	//? shouldn't this be a dashboard button instead of all profiles?
+	JButton btnAllProfiles = new JButton("Go to Dashboard");
 	btnAllProfiles.setBounds(100, 50, 160, 30);           
 	btnAllProfiles.setFocusable(false);
 	profilePane.add(btnAllProfiles);
@@ -223,16 +227,10 @@ for (String image1: images) {
 		for (List<String> user : users) {
 	
 		String uName = user.get(9).toLowerCase();
-		//String match = "match found";
-		//List<String> foundUser;
-		//System.out.println(uName);
+
 			if (uName.equals(userName.toLowerCase())) {
 		
 				foundUser = user;
-			//System.out.println(foundUser.toString());
-			
-			//lblFullName.setText(row.get(0) + " " + row.get(2));
-			//lblCityState.setText(row.get(5) + " " + row.get(6));
 		
 				return foundUser;
 			}
