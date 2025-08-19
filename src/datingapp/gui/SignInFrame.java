@@ -1,5 +1,6 @@
 package datingapp.gui;
 
+import datingapp.csvDatabaseFileManager;
 import datingapp.datingApp;
 
 import javax.swing.JFrame;
@@ -131,7 +132,7 @@ public class SignInFrame extends AppFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Boolean isAuthenticated = false;
-				for (List<String> row : datingApp.seedData) {	
+				for (List<String> row : csvDatabaseFileManager.readCSVRows("dbSeeds.csv", true)) {	
 					
 					String username = row.get(9);
 					String pw = row.get(10);
